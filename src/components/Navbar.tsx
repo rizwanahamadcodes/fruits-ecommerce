@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import pathContants from "../routes/pathContants";
 
@@ -12,7 +11,14 @@ const Navbar = () => {
                 <Link to={pathContants.CART}>Cart</Link>
             </li>
             <li>
-                <Link to={pathContants.PRODUCTS}>Products</Link>
+                <Link to={pathContants.PRODUCTS_LIST}>Products List</Link>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <Link to={"/products/1"}>Products One</Link>
+                    </li>
+                </ul>
             </li>
         </ul>
     );
