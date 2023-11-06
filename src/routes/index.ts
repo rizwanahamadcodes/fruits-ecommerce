@@ -1,7 +1,7 @@
 import { lazy } from "react";
-import pathContants from "./pathContants";
+import pathContants from "./pathConstants";
 
-const Home = lazy(() => import("../pages/Home"));
+const Home = lazy(() => import("../pages/Home/Home"));
 const Cart = lazy(() => import("../pages/Cart"));
 const Products = lazy(() => import("../pages/Products"));
 const ProductsList = lazy(() => import("../pages/ProductsList"));
@@ -13,5 +13,4 @@ const routes = [
     { path: pathContants.PRODUCTS_LIST, element: ProductsList },
 ];
 
-console.log(Home);
 export default routes;
