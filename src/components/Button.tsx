@@ -20,7 +20,7 @@ const Button = (props: ButtonProps) => {
         <a
             href="#products-section"
             className={cn(
-                "flex focus:outline-none focus:shadow-primary-border h-3 px-1 bg-gradient-to-r from-primary to-primary-400 text-white items-center gap-0.5 rounded-full shadow-soft hover:to-primary group",
+                "flex focus:outline-none focus:shadow-primary-border h-3 px-1 bg-gradient-to-r from-primary to-primary-400 text-white items-center gap-0.5 rounded-full shadow-soft hover:to-primary group font-medium",
                 className
             )}>
             {LeftIcon && <LeftIcon />}
