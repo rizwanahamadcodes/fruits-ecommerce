@@ -1,23 +1,20 @@
 import React from "react";
-import Container from "../../components/Container";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/rootReducer";
-import avocado from "/images/products/fruits/avocado.jpg";
-import productCategoryBackground from "/images/product-category-background.png";
-import Button from "../../components/Button";
 import { BsCart3 } from "react-icons/bs";
-import { Category, categories } from "../../data/categories";
-import cn from "../../utils/cn";
-import { updateSelectedCategory } from "../../store/slices/productsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Button from "../../components/Button";
+import Container from "../../components/Container";
 import Section, { SectionTitle } from "../../components/Section";
+import { Category, categories } from "../../data/categories";
 import { Products } from "../../data/products";
+import { RootState } from "../../store/rootReducer";
+import { updateSelectedCategory } from "../../store/slices/productsSlice";
+import cn from "../../utils/cn";
+import productCategoryBackground from "/images/product-category-background.png";
 
 const ProductsSection = () => {
-    const { products, searchKeyword, selectedCategory } = useSelector(
+    const { products, selectedCategory } = useSelector(
         (state: RootState) => state.products
     );
-
-    const dispatch = useDispatch();
 
     const filteredProducts = products.filter((product) =>
         selectedCategory === 0 ? true : product.categoryId === selectedCategory

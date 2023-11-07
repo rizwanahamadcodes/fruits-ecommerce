@@ -6,7 +6,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<"a"> & {
     children: React.ReactNode;
     leftIcon?: IconType;
     rightIcon?: IconType;
-    className: string;
+    className?: string;
 };
 
 const Button = (props: ButtonProps) => {

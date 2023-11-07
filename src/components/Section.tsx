@@ -5,7 +5,7 @@ const Section = (props: SectionProps) => {
     const { children, ...otherProps } = props;
 
     return (
-        <section className="p-2 scroll-mt-navHeight" {...otherProps}>
+        <section className="py-2 scroll-mt-navHeight" {...otherProps}>
             {children}
         </section>
     );
