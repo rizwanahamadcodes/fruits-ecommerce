@@ -6,6 +6,15 @@ import Container from "./Container";
 import brandLogo from "/images/avocadoes-logo.png";
 
 const Navbar = () => {
+    // const observerOptions = {
+    //     rootMargin: "0px",
+    //     threshold: 1,
+    // };
+
+    // const observer = new IntersectionObserver((arg) => {
+    //     console.log("We crossed that mate");
+    // }, observerOptions);
+
     return (
         <nav className="h-navHeight backdrop-blur-sm shadow-soft fixed top-0 flex w-screen z-10 items-center">
             <Container className="flex gap-2 justify-between">
