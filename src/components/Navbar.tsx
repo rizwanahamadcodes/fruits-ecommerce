@@ -1,11 +1,9 @@
+import { BsCart3 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import pathConstants from "../routes/pathConstants";
-import { addItem, rem } from "../store/slices/cartSlice";
-import brandLogo from "/images/avocadoes-logo.png";
-import { BsCart3 } from "react-icons/bs";
-import Container from "./Container";
 import cn from "../utils/cn";
-import { useState } from "react";
+import Container from "./Container";
+import brandLogo from "/images/avocadoes-logo.png";
 
 const Navbar = () => {
     return (

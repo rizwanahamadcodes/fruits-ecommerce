@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/rootReducer";
 import HeroSection from "./HeroSection";
+import ProductsSection from "./ProductsSection";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const Home = () => {
     return (
         <>
             <HeroSection />
+            <ProductsSection />
         </>
     );
 };

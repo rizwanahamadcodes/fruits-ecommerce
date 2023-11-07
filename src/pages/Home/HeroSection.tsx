@@ -1,3 +1,4 @@
+import Button from "../../components/Button";
 import Container from "../../components/Container";
 import veggiesBanner from "/images/veggies-banner-2.jpg";
 import { FaChevronRight } from "react-icons/fa6";
@@ -20,11 +21,9 @@ const HeroSection = () => {
                         right at your doorstep
                     </span>
                 </h1>
-
-                <button className="flex focus:outline-none focus:shadow-primary-border h-3 px-1 bg-gradient-to-r from-primary to-primary-400 text-white items-center gap-0.5 rounded-full shadow-soft hover:to-primary group">
+                <Button href="#products-section" rightIcon={FaChevronRight}>
                     Start Shopping
-                    <FaChevronRight className="group:hover:hidden" />
-                </button>
+                </Button>
             </Container>
         </div>
     );
