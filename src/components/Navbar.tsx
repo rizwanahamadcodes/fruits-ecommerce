@@ -1,14 +1,30 @@
+import { useContext } from "react";
 import { BsCart3 } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { ReferenceContext } from "../pages/Layout";
 import pathConstants from "../routes/pathConstants";
+import { RootState } from "../store/rootReducer";
+import {
+    selectSearchKeyword,
+    updateSearchKeyword,
+} from "../store/slices/productsSlice";
 import cn from "../utils/cn";
 import Container from "./Container";
 import brandLogo from "/images/avocadoes-logo.png";
-import { useContext } from "react";
-import { ReferenceContext } from "../pages/Layout";
 
 const Navbar = () => {
     const referenceContext = useContext(ReferenceContext);
+
+    const searchKeyword = useSelector((state: RootState) =>
+        selectSearchKeyword(state)
+    );
+
+    const dispatch = useDispatch();
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(updateSearchKeyword(e.target.value));
+    };
 
     return (
         <nav className="h-navHeight backdrop-blur-sm shadow-soft fixed top-0 flex w-screen z-10 items-center">
@@ -31,6 +47,10 @@ const Navbar = () => {
                                 ).scrollIntoView();
                             }
                         }
+                    }}
+                    value={searchKeyword}
+                    onChange={(e) => {
+                        handleSearchChange(e);
                     }}
                     type="text"
                     className="grow w-0 max-w-lg h-3 px-1 border-gray-200 border rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition "

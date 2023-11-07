@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Products, initialProducts } from "../../data/products";
+import { RootState } from "../rootReducer";
 
 type ProductsState = {
     products: Products[];
@@ -32,6 +33,35 @@ const productsSlice = createSlice({
         },
     },
 });
+
+export const selectAllProducts = (state: RootState) => {
+    return state.products.products;
+};
+
+export const selectSearchKeyword = (state: RootState) => {
+    return state.products.searchKeyword;
+};
+export const selectSelectedCategory = (state: RootState) => {
+    return state.products.selectedCategory;
+};
+
+export const selectFilteredProducts = (state: RootState) => {
+    return state.products.products
+        .filter((product) => {
+            if (state.products.selectedCategory === 0) {
+                return true;
+            }
+            return product.categoryId === state.products.selectedCategory;
+        })
+        .filter((productSelectedByCategory) => {
+            if (state.products.searchKeyword === "") {
+                return true;
+            }
+            return productSelectedByCategory.name
+                .toLowerCase()
+                .includes(state.products.searchKeyword.toLowerCase());
+        });
+};
 
 export const productsReducer = productsSlice.reducer;
 export const {

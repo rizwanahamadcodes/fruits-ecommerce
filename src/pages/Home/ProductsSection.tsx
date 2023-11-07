@@ -7,22 +7,20 @@ import Section, { SectionTitle } from "../../components/Section";
 import { Category, categories } from "../../data/categories";
 import { Products } from "../../data/products";
 import { RootState } from "../../store/rootReducer";
-import { updateSelectedCategory } from "../../store/slices/productsSlice";
+import {
+    selectFilteredProducts,
+    updateSelectedCategory,
+} from "../../store/slices/productsSlice";
 import cn from "../../utils/cn";
 import { ReferenceContext } from "../Layout";
 import productCategoryBackground from "/images/product-category-background.png";
 
 const ProductsSection = () => {
-    const { products, selectedCategory } = useSelector(
-        (state: RootState) => state.products
-    );
-
-    const filteredProducts = products.filter((product) =>
-        selectedCategory === 0 ? true : product.categoryId === selectedCategory
+    const filteredProducts = useSelector((state: RootState) =>
+        selectFilteredProducts(state)
     );
 
     const referenceContext = useContext(ReferenceContext);
-
     return (
         <Section ref={referenceContext} id="products-section">
             <Container>
