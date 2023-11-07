@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -16,6 +16,7 @@ import brandLogo from "/images/avocadoes-logo.png";
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const referenceContext = useContext(ReferenceContext);
+    const navSubstituteRef = useRef(null);
 
     const dispatch = useDispatch();
     const searchKeyword = useSelector((state: RootState) =>
@@ -26,22 +27,33 @@ const Navbar = () => {
         dispatch(updateSearchKeyword(e.target.value));
     };
 
-    const navSubstituteObserver = new IntersectionObserver(
-        (entries) => {
+    useEffect(() => {
+        const navSubstitute = navSubstituteRef.current;
+
+        const callback: IntersectionObserverCallback = (entries) => {
             setScrolledPast80(!entries[0].isIntersecting);
-        },
-        {
+        };
+
+        const options: IntersectionObserverInit = {
             threshold: 1,
             rootMargin: "100px 0px 0px 0px",
+        };
+
+        const observer = new IntersectionObserver(callback, options);
+
+        if (navSubstitute) {
+            observer.observe(navSubstitute);
         }
-    );
-    const navSubstituteRef = useRef(null);
-    if (navSubstituteRef.current) {
-        navSubstituteObserver.observe(navSubstituteRef.current);
-    }
+
+        return () => {
+            if (navSubstitute) {
+                observer.unobserve(navSubstitute);
+            }
+        };
+    }, []);
 
     return (
-        <>
+        <div>
             <nav
                 className={cn(
                     "h-navHeight backdrop-blur-sm fixed top-0 flex w-screen z-10 items-center transition-[box-shadow] duration-500",
@@ -89,7 +101,7 @@ const Navbar = () => {
             <div
                 className="h-navHeight w-full absolute"
                 ref={navSubstituteRef}></div>
-        </>
+        </div>
     );
 };
 
