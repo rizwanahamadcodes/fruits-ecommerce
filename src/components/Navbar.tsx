@@ -4,16 +4,11 @@ import pathConstants from "../routes/pathConstants";
 import cn from "../utils/cn";
 import Container from "./Container";
 import brandLogo from "/images/avocadoes-logo.png";
+import { useContext } from "react";
+import { ReferenceContext } from "../pages/Layout";
 
 const Navbar = () => {
-    // const observerOptions = {
-    //     rootMargin: "0px",
-    //     threshold: 1,
-    // };
-
-    // const observer = new IntersectionObserver((arg) => {
-    //     console.log("We crossed that mate");
-    // }, observerOptions);
+    const referenceContext = useContext(ReferenceContext);
 
     return (
         <nav className="h-navHeight backdrop-blur-sm shadow-soft fixed top-0 flex w-screen z-10 items-center">
@@ -28,6 +23,15 @@ const Navbar = () => {
                     />
                 </Link>
                 <input
+                    onFocus={() => {
+                        if (referenceContext != null) {
+                            if (referenceContext.current != null) {
+                                (
+                                    referenceContext.current as HTMLElement
+                                ).scrollIntoView();
+                            }
+                        }
+                    }}
                     type="text"
                     className="grow w-0 max-w-lg h-3 px-1 border-gray-200 border rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition "
                     placeholder="Search products"

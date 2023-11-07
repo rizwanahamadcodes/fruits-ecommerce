@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button";
@@ -9,6 +9,7 @@ import { Products } from "../../data/products";
 import { RootState } from "../../store/rootReducer";
 import { updateSelectedCategory } from "../../store/slices/productsSlice";
 import cn from "../../utils/cn";
+import { ReferenceContext } from "../Layout";
 import productCategoryBackground from "/images/product-category-background.png";
 
 const ProductsSection = () => {
@@ -20,8 +21,10 @@ const ProductsSection = () => {
         selectedCategory === 0 ? true : product.categoryId === selectedCategory
     );
 
+    const referenceContext = useContext(ReferenceContext);
+
     return (
-        <Section id="products-section">
+        <Section ref={referenceContext} id="products-section">
             <Container>
                 <SectionTitle>Our Products</SectionTitle>
                 <CategoryTab>

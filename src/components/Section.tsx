@@ -1,15 +1,23 @@
+import { forwardRef } from "react";
+
 type SectionProps = React.ComponentPropsWithoutRef<"section"> & {
     children: React.ReactNode;
 };
-const Section = (props: SectionProps) => {
-    const { children, ...otherProps } = props;
 
-    return (
-        <section className="py-2 scroll-mt-navHeight" {...otherProps}>
-            {children}
-        </section>
-    );
-};
+export const Section = forwardRef<HTMLDivElement, SectionProps>(
+    (props, ref) => {
+        const { children, ...otherProps } = props;
+
+        return (
+            <section
+                ref={ref}
+                className="py-2 scroll-mt-navHeight"
+                {...otherProps}>
+                {children}
+            </section>
+        );
+    }
+);
 
 type SectionTitleProps = {
     children: React.ReactNode;
