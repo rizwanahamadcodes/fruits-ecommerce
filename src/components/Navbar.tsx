@@ -91,7 +91,7 @@ const Navbar = () => {
                             onChange={(e) => {
                                 handleSearchChange(e);
                             }}
-                            type="text"
+                            type="search"
                             className="grow w-0 max-w-lg h-3 px-1 border-gray-200 border rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition"
                             placeholder="Search products"
                         />
