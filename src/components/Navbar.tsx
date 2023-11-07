@@ -52,6 +52,14 @@ const Navbar = () => {
         };
     }, []);
 
+    const scrollProductsSectionIntoView = () => {
+        if (referenceContext != null) {
+            if (referenceContext.current != null) {
+                (referenceContext.current as HTMLElement).scrollIntoView();
+            }
+        }
+    };
+
     return (
         <div>
             <nav
@@ -69,24 +77,25 @@ const Navbar = () => {
                             className="h-2.5 w-2.5 object-contain object-center"
                         />
                     </Link>
-                    <input
-                        onFocus={() => {
-                            if (referenceContext != null) {
-                                if (referenceContext.current != null) {
-                                    (
-                                        referenceContext.current as HTMLElement
-                                    ).scrollIntoView();
-                                }
-                            }
-                        }}
-                        value={searchKeyword}
-                        onChange={(e) => {
-                            handleSearchChange(e);
-                        }}
-                        type="text"
-                        className="grow w-0 max-w-lg h-3 px-1 border-gray-200 border rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition"
-                        placeholder="Search products"
-                    />
+                    <form
+                        className="grow flex justify-center"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            scrollProductsSectionIntoView();
+                        }}>
+                        <input
+                            onFocus={() => {
+                                scrollProductsSectionIntoView();
+                            }}
+                            value={searchKeyword}
+                            onChange={(e) => {
+                                handleSearchChange(e);
+                            }}
+                            type="text"
+                            className="grow w-0 max-w-lg h-3 px-1 border-gray-200 border rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition"
+                            placeholder="Search products"
+                        />
+                    </form>
                     <button
                         className={cn(
                             "relative flex items-center justify-center bg-white rounded-full h-3 w-3 cursor-pointer border border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none focus:border-primary border-gray-200"

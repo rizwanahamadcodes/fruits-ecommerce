@@ -40,12 +40,17 @@ const ProductsSection = () => {
                         />
                     ))}
                 </CategoryTab>
-
-                <ProductWrapper>
-                    {filteredProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </ProductWrapper>
+                {filteredProducts.length === 0 ? (
+                    <p className="text-center">
+                        Sorry no products match your search criteria
+                    </p>
+                ) : (
+                    <ProductWrapper>
+                        {filteredProducts.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
+                    </ProductWrapper>
+                )}
             </Container>
         </Section>
     );
