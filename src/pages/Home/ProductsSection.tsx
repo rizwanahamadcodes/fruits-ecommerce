@@ -90,13 +90,13 @@ const CategoryTabItem = (props: CategoryTabItemProps) => {
                     src={productCategoryBackground}
                     alt=""
                     className={cn(
-                        "opacity-0 transition-all  absolute h-2.5",
+                        "opacity-0 transition-all -z-10  absolute h-2.5",
                         category.id === selectedCategory && " opacity-100"
                     )}
                 />
                 <h1
                     className={cn(
-                        "font-medium relative z-10 text-primary grow text-center",
+                        "font-medium relative text-primary grow text-center",
                         selectedCategory === category.id && "text-white"
                     )}>
                     {category.name}
