@@ -17,11 +17,10 @@ const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const referenceContext = useContext(ReferenceContext);
 
+    const dispatch = useDispatch();
     const searchKeyword = useSelector((state: RootState) =>
         selectSearchKeyword(state)
     );
-
-    const dispatch = useDispatch();
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(updateSearchKeyword(e.target.value));
