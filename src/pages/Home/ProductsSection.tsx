@@ -22,7 +22,9 @@ const ProductsSection = () => {
 
     const referenceContext = useContext(ReferenceContext);
     return (
-        <Section ref={referenceContext} id="products-section">
+        <Section
+            ref={referenceContext.productsSectionReference}
+            id="products-section">
             <Container>
                 <SectionTitle>Our Products</SectionTitle>
                 <CategoryTab>

@@ -3,12 +3,24 @@ import { Suspense, createContext, useRef } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-export const ReferenceContext =
-    createContext<React.MutableRefObject<null> | null>(null);
+type referenceType = React.MutableRefObject<null> | null;
+type referenceContextType = {
+    heroSectionReference: referenceType;
+    productsSectionReference: referenceType;
+};
+
+export const ReferenceContext = createContext<referenceContextType>({
+    heroSectionReference: null,
+    productsSectionReference: null,
+});
 
 const Layout = () => {
     return (
-        <ReferenceContext.Provider value={useRef(null)}>
+        <ReferenceContext.Provider
+            value={{
+                heroSectionReference: useRef(null),
+                productsSectionReference: useRef(null),
+            }}>
             <Header />
             <main>
                 <Suspense fallback={<div>Loading</div>}>

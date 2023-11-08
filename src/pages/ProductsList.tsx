@@ -1,7 +1,9 @@
+import ProductsSection from "./Home/ProductsSection";
+
 const ProductsList = () => {
     return (
         <div>
-            <h1>Products List</h1>
+            <ProductsSection />
         </div>
     );
 };

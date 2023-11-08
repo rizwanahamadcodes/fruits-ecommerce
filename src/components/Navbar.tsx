@@ -1,8 +1,7 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { ReferenceContext } from "../pages/Layout";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import pathConstants from "../routes/pathConstants";
 import { RootState } from "../store/rootReducer";
 import {
@@ -15,8 +14,9 @@ import brandLogo from "/images/avocadoes-logo.png";
 
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
-    const referenceContext = useContext(ReferenceContext);
     const navSubstituteRef = useRef(null);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const dispatch = useDispatch();
     const searchKeyword = useSelector((state: RootState) =>
@@ -52,12 +52,9 @@ const Navbar = () => {
         };
     }, []);
 
-    const scrollProductsSectionIntoView = () => {
-        if (referenceContext != null) {
-            if (referenceContext.current != null) {
-                (referenceContext.current as HTMLElement).scrollIntoView();
-            }
-        }
+    const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        navigate(pathConstants.PRODUCTS_LIST);
     };
 
     return (
@@ -65,28 +62,25 @@ const Navbar = () => {
             <nav
                 className={cn(
                     "h-navHeight backdrop-blur-sm fixed top-0 flex w-screen z-10 items-center transition-[box-shadow] duration-500",
-                    scrolledPast80 && "shadow-soft"
+                    scrolledPast80 && "shadow-soft",
+                    location.pathname != pathConstants.HOME && "bg-white/50"
                 )}>
                 <Container className="flex gap-2 justify-between">
                     <Link
                         to={pathConstants.HOME}
-                        className="flex h-3 w-3 basis-3 items-center justify-center rounded-full focus:outline-none focus:shadow-primary-border bg-white  border-gray-200 border">
+                        className="flex h-3 w-3 basis-3 items-center justify-center rounded-full focus:outline-none focus:shadow-primary-border  border-gray-200">
                         <img
                             src={brandLogo}
                             alt="avocadoes logo"
-                            className="h-2.5 w-2.5 object-contain object-center"
+                            className="h-3 w-3 object-contain object-center"
                         />
                     </Link>
                     <form
                         className="grow flex justify-center"
                         onSubmit={(e) => {
-                            e.preventDefault();
-                            scrollProductsSectionIntoView();
+                            handleSearchSubmit(e);
                         }}>
                         <input
-                            onFocus={() => {
-                                scrollProductsSectionIntoView();
-                            }}
                             value={searchKeyword}
                             onChange={(e) => {
                                 handleSearchChange(e);
@@ -108,7 +102,10 @@ const Navbar = () => {
                 </Container>
             </nav>
             <div
-                className="h-navHeight w-full absolute"
+                className={cn(
+                    "h-navHeight w-full",
+                    location.pathname === pathConstants.HOME && "absolute"
+                )}
                 ref={navSubstituteRef}></div>
         </div>
     );
