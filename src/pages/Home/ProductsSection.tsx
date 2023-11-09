@@ -16,6 +16,7 @@ import productCategoryBackground from "/images/product-category-background.png";
 import { ReferenceContext } from "../../App";
 import { Link } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
+import { addItem } from "../../store/slices/cartSlice";
 
 const ProductsSection = () => {
     const filteredProducts = useSelector((state: RootState) =>
@@ -134,6 +135,7 @@ type ProductCardProps = {
 };
 const ProductCard = (props: ProductCardProps) => {
     const { product } = props;
+    const dispatch = useDispatch();
 
     return (
         <Link
@@ -151,6 +153,8 @@ const ProductCard = (props: ProductCardProps) => {
                 onClick={(e) => {
                     e.stopPropagation();
                     e.preventDefault();
+
+                    dispatch(addItem({ productId: product.id }));
                 }}>
                 <BsCart3 className="text-1.25" />
                 Add to Cart

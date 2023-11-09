@@ -24,6 +24,7 @@ const productsSlice = createSlice({
         },
         updateSelectedCategory: (state, action: PayloadAction<number>) => {
             state.selectedCategory = action.payload;
+            state.searchKeyword = "";
         },
         clearSearchKeyword: (state) => {
             state.searchKeyword = "";

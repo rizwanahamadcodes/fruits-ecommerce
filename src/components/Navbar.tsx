@@ -11,6 +11,7 @@ import {
 import cn from "../utils/cn";
 import Container from "./Container";
 import brandLogo from "/images/avocadoes-logo.png";
+import { clearCart } from "../store/slices/cartSlice";
 // random change to force redeployement
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
@@ -54,9 +55,13 @@ const Navbar = () => {
 
     const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        navigate(pathConstants.PRODUCTS);
+        if (location.pathname != pathConstants.PRODUCTS) {
+            navigate(pathConstants.PRODUCTS);
+        }
     };
 
+    const cart = useSelector((state: RootState) => state.cart);
+    console.log(cart.items);
     return (
         <div>
             <nav
@@ -93,11 +98,16 @@ const Navbar = () => {
                     <button
                         className={cn(
                             "relative flex items-center justify-center bg-white rounded-full h-3 w-3 cursor-pointer border border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none focus:border-primary border-gray-200"
-                        )}>
+                        )}
+                        onClick={() => {
+                            dispatch(clearCart());
+                        }}>
                         <BsCart3 className="text-1.5 text-primary" />
-                        <span className="font-medium h-1.5 w-1.5 absolute text-gray-100 bg-primary right-0 translate-x-1/2 top-2 flex items-center justify-center rounded-full">
-                            3
-                        </span>
+                        {cart.items.length != 0 && (
+                            <span className="font-medium h-1.5 w-1.5 absolute text-white bg-primary right-0 translate-x-1/2 top-2 flex items-center justify-center rounded-full">
+                                {cart.items.length}
+                            </span>
+                        )}
                     </button>
                 </Container>
             </nav>
