@@ -4,9 +4,9 @@ import Container from "../../components/Container";
 import Section from "../../components/Section";
 import veggiesBanner from "/images/veggies-banner-2.jpg";
 import { FaChevronRight } from "react-icons/fa6";
-import { ReferenceContext } from "../Layout";
 import { useNavigate } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
+import { ReferenceContext } from "../../App";
 
 const HeroSection = () => {
     const referenceContext = useContext(ReferenceContext);
@@ -14,7 +14,7 @@ const HeroSection = () => {
 
     const handleStartShopping = () => {
         console.log("Hello world");
-        navigate(pathConstants.PRODUCTS_LIST);
+        navigate(pathConstants.PRODUCTS);
     };
 
     return (

@@ -12,8 +12,8 @@ import {
     updateSelectedCategory,
 } from "../../store/slices/productsSlice";
 import cn from "../../utils/cn";
-import { ReferenceContext } from "../Layout";
 import productCategoryBackground from "/images/product-category-background.png";
+import { ReferenceContext } from "../../App";
 
 const ProductsSection = () => {
     const filteredProducts = useSelector((state: RootState) =>

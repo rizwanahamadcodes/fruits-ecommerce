@@ -1,24 +1,72 @@
+import { configureStore } from "@reduxjs/toolkit";
+import { createContext, lazy, useRef } from "react";
+import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Layout from "./pages/Layout";
-import routes from "./routes";
-import Page404 from "./pages/Page404";
+import Cart from "./pages/Cart";
+const Home = lazy(() => import("./pages/Home/Home"));
+const Layout = lazy(() => import("./pages/Layout"));
+const ProductsList = lazy(() => import("./pages/ProductsList"));
+const Product = lazy(() => import("./pages/Product"));
+import pathConstants from "./routes/pathConstants";
+import rootReducer from "./store/rootReducer";
+
+const store = configureStore({
+    reducer: rootReducer,
+});
+
+type referenceType = React.MutableRefObject<null> | null;
+type referenceContextType = {
+    heroSectionReference: referenceType;
+    productsSectionReference: referenceType;
+};
+
+export const ReferenceContext = createContext<referenceContextType>({
+    heroSectionReference: null,
+    productsSectionReference: null,
+});
+
+const router = createBrowserRouter([
+    {
+        path: pathConstants.HOME,
+        element: <Layout />,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+            },
+            {
+                path: pathConstants.PRODUCTS,
+                children: [
+                    {
+                        index: true,
+                        element: <ProductsList />,
+                    },
+                    {
+                        path: ":productId",
+                        element: <Product />,
+                    },
+                ],
+            },
+            {
+                path: pathConstants.CART,
+                element: <Cart />,
+            },
+        ],
+    },
+]);
 
 function App() {
-    const router = createBrowserRouter([
-        {
-            path: "/",
-            element: <Layout />,
-            errorElement: <Page404 />,
-            children: routes.map((route) => ({
-                ...route,
-                element: <route.element />,
-            })),
-        },
-    ]);
-
     return (
         <>
-            <RouterProvider router={router} />
+            <Provider store={store}>
+                <ReferenceContext.Provider
+                    value={{
+                        heroSectionReference: useRef(null),
+                        productsSectionReference: useRef(null),
+                    }}>
+                    <RouterProvider router={router} />
+                </ReferenceContext.Provider>
+            </Provider>
         </>
     );
 }

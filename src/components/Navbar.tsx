@@ -54,7 +54,7 @@ const Navbar = () => {
 
     const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        navigate(pathConstants.PRODUCTS_LIST);
+        navigate(pathConstants.PRODUCTS);
     };
 
     return (
