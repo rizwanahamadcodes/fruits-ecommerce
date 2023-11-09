@@ -3,7 +3,7 @@ import cn from "../utils/cn";
 
 export const button = cva(
     [
-        "font-medium h-3 rounded-full flex items-center gap-0.5 px-1 shadow-soft focus:shadow-primary-border focus:outline-none",
+        "font-medium h-3 rounded-full flex justify-center items-center gap-0.75 px-1 shadow-soft focus:shadow-primary-border focus:outline-none",
     ],
     {
         variants: {
@@ -43,7 +43,7 @@ export const button = cva(
         ],
 
         defaultVariants: {
-            variant: "outline",
+            variant: "solid",
             colorScheme: "primary",
         },
     }

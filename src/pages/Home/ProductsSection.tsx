@@ -14,6 +14,8 @@ import {
 import cn from "../../utils/cn";
 import productCategoryBackground from "/images/product-category-background.png";
 import { ReferenceContext } from "../../App";
+import { Link } from "react-router-dom";
+import pathConstants from "../../routes/pathConstants";
 
 const ProductsSection = () => {
     const filteredProducts = useSelector((state: RootState) =>
@@ -134,7 +136,9 @@ const ProductCard = (props: ProductCardProps) => {
     const { product } = props;
 
     return (
-        <a href="/" className="p-1 shadow bg-white rounded-1 group">
+        <Link
+            to={`${pathConstants.PRODUCTS}/${product.id}`}
+            className="p-1 shadow bg-white rounded-1 group">
             <img
                 src={product.imageUrl}
                 alt=""
@@ -142,10 +146,16 @@ const ProductCard = (props: ProductCardProps) => {
             />
             <h3 className="font-medium">{product.name}</h3>
             <p className="text-1.5 font-semibold mb-1">Rs. {product.price}</p>
-            <Button leftIcon={BsCart3} className="justify-center">
+            <Button
+                className="w-full"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                }}>
+                <BsCart3 className="text-1.25" />
                 Add to Cart
             </Button>
-        </a>
+        </Link>
     );
 };
 

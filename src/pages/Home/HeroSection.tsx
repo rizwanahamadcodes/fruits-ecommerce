@@ -1,21 +1,15 @@
 import { useContext } from "react";
-import Button from "../../components/Button";
+import { FaChevronRight } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { ReferenceContext } from "../../App";
+import { button } from "../../components/Button";
 import Container from "../../components/Container";
 import Section from "../../components/Section";
-import veggiesBanner from "/images/veggies-banner-2.jpg";
-import { FaChevronRight } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
-import { ReferenceContext } from "../../App";
+import veggiesBanner from "/images/veggies-banner-2.jpg";
 
 const HeroSection = () => {
     const referenceContext = useContext(ReferenceContext);
-    const navigate = useNavigate();
-
-    const handleStartShopping = () => {
-        console.log("Hello world");
-        navigate(pathConstants.PRODUCTS);
-    };
 
     return (
         <div className="min-h-screen relative pt-navHeight pb-2">
@@ -35,13 +29,15 @@ const HeroSection = () => {
                             right at your doorstep
                         </span>
                     </h1>
-                    <Button
-                        variant="solid"
-                        colorScheme="primary"
-                        onClick={handleStartShopping}>
+                    <Link
+                        className={button({
+                            variant: "solid",
+                            colorScheme: "primary",
+                        })}
+                        to={pathConstants.PRODUCTS}>
                         Start Shopping
                         <FaChevronRight />
-                    </Button>
+                    </Link>
                 </Container>
             </Section>
         </div>
