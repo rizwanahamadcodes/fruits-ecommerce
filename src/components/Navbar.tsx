@@ -11,7 +11,7 @@ import {
 import cn from "../utils/cn";
 import Container from "./Container";
 import brandLogo from "/images/avocadoes-logo.png";
-
+// random change to force redeployement
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const navSubstituteRef = useRef(null);
