@@ -36,9 +36,11 @@ const HeroSection = () => {
                         </span>
                     </h1>
                     <Button
-                        onClick={handleStartShopping}
-                        rightIcon={FaChevronRight}>
+                        variant="solid"
+                        colorScheme="primary"
+                        onClick={handleStartShopping}>
                         Start Shopping
+                        <FaChevronRight />
                     </Button>
                 </Container>
             </Section>
