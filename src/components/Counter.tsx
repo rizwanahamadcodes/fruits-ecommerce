@@ -29,9 +29,9 @@ const Counter = (props: CounterProps) => {
         selectCartItemById(state, productId)
     );
 
-    const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        e.preventDefault();
-    };
+    // const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     e.preventDefault();
+    // };
 
     return (
         <div className={cn("flex justify-between", className)} {...otherProps}>
