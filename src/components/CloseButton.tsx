@@ -10,7 +10,7 @@ const CloseButton = (props: CloseButtonProps) => {
     return (
         <div
             className={cn(
-                "relative cursor-pointer flex h-2 w-2 flex-col justify-between",
+                "relative cursor-pointer flex h-1.75 w-1.75 flex-col justify-between",
                 className
             )}
             onClick={onClick}>

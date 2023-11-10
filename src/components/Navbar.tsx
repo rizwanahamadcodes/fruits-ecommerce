@@ -11,6 +11,7 @@ import {
 import cn from "../utils/cn";
 import BrandLogo from "./BrandLogo";
 import Container from "./Container";
+import { selectNoOfItemsInCart } from "../store/slices/cartSlice";
 
 type NavbarProps = {
     onOpen?: () => void;
@@ -65,7 +66,9 @@ const Navbar = (props: NavbarProps) => {
         }
     };
 
-    const cart = useSelector((state: RootState) => state.cart);
+    const noOfItemsInCart = useSelector((state: RootState) =>
+        selectNoOfItemsInCart(state)
+    );
     return (
         <div>
             <nav
@@ -102,9 +105,9 @@ const Navbar = (props: NavbarProps) => {
                             }
                         }}>
                         <BsCart3 className="text-1.5 text-primary" />
-                        {cart.items.length != 0 && (
+                        {noOfItemsInCart != 0 && (
                             <span className="font-medium h-1.5 w-1.5 absolute text-white bg-primary right-0 translate-x-1/2 top-2 flex items-center justify-center rounded-full">
-                                {cart.items.length}
+                                {noOfItemsInCart}
                             </span>
                         )}
                     </button>

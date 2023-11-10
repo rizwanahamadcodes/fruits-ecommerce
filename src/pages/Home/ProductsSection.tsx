@@ -16,7 +16,7 @@ import productCategoryBackground from "/images/product-category-background.png";
 import { ReferenceContext } from "../../App";
 import { Link } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
-import { addItem } from "../../store/slices/cartSlice";
+import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
 import Counter from "../../components/Counter";
 
 const ProductsSection = () => {
@@ -137,10 +137,9 @@ type ProductCardProps = {
 const ProductCard = (props: ProductCardProps) => {
     const { product } = props;
     const dispatch = useDispatch();
-    const cartItems = useSelector((state: RootState) => state.cart.items);
 
-    const productInCart = cartItems.find(
-        (cartItem) => cartItem.productId === product.id
+    const productInCart = useSelector((state: RootState) =>
+        selectCartItemById(state, product.id)
     );
 
     return (
@@ -153,7 +152,9 @@ const ProductCard = (props: ProductCardProps) => {
                 className="group-hover:scale-110 transition-all mb-1"
             />
             <h3 className="font-medium">{product.name}</h3>
-            <p className="text-1.5 font-semibold mb-1">Rs. {product.price}</p>
+            <p className="text-1.5 text-gray-600 font-semibold mb-1">
+                Rs. {product.price}
+            </p>
 
             {productInCart ? (
                 <Counter

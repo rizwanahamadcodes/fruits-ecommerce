@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../rootReducer";
 
 export type CartItem = {
     productId: number;
@@ -52,6 +53,7 @@ const cartSlice = createSlice({
             state.items = state.items.filter((item) => item.quantity > 0);
             console.log(state.items);
         },
+
         clearCart: (state) => {
             state.items = [];
         },
@@ -66,3 +68,15 @@ export const {
     increaseQuantity,
     decreaseQuantity,
 } = cartSlice.actions;
+
+export const selectAllCartItems = (state: RootState) => {
+    return state.cart.items;
+};
+
+export const selectCartItemById = (state: RootState, productId: number) => {
+    return state.cart.items.find((item) => item.productId === productId);
+};
+
+export const selectNoOfItemsInCart = (state: RootState) => {
+    return state.cart.items.length;
+};

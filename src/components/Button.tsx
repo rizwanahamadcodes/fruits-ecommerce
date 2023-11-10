@@ -3,7 +3,7 @@ import cn from "../utils/cn";
 
 export const button = cva(
     [
-        "font-medium h-3 rounded-full flex justify-center items-center gap-0.75 px-1 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95",
+        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95",
     ],
     {
         variants: {
@@ -14,6 +14,10 @@ export const button = cva(
             colorScheme: {
                 primary: "text-white",
                 gray: "text-white",
+            },
+            size: {
+                medium: "h-3 px-1",
+                small: "h-2 px-0.5",
             },
         },
 
@@ -45,6 +49,7 @@ export const button = cva(
         defaultVariants: {
             variant: "solid",
             colorScheme: "primary",
+            size: "medium",
         },
     }
 );
@@ -56,11 +61,12 @@ type ButtonProps = React.ComponentPropsWithoutRef<"button"> &
     };
 
 export const Button = (props: ButtonProps) => {
-    const { children, className, variant, colorScheme, ...otherProps } = props;
+    const { children, className, variant, colorScheme, size, ...otherProps } =
+        props;
 
     return (
         <button
-            className={cn(button({ variant, colorScheme }), className)}
+            className={cn(button({ variant, colorScheme, size }), className)}
             {...otherProps}>
             {children}
         </button>
