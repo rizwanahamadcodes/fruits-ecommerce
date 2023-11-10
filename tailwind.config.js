@@ -39,6 +39,7 @@ module.exports = {
             30: "30rem",
             35: "35rem",
             navHeight: "5rem",
+            "svh-screen": "100svh",
         },
         borderRadius: {
             0.25: "0.25rem",
