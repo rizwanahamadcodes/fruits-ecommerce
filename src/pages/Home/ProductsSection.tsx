@@ -17,6 +17,7 @@ import { ReferenceContext } from "../../App";
 import { Link } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
 import { addItem } from "../../store/slices/cartSlice";
+import Counter from "../../components/Counter";
 
 const ProductsSection = () => {
     const filteredProducts = useSelector((state: RootState) =>
@@ -136,6 +137,11 @@ type ProductCardProps = {
 const ProductCard = (props: ProductCardProps) => {
     const { product } = props;
     const dispatch = useDispatch();
+    const cartItems = useSelector((state: RootState) => state.cart.items);
+
+    const productInCart = cartItems.find(
+        (cartItem) => cartItem.productId === product.id
+    );
 
     return (
         <Link
@@ -148,17 +154,27 @@ const ProductCard = (props: ProductCardProps) => {
             />
             <h3 className="font-medium">{product.name}</h3>
             <p className="text-1.5 font-semibold mb-1">Rs. {product.price}</p>
-            <Button
-                className="w-full"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
 
-                    dispatch(addItem({ productId: product.id }));
-                }}>
-                <BsCart3 className="text-1.25" />
-                Add to Cart
-            </Button>
+            {productInCart ? (
+                <Counter
+                    productId={product.id}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }}></Counter>
+            ) : (
+                <Button
+                    className="w-full"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+
+                        dispatch(addItem(product.id));
+                    }}>
+                    <BsCart3 className="text-1.25" />
+                    Add to Cart
+                </Button>
+            )}
         </Link>
     );
 };
