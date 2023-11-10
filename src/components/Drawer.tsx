@@ -65,7 +65,7 @@ const DrawerBackground = (props: DrawerBackgroundProps) => {
     return (
         <div
             className={cn(
-                "transition-all duration-500 fixed top-0 left-0 invisible opacity-0 overflow-hidden z-20 h-screen w-full bg-gray-100/10 backdrop-blur-sm",
+                "transition-all fixed top-0 left-0 invisible opacity-0 overflow-hidden z-20 h-screen w-full bg-gray-300/20 backdrop-blur-sm",
                 isOpen && "visible opacity-100"
             )}
             onClick={(e) => handleBackgroundClick(e)}>
@@ -85,7 +85,7 @@ const DrawerMain = (props: DrawerMainProps) => {
     return (
         <div
             className={cn(
-                "transition-all duration-500 h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left translate-x-full",
+                "transition-all flex flex-col h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left translate-x-full",
                 isOpen && "translate-x-0"
             )}>
             {children}
@@ -93,34 +93,47 @@ const DrawerMain = (props: DrawerMainProps) => {
     );
 };
 
-type DrawerHeadProps = {
+type DrawerHeadProps = React.ComponentPropsWithoutRef<"div"> & {
     children?: React.ReactNode;
+    isSticky?: boolean;
 };
 
 const DrawerHead = (props: DrawerHeadProps) => {
-    const { children } = props;
+    const { children, isSticky, className, ...otherProps } = props;
 
-    return <div className="p-4 text-white bg-blue-500">{children}</div>;
+    return (
+        <div className={cn(isSticky && "fixed", className)} {...otherProps}>
+            {children}
+        </div>
+    );
 };
 
-type DrawerBodyProps = {
+type DrawerBodyProps = React.ComponentPropsWithoutRef<"div"> & {
     children?: React.ReactNode;
 };
 
 const DrawerBody = (props: DrawerBodyProps) => {
-    const { children } = props;
+    const { children, className, ...otherProps } = props;
 
-    return <div className="p-4">{children}</div>;
+    return (
+        <div className={cn("grow", className)} {...otherProps}>
+            {children}
+        </div>
+    );
 };
 
-type DrawerFootProps = {
+type DrawerFootProps = React.ComponentPropsWithoutRef<"div"> & {
     children?: React.ReactNode;
 };
 
 const DrawerFoot = (props: DrawerFootProps) => {
-    const { children } = props;
+    const { children, className, ...otherProps } = props;
 
-    return <div className="p-4 text-white bg-primary-500">{children}</div>;
+    return (
+        <div className={cn(className)} {...otherProps}>
+            {children}
+        </div>
+    );
 };
 
 export { DrawerBody, DrawerFoot, DrawerHead };

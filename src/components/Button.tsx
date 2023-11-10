@@ -3,7 +3,7 @@ import cn from "../utils/cn";
 
 export const button = cva(
     [
-        "font-medium h-3 rounded-full flex justify-center items-center gap-0.75 px-1 shadow-soft focus:shadow-primary-border focus:outline-none",
+        "font-medium h-3 rounded-full flex justify-center items-center gap-0.75 px-1 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95",
     ],
     {
         variants: {

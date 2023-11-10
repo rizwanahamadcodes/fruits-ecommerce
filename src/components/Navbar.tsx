@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import pathConstants from "../routes/pathConstants";
 import { RootState } from "../store/rootReducer";
 import {
@@ -9,8 +9,8 @@ import {
     updateSearchKeyword,
 } from "../store/slices/productsSlice";
 import cn from "../utils/cn";
+import BrandLogo from "./BrandLogo";
 import Container from "./Container";
-import brandLogo from "/images/avocadoes-logo.png";
 
 type NavbarProps = {
     onOpen?: () => void;
@@ -72,18 +72,10 @@ const Navbar = (props: NavbarProps) => {
                 className={cn(
                     "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-10 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
-                    location.pathname != pathConstants.HOME && "bg-white/50"
+                    location.pathname != pathConstants.HOME && ""
                 )}>
                 <Container className="flex gap-2 justify-between">
-                    <Link
-                        to={pathConstants.HOME}
-                        className="flex h-3 w-3 basis-3 items-center justify-center rounded-full focus:outline-none focus:shadow-primary-border  border-gray-200">
-                        <img
-                            src={brandLogo}
-                            alt="avocadoes logo"
-                            className="h-3 w-3 object-contain object-center"
-                        />
-                    </Link>
+                    <BrandLogo />
                     <form
                         className="grow flex justify-center"
                         onSubmit={(e) => {
