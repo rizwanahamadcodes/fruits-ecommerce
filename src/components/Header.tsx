@@ -31,7 +31,7 @@ const Header = () => {
         <>
             <Navbar onOpen={onOpen} />
             <Drawer isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-                <DrawerHead className="pl-1 h-navHeight pr-[7vw] flex justify-between items-center">
+                <DrawerHead className="pl-1 py-1 pr-[7vw] flex justify-between items-center">
                     <BrandLogo />
                     <CloseButton onClick={onClose} />
                 </DrawerHead>
