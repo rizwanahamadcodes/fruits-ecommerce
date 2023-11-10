@@ -11,9 +11,14 @@ import {
 import cn from "../utils/cn";
 import Container from "./Container";
 import brandLogo from "/images/avocadoes-logo.png";
-import { clearCart } from "../store/slices/cartSlice";
-// random change to force redeployement
-const Navbar = () => {
+
+type NavbarProps = {
+    onOpen?: () => void;
+};
+
+const Navbar = (props: NavbarProps) => {
+    const { onOpen } = props;
+
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const navSubstituteRef = useRef(null);
     const navigate = useNavigate();
@@ -61,12 +66,11 @@ const Navbar = () => {
     };
 
     const cart = useSelector((state: RootState) => state.cart);
-    console.log(cart.items);
     return (
         <div>
             <nav
                 className={cn(
-                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-screen z-10 items-center transition-[box-shadow] duration-500",
+                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-10 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
                     location.pathname != pathConstants.HOME && "bg-white/50"
                 )}>
@@ -100,7 +104,10 @@ const Navbar = () => {
                             "relative flex items-center justify-center bg-white rounded-full h-3 w-3 cursor-pointer border border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none focus:border-primary border-gray-200"
                         )}
                         onClick={() => {
-                            dispatch(clearCart());
+                            if (onOpen) {
+                                console.log("hey");
+                                onOpen();
+                            }
                         }}>
                         <BsCart3 className="text-1.5 text-primary" />
                         {cart.items.length != 0 && (
