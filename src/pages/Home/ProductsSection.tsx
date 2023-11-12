@@ -156,7 +156,7 @@ const ProductCard = (props: ProductCardProps) => {
                 Rs. {product.price}
                 <span className="text-0.75 text-gray-700">
                     {" "}
-                    / {product.unitOfSale}
+                    /{product.unitOfSale}
                 </span>
             </p>
 
