@@ -14,6 +14,7 @@ export const button = cva(
             colorScheme: {
                 primary: "text-white",
                 gray: "text-white",
+                "gray-500": "text-white",
             },
             size: {
                 medium: "h-3 px-1",
@@ -35,6 +36,12 @@ export const button = cva(
                     "bg-gradient-to-r from-gray-900 to-gray-800 hover:to-gray-900",
             },
             {
+                variant: "solid",
+                colorScheme: "gray-500",
+                className:
+                    "bg-gradient-to-r from-gray-500 to-gray-400 hover:to-gray-500",
+            },
+            {
                 variant: "outline",
                 colorScheme: "primary",
                 className: "text-primary border-primary",
@@ -43,6 +50,11 @@ export const button = cva(
                 variant: "outline",
                 colorScheme: "gray",
                 className: "text-gray-900 border-gray-900",
+            },
+            {
+                variant: "outline",
+                colorScheme: "gray-500",
+                className: "text-gray-500 border-gray-500",
             },
         ],
 

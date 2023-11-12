@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BrandLogo from "./BrandLogo";
 import Button from "./Button";
 import CloseButton from "./CloseButton";
@@ -10,12 +10,18 @@ import Drawer, {
 } from "./Drawer";
 import Navbar from "./Navbar";
 import { RootState } from "../store/rootReducer";
-import { CartItem, selectAllCartItems } from "../store/slices/cartSlice";
+import {
+    CartItem,
+    clearCart,
+    removeItem,
+    selectAllCartItems,
+} from "../store/slices/cartSlice";
 import {
     selectAllProducts,
     selectProductById,
 } from "../store/slices/productsSlice";
 import Counter from "./Counter";
+import { FaTimes } from "react-icons/fa";
 
 const Header = () => {
     const { isOpen, onClose, onOpen } = useDrawer(false);
@@ -27,15 +33,21 @@ const Header = () => {
         selectAllProducts(state)
     );
 
+    const dispatch = useDispatch();
+
     return (
         <>
             <Navbar onOpen={onOpen} />
-            <Drawer isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
+            <Drawer
+                isOpen={isOpen}
+                onOpen={onOpen}
+                className="bg-gray-50"
+                onClose={onClose}>
                 <DrawerHead className="pl-1 py-1 pr-[7vw] flex justify-between items-center">
                     <BrandLogo />
                     <CloseButton onClick={onClose} />
                 </DrawerHead>
-                <DrawerBody className="flex overflow-y-scroll flex-col p-1 gap-1">
+                <DrawerBody className="flex overflow-y-auto flex-col p-1 gap-1">
                     {cartItems.map((item) => (
                         <CartItem item={item}></CartItem>
                     ))}
@@ -70,7 +82,13 @@ const Header = () => {
                         <Button className="w-full" variant="outline">
                             View Cart
                         </Button>
-                        <Button className="w-full" variant="outline">
+                        <Button
+                            colorScheme="gray-500"
+                            className="w-full"
+                            variant="outline"
+                            onClick={() => {
+                                dispatch(clearCart());
+                            }}>
                             Clear Cart
                         </Button>
                     </div>
@@ -90,12 +108,14 @@ const CartItem = (props: CartItemProps) => {
     const product = useSelector((state: RootState) =>
         selectProductById(state, item.productId)
     );
+    const dispatch = useDispatch();
+
     return (
-        <div className="rounded relative shadow-soft flex p-1">
+        <div className="rounded relative bg-white shadow-soft flex p-1">
             <img
                 src={product?.imageUrl}
                 alt={product?.name}
-                className=" h-7 w-7 me-1 object-contain"
+                className=" h-6 self-center w-6 me-1 object-contain"
             />
             <div className="font-medium flex gap-1 grow flex-col">
                 <p>{product?.name}</p>
@@ -108,6 +128,13 @@ const CartItem = (props: CartItemProps) => {
                     </p>
                 )}
             </div>
+            <button
+                className="absolute right-1 top-1 text-gray-300 active:text-[#cc0000]"
+                onClick={() => {
+                    dispatch(removeItem(item.productId));
+                }}>
+                <FaTimes />
+            </button>
         </div>
     );
 };

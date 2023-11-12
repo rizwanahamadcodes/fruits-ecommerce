@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import cn from "../utils/cn";
 
-type DrawerProps = {
+type DrawerProps = React.ComponentPropsWithoutRef<"div"> & {
     children: React.ReactNode;
     isOpen: boolean;
     onOpen: () => void;
@@ -11,7 +11,7 @@ type DrawerProps = {
 };
 
 const Drawer = (props: DrawerProps) => {
-    const { children, isOpen, onClose } = props;
+    const { children, isOpen, onClose, className } = props;
     const location = useLocation();
 
     const staticOnClose = useCallback(() => {
@@ -24,7 +24,9 @@ const Drawer = (props: DrawerProps) => {
 
     return (
         <DrawerBackground isOpen={isOpen} onClose={onClose}>
-            <DrawerMain isOpen={isOpen}>{children}</DrawerMain>
+            <DrawerMain className={className} isOpen={isOpen}>
+                {children}
+            </DrawerMain>
         </DrawerBackground>
     );
 };
@@ -65,7 +67,7 @@ const DrawerBackground = (props: DrawerBackgroundProps) => {
     return (
         <div
             className={cn(
-                "transition-all fixed top-0 left-0 invisible opacity-0 overflow-hidden z-20 min-h-full h-svh-screen w-full bg-gray-300/20 backdrop-blur-sm",
+                "transition-all fixed top-0 left-0 invisible opacity-0 overflow-hidden z-20 min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
                 isOpen && "visible opacity-100"
             )}
             onClick={(e) => handleBackgroundClick(e)}>
@@ -75,18 +77,20 @@ const DrawerBackground = (props: DrawerBackgroundProps) => {
 };
 
 type DrawerMainProps = {
+    className?: string;
     children?: React.ReactNode;
     isOpen: boolean;
 };
 
 const DrawerMain = (props: DrawerMainProps) => {
-    const { children, isOpen } = props;
+    const { children, isOpen, className } = props;
 
     return (
         <div
             className={cn(
-                "transition-all flex flex-col h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left translate-x-full",
-                isOpen && "translate-x-0"
+                "transition-all flex flex-col h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left translate-x-full overflow-hidden",
+                isOpen && "translate-x-0",
+                className
             )}>
             {children}
         </div>
