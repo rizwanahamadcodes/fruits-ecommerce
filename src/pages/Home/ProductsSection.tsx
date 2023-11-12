@@ -31,7 +31,7 @@ const ProductsSection = () => {
             id="products-section">
             <Container>
                 <SectionTitle>Our Products</SectionTitle>
-                {/* <CategoryTab>
+                <CategoryTab>
                     <CategoryTabItem
                         category={{
                             id: 0,
@@ -45,7 +45,7 @@ const ProductsSection = () => {
                             category={category}
                         />
                     ))}
-                </CategoryTab> */}
+                </CategoryTab>
                 {filteredProducts.length === 0 ? (
                     <p className="text-center">
                         Sorry no products match your search criteria
