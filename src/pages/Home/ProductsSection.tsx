@@ -151,13 +151,18 @@ const ProductCard = (props: ProductCardProps) => {
                 alt=""
                 className="group-hover:scale-110 transition-all mb-1"
             />
-            <h3 className="font-medium">{product.name}</h3>
-            <p className="text-1.5 text-gray-600 font-semibold mb-1">
+            <h3 className="font-medium text-gray-900">{product.name}</h3>
+            <p className="text-1.5 text-primary font-semibold mb-1">
                 Rs. {product.price}
+                <span className="text-0.75 text-gray-700">
+                    {" "}
+                    / {product.unitOfSale}
+                </span>
             </p>
 
             {productInCart ? (
                 <Counter
+                    formattedInfo
                     productId={product.id}
                     onClick={(e) => {
                         e.stopPropagation();

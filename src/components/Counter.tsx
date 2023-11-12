@@ -9,8 +9,10 @@ import {
 import Button from "./Button";
 import { RootState } from "../store/rootReducer";
 import cn from "../utils/cn";
+import { selectProductById } from "../store/slices/productsSlice";
 
 type CounterProps = React.ComponentPropsWithoutRef<"div"> & {
+    formattedInfo?: boolean;
     productId: number;
     className?: string;
     buttonSize?: "medium" | "small";
@@ -21,6 +23,7 @@ const Counter = (props: CounterProps) => {
         productId,
         className,
         buttonSize = "medium",
+        formattedInfo = false,
         ...otherProps
     } = props;
 
@@ -28,10 +31,13 @@ const Counter = (props: CounterProps) => {
     const itemInCart = useSelector((state: RootState) =>
         selectCartItemById(state, productId)
     );
+    const product = useSelector((state: RootState) =>
+        selectProductById(state, productId)
+    );
 
-    // const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     e.preventDefault();
-    // };
+    const formattedUnit = (unitOfSale: string, itemQuantity: number) => {
+        return itemQuantity > 1 ? unitOfSale + "s" : unitOfSale;
+    };
 
     return (
         <div className={cn("flex justify-between", className)} {...otherProps}>
@@ -51,8 +57,15 @@ const Counter = (props: CounterProps) => {
                     handleQuantityChange(e);
                 }}
             /> */}
-            <p className="bg-white grow border-y border-y-gray-100 flex items-center justify-center">
-                {itemInCart ? itemInCart.quantity : 0}
+            <p className="bg-white grow border-y border-y-gray-100 flex items-center justify-center text-gray-900 font-medium">
+                {itemInCart
+                    ? !formattedInfo
+                        ? itemInCart.quantity
+                        : `${itemInCart.quantity} ${formattedUnit(
+                              product?.unitOfSale as string,
+                              itemInCart.quantity
+                          )} in cart`
+                    : 0}
             </p>
             <Button
                 size={buttonSize}

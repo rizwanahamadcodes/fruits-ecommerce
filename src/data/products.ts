@@ -5,6 +5,7 @@ export type Products = {
     price: number;
     imageUrl: string;
     quantityInStock: number;
+    unitOfSale: string;
 };
 
 export const initialProducts = [
@@ -15,6 +16,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/apple.jpg",
         quantityInStock: 50,
+        unitOfSale: "kg",
     },
     {
         id: 2,
@@ -23,6 +25,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/avocado.jpg",
         quantityInStock: 30,
+        unitOfSale: "piece",
     },
     {
         id: 3,
@@ -31,6 +34,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/banana.jpg",
         quantityInStock: 40,
+        unitOfSale: "dozen",
     },
     {
         id: 4,
@@ -39,6 +43,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/blueberry.jpg",
         quantityInStock: 20,
+        unitOfSale: "pint",
     },
     {
         id: 5,
@@ -47,6 +52,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/kiwi.jpg",
         quantityInStock: 25,
+        unitOfSale: "piece",
     },
     {
         id: 6,
@@ -55,6 +61,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/lemon.jpg",
         quantityInStock: 35,
+        unitOfSale: "piece",
     },
     {
         id: 7,
@@ -63,6 +70,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/lime.jpg",
         quantityInStock: 30,
+        unitOfSale: "piece",
     },
     {
         id: 8,
@@ -71,6 +79,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/orange.jpg",
         quantityInStock: 45,
+        unitOfSale: "piece",
     },
     {
         id: 9,
@@ -79,6 +88,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/peach.jpg",
         quantityInStock: 30,
+        unitOfSale: "piece",
     },
     {
         id: 10,
@@ -87,6 +97,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/pineapple.jpg",
         quantityInStock: 20,
+        unitOfSale: "piece",
     },
     {
         id: 11,
@@ -95,6 +106,7 @@ export const initialProducts = [
         categoryId: 1,
         imageUrl: "/images/products/fruits/strawberry.jpg",
         quantityInStock: 25,
+        unitOfSale: "pint",
     },
     {
         id: 12,
@@ -103,6 +115,7 @@ export const initialProducts = [
         categoryId: 2,
         imageUrl: "/images/products/vegetables/bell-pepper.jpg",
         quantityInStock: 35,
+        unitOfSale: "piece",
     },
     {
         id: 13,
@@ -111,6 +124,7 @@ export const initialProducts = [
         categoryId: 2,
         imageUrl: "/images/products/vegetables/brinjal.jpg",
         quantityInStock: 30,
+        unitOfSale: "piece",
     },
     {
         id: 14,
@@ -119,6 +133,7 @@ export const initialProducts = [
         categoryId: 2,
         imageUrl: "/images/products/vegetables/broccoli.jpg",
         quantityInStock: 25,
+        unitOfSale: "bunch",
     },
     {
         id: 15,
@@ -127,6 +142,7 @@ export const initialProducts = [
         categoryId: 2,
         imageUrl: "/images/products/vegetables/cabbage.jpg",
         quantityInStock: 40,
+        unitOfSale: "head",
     },
     {
         id: 16,
@@ -135,6 +151,7 @@ export const initialProducts = [
         categoryId: 3,
         imageUrl: "/images/products/breads/baguette.jpg",
         quantityInStock: 40,
+        unitOfSale: "pound",
     },
     {
         id: 17,
@@ -143,6 +160,7 @@ export const initialProducts = [
         categoryId: 3,
         imageUrl: "/images/products/breads/rye-bread.jpg",
         quantityInStock: 30,
+        unitOfSale: "pound",
     },
     {
         id: 18,
@@ -151,6 +169,7 @@ export const initialProducts = [
         categoryId: 3,
         imageUrl: "/images/products/breads/sliced-bread.jpg",
         quantityInStock: 45,
+        unitOfSale: "pound",
     },
     {
         id: 19,
@@ -159,6 +178,7 @@ export const initialProducts = [
         categoryId: 3,
         imageUrl: "/images/products/breads/white-bread.jpg",
         quantityInStock: 50,
+        unitOfSale: "pound",
     },
     {
         id: 20,
@@ -167,6 +187,7 @@ export const initialProducts = [
         categoryId: 4,
         imageUrl: "/images/products/juices/apple-juice.jpg",
         quantityInStock: 30,
+        unitOfSale: "liter",
     },
     {
         id: 21,
@@ -175,6 +196,7 @@ export const initialProducts = [
         categoryId: 4,
         imageUrl: "/images/products/juices/orange-juice.jpg",
         quantityInStock: 25,
+        unitOfSale: "liter",
     },
     {
         id: 22,
@@ -183,6 +205,7 @@ export const initialProducts = [
         categoryId: 4,
         imageUrl: "/images/products/juices/pear-juice.jpg",
         quantityInStock: 20,
+        unitOfSale: "liter",
     },
     {
         id: 23,
@@ -191,5 +214,6 @@ export const initialProducts = [
         categoryId: 4,
         imageUrl: "/images/products/juices/tomato-juice.jpg",
         quantityInStock: 35,
+        unitOfSale: "liter",
     },
 ];

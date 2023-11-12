@@ -55,8 +55,8 @@ const Header = () => {
                 <DrawerFoot className="flex flex-col p-1 gap-1">
                     {cartItems.length != 0 && (
                         <div className="flex justify-between font-medium">
-                            <p>Subtotal:</p>
-                            <p>
+                            <p className="text-gray-700">Total in Cart:</p>
+                            <p className="text-gray-900">
                                 Rs.{" "}
                                 {cartItems
                                     .reduce((accumulator, currentValue) => {
@@ -117,14 +117,24 @@ const CartItem = (props: CartItemProps) => {
                 alt={product?.name}
                 className=" h-6 self-center w-6 me-1 object-contain"
             />
-            <div className="font-medium flex gap-1 grow flex-col">
-                <p>{product?.name}</p>
+            <div className="font-medium flex gap-0.5 grow flex-col">
+                <p className="text-gray-900">{product?.name}</p>
+                <p>
+                    <span className="text-primary">Rs. {product?.price}</span>
+                    <span className="text-gray-700 text-0.75">
+                        {" "}
+                        /{product?.unitOfSale}
+                    </span>
+                </p>
                 <Counter
                     productId={item.productId}
                     buttonSize="small"></Counter>
                 {product && (
-                    <p className="mt-auto text-gray-600">
-                        Rs. {(product?.price * item.quantity).toFixed(2)}
+                    <p className="mt-auto">
+                        <span className="text-gray-600">Total: </span>
+                        <span className="text-gray-900">
+                            Rs. {(product?.price * item.quantity).toFixed(2)}
+                        </span>
                     </p>
                 )}
             </div>
