@@ -73,7 +73,7 @@ const Navbar = (props: NavbarProps) => {
         <div>
             <nav
                 className={cn(
-                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-10 items-center transition-[box-shadow] duration-500",
+                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
                     location.pathname != pathConstants.HOME && ""
                 )}>
