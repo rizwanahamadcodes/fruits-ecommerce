@@ -6,9 +6,10 @@ export type Products = {
     imageUrl: string;
     quantityInStock: number;
     unitOfSale: string;
+    moreImages: string[]; // New field
 };
 
-export const initialProducts = [
+export const initialProducts: Products[] = [
     {
         id: 1,
         name: "Apple",
@@ -17,6 +18,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/apple.jpg",
         quantityInStock: 50,
         unitOfSale: "kg",
+        moreImages: [
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 2,
@@ -26,6 +39,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/avocado.jpg",
         quantityInStock: 30,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 3,
@@ -35,6 +60,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/banana.jpg",
         quantityInStock: 40,
         unitOfSale: "dozen",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 4,
@@ -44,6 +81,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/blueberry.jpg",
         quantityInStock: 20,
         unitOfSale: "pint",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 5,
@@ -53,6 +102,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/kiwi.jpg",
         quantityInStock: 25,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 6,
@@ -62,6 +123,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/lemon.jpg",
         quantityInStock: 35,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 7,
@@ -71,6 +144,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/lime.jpg",
         quantityInStock: 30,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 8,
@@ -80,6 +165,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/orange.jpg",
         quantityInStock: 45,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 9,
@@ -89,6 +186,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/peach.jpg",
         quantityInStock: 30,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/pineapple.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 10,
@@ -98,6 +207,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/pineapple.jpg",
         quantityInStock: 20,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/strawberry.jpg",
+        ],
     },
     {
         id: 11,
@@ -107,6 +228,18 @@ export const initialProducts = [
         imageUrl: "/images/products/fruits/strawberry.jpg",
         quantityInStock: 25,
         unitOfSale: "pint",
+        moreImages: [
+            "/images/products/fruits/apple.jpg",
+            "/images/products/fruits/avocado.jpg",
+            "/images/products/fruits/banana.jpg",
+            "/images/products/fruits/blueberry.jpg",
+            "/images/products/fruits/kiwi.jpg",
+            "/images/products/fruits/lemon.jpg",
+            "/images/products/fruits/lime.jpg",
+            "/images/products/fruits/orange.jpg",
+            "/images/products/fruits/peach.jpg",
+            "/images/products/fruits/pineapple.jpg",
+        ],
     },
     {
         id: 12,
@@ -116,6 +249,12 @@ export const initialProducts = [
         imageUrl: "/images/products/vegetables/bell-pepper.jpg",
         quantityInStock: 35,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/vegetables/brinjal.jpg",
+            "/images/products/vegetables/broccoli.jpg",
+            "/images/products/vegetables/cabbage.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 13,
@@ -125,6 +264,12 @@ export const initialProducts = [
         imageUrl: "/images/products/vegetables/brinjal.jpg",
         quantityInStock: 30,
         unitOfSale: "piece",
+        moreImages: [
+            "/images/products/vegetables/bell-pepper.jpg",
+            "/images/products/vegetables/broccoli.jpg",
+            "/images/products/vegetables/cabbage.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 14,
@@ -134,6 +279,12 @@ export const initialProducts = [
         imageUrl: "/images/products/vegetables/broccoli.jpg",
         quantityInStock: 25,
         unitOfSale: "bunch",
+        moreImages: [
+            "/images/products/vegetables/bell-pepper.jpg",
+            "/images/products/vegetables/brinjal.jpg",
+            "/images/products/vegetables/cabbage.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 15,
@@ -143,6 +294,12 @@ export const initialProducts = [
         imageUrl: "/images/products/vegetables/cabbage.jpg",
         quantityInStock: 40,
         unitOfSale: "head",
+        moreImages: [
+            "/images/products/vegetables/bell-pepper.jpg",
+            "/images/products/vegetables/brinjal.jpg",
+            "/images/products/vegetables/broccoli.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 16,
@@ -152,6 +309,12 @@ export const initialProducts = [
         imageUrl: "/images/products/breads/baguette.jpg",
         quantityInStock: 40,
         unitOfSale: "pound",
+        moreImages: [
+            "/images/products/breads/rye-bread.jpg",
+            "/images/products/breads/sliced-bread.jpg",
+            "/images/products/breads/white-bread.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 17,
@@ -161,6 +324,12 @@ export const initialProducts = [
         imageUrl: "/images/products/breads/rye-bread.jpg",
         quantityInStock: 30,
         unitOfSale: "pound",
+        moreImages: [
+            "/images/products/breads/baguette.jpg",
+            "/images/products/breads/sliced-bread.jpg",
+            "/images/products/breads/white-bread.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 18,
@@ -170,6 +339,12 @@ export const initialProducts = [
         imageUrl: "/images/products/breads/sliced-bread.jpg",
         quantityInStock: 45,
         unitOfSale: "pound",
+        moreImages: [
+            "/images/products/breads/baguette.jpg",
+            "/images/products/breads/rye-bread.jpg",
+            "/images/products/breads/white-bread.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 19,
@@ -179,6 +354,12 @@ export const initialProducts = [
         imageUrl: "/images/products/breads/white-bread.jpg",
         quantityInStock: 50,
         unitOfSale: "pound",
+        moreImages: [
+            "/images/products/breads/baguette.jpg",
+            "/images/products/breads/rye-bread.jpg",
+            "/images/products/breads/sliced-bread.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 20,
@@ -188,6 +369,12 @@ export const initialProducts = [
         imageUrl: "/images/products/juices/apple-juice.jpg",
         quantityInStock: 30,
         unitOfSale: "liter",
+        moreImages: [
+            "/images/products/juices/orange-juice.jpg",
+            "/images/products/juices/pear-juice.jpg",
+            "/images/products/juices/tomato-juice.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 21,
@@ -197,7 +384,9 @@ export const initialProducts = [
         imageUrl: "/images/products/juices/orange-juice.jpg",
         quantityInStock: 25,
         unitOfSale: "liter",
+        moreImages: ["/images/products/juices/apple-juice.jpg"],
     },
+
     {
         id: 22,
         name: "Pear Juice",
@@ -206,6 +395,12 @@ export const initialProducts = [
         imageUrl: "/images/products/juices/pear-juice.jpg",
         quantityInStock: 20,
         unitOfSale: "liter",
+        moreImages: [
+            "/images/products/juices/orange-juice.jpg",
+            "/images/products/juices/pear-juice.jpg",
+            "/images/products/juices/tomato-juice.jpg",
+            // Add more image URLs as needed
+        ],
     },
     {
         id: 23,
@@ -215,5 +410,11 @@ export const initialProducts = [
         imageUrl: "/images/products/juices/tomato-juice.jpg",
         quantityInStock: 35,
         unitOfSale: "liter",
+        moreImages: [
+            "/images/products/juices/orange-juice.jpg",
+            "/images/products/juices/pear-juice.jpg",
+            "/images/products/juices/tomato-juice.jpg",
+            // Add more image URLs as needed
+        ],
     },
 ];
