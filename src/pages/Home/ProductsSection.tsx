@@ -1,23 +1,18 @@
 import React, { useContext } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { ReferenceContext } from "../../App";
 import Button from "../../components/Button";
 import Container from "../../components/Container";
-import Section, { SectionTitle } from "../../components/Section";
-import { Category, categories } from "../../data/categories";
-import { Products } from "../../data/products";
-import { RootState } from "../../store/rootReducer";
-import {
-    selectFilteredProducts,
-    updateSelectedCategory,
-} from "../../store/slices/productsSlice";
-import cn from "../../utils/cn";
-import productCategoryBackground from "/images/product-category-background.png";
-import { ReferenceContext } from "../../App";
-import { Link } from "react-router-dom";
-import pathConstants from "../../routes/pathConstants";
-import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
 import Counter from "../../components/Counter";
+import Section, { SectionTitle } from "../../components/Section";
+import SelectCategories from "../../components/SelectCategories";
+import { Products } from "../../data/products";
+import pathConstants from "../../routes/pathConstants";
+import { RootState } from "../../store/rootReducer";
+import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
+import { selectFilteredProducts } from "../../store/slices/productsSlice";
 import { formatCurrency } from "../../utils/currency";
 
 const ProductsSection = () => {
@@ -32,21 +27,7 @@ const ProductsSection = () => {
             id="products-section">
             <Container>
                 <SectionTitle>Our Products</SectionTitle>
-                <CategoryTab>
-                    <CategoryTabItem
-                        category={{
-                            id: 0,
-                            name: "All",
-                            imageUrl: "/images/icons/all.png",
-                        }}
-                    />
-                    {categories.map((category) => (
-                        <CategoryTabItem
-                            key={category.id}
-                            category={category}
-                        />
-                    ))}
-                </CategoryTab>
+                <SelectCategories />
                 {filteredProducts.length === 0 ? (
                     <p className="text-center">
                         Sorry no products match your search criteria
@@ -60,62 +41,6 @@ const ProductsSection = () => {
                 )}
             </Container>
         </Section>
-    );
-};
-
-type CategoryTabProps = {
-    children: React.ReactNode;
-};
-const CategoryTab = (props: CategoryTabProps) => {
-    const { children } = props;
-
-    return (
-        <div className="flex mb-2 flex-wrap gap-y-3 gap-1 justify-center">
-            {children}
-        </div>
-    );
-};
-
-type CategoryTabItemProps = {
-    category: Category;
-};
-const CategoryTabItem = (props: CategoryTabItemProps) => {
-    const { category } = props;
-    const { selectedCategory } = useSelector(
-        (state: RootState) => state.products
-    );
-    const dispatch = useDispatch();
-
-    return (
-        <button
-            onClick={() => dispatch(updateSelectedCategory(category.id))}
-            key={category.id}
-            className="group w-8 flex flex-col items-center">
-            <span className="h-2 mb-1">
-                <img
-                    src={category.imageUrl}
-                    alt=""
-                    className="transition-all group-hover:scale-[1.2]"
-                />
-            </span>
-            <span className="w-full flex items-center text-center ali relative">
-                <img
-                    src={productCategoryBackground}
-                    alt=""
-                    className={cn(
-                        "opacity-0 transition-all -z-10  absolute h-2.5",
-                        category.id === selectedCategory && " opacity-100"
-                    )}
-                />
-                <h1
-                    className={cn(
-                        "font-medium relative text-primary grow text-center",
-                        selectedCategory === category.id && "text-white"
-                    )}>
-                    {category.name}
-                </h1>
-            </span>
-        </button>
     );
 };
 

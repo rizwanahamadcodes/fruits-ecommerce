@@ -1,12 +1,33 @@
 export type Category = {
     id: number;
-    name: string;
+    value: string;
+    label: string;
     imageUrl: string;
 };
 
 export const categories: Category[] = [
-    { id: 1, name: "Fruits", imageUrl: "/images/icons/i1.png" },
-    { id: 2, name: "Vegetable", imageUrl: "/images/icons/i2.png" },
-    { id: 3, name: "Breads", imageUrl: "/images/icons/i3.png" },
-    { id: 4, name: "Juices", imageUrl: "/images/icons/i4.png" },
+    {
+        id: 1,
+        value: "fruits",
+        label: "Fruits",
+        imageUrl: "/images/icons/i1.png",
+    },
+    {
+        id: 2,
+        value: "vegetable",
+        label: "Vegetable",
+        imageUrl: "/images/icons/i2.png",
+    },
+    {
+        id: 3,
+        value: "breads",
+        label: "Breads",
+        imageUrl: "/images/icons/i3.png",
+    },
+    {
+        id: 4,
+        value: "juices",
+        label: "Juices",
+        imageUrl: "/images/icons/i4.png",
+    },
 ];
