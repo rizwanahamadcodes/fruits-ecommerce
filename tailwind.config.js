@@ -48,6 +48,7 @@ module.exports = {
             DEFAULT: "0.5rem",
             0.75: "0.75rem",
             1: "1rem",
+            1.5: "1.5rem",
             2: "2rem",
             3: "3rem",
             4: "4rem",
