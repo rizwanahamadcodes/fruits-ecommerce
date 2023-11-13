@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import pathConstants from "../routes/pathConstants";
 import { RootState } from "../store/rootReducer";
+import { selectNoOfItemsInCart } from "../store/slices/cartSlice";
 import {
     selectSearchKeyword,
     updateSearchKeyword,
@@ -11,7 +12,6 @@ import {
 import cn from "../utils/cn";
 import BrandLogo from "./BrandLogo";
 import Container from "./Container";
-import { selectNoOfItemsInCart } from "../store/slices/cartSlice";
 
 type NavbarProps = {
     onOpen?: () => void;
@@ -24,6 +24,7 @@ const Navbar = (props: NavbarProps) => {
     const navSubstituteRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
+    const searchBarRef = useRef(null);
 
     const dispatch = useDispatch();
     const searchKeyword = useSelector((state: RootState) =>
@@ -64,6 +65,9 @@ const Navbar = (props: NavbarProps) => {
         if (location.pathname != pathConstants.PRODUCTS) {
             navigate(pathConstants.PRODUCTS);
         }
+        if (searchBarRef.current) {
+            (searchBarRef.current as HTMLElement).blur();
+        }
     };
 
     const noOfItemsInCart = useSelector((state: RootState) =>
@@ -85,6 +89,7 @@ const Navbar = (props: NavbarProps) => {
                             handleSearchSubmit(e);
                         }}>
                         <input
+                            ref={searchBarRef}
                             value={searchKeyword}
                             onChange={(e) => {
                                 handleSearchChange(e);
