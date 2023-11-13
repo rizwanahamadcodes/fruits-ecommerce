@@ -154,7 +154,6 @@ const ProductCard = (props: ProductCardProps) => {
             />
             <h3 className="font-medium text-gray-900">{product.name}</h3>
             <p className="text-1.5 text-primary font-semibold mb-1">
-                {/* Rs. {product.price} */}
                 {formatCurrency(product.price)}
                 <span className="text-1 font-medium text-gray-700">
                     {" "}
