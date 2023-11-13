@@ -7,6 +7,12 @@ export type Category = {
 
 export const categories: Category[] = [
     {
+        id: 0,
+        value: "",
+        label: "All",
+        imageUrl: "",
+    },
+    {
         id: 1,
         value: "fruits",
         label: "Fruits",

@@ -1,8 +1,11 @@
-import Select, { OptionProps, components } from "react-select";
+import { useDispatch } from "react-redux";
+import Select, { OptionProps, SingleValue, components } from "react-select";
 import { categories } from "../data/categories";
+import { updateSelectedCategory } from "../store/slices/productsSlice";
 import cn from "../utils/cn";
 
 type OptionType = {
+    id: number;
     value: string;
     label: string;
     imageUrl: string;
@@ -10,8 +13,17 @@ type OptionType = {
 
 const options = categories;
 const SelectCategories = () => {
+    const dispatch = useDispatch();
+
+    const handleCategorySelect = (e: SingleValue<OptionType>) => {
+        if (e) {
+            dispatch(updateSelectedCategory(e.id));
+        }
+    };
+
     return (
         <Select
+            onChange={(e) => handleCategorySelect(e as SingleValue<OptionType>)}
             placeholder="Select Category"
             className="mb-2"
             options={options}
