@@ -116,29 +116,28 @@ const CartItem = (props: CartItemProps) => {
                         className=" h-6 self-center w-6 me-1 object-contain"
                     />
                     <div className="font-medium flex gap-0.5 grow flex-col">
-                        <p className="text-gray-900">{product.name}</p>
-                        <p>
-                            <span className="text-primary">
-                                {formatCurrency(product.price)}
-                            </span>
-                            <span className="text-gray-700 text-0.75">
-                                {" "}
-                                /{product.unitOfSale}
-                            </span>
-                        </p>
+                        <span>
+                            <p className="text-gray-900">{product.name}</p>
+                            <p>
+                                <span className="text-primary">
+                                    {formatCurrency(product.price)}
+                                </span>
+                                <span className="text-gray-700 text-0.75">
+                                    {" "}
+                                    /{product.unitOfSale}
+                                </span>
+                            </p>
+                        </span>
                         <Counter
                             productId={item.productId}
                             buttonSize="small"></Counter>
-                        {product && (
-                            <p className="mt-auto">
-                                <span className="text-gray-600">Total: </span>
-                                <span className="text-gray-900">
-                                    {formatCurrency(
-                                        product.price * item.quantity
-                                    )}
-                                </span>
-                            </p>
-                        )}
+
+                        <p className="mt-auto">
+                            <span className="text-gray-600">Total: </span>
+                            <span className="text-gray-900">
+                                {formatCurrency(product.price * item.quantity)}
+                            </span>
+                        </p>
                     </div>
                     <button
                         className="absolute right-1 top-1 text-gray-300 active:text-[#cc0000]"

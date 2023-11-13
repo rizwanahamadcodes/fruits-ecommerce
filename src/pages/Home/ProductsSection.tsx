@@ -156,7 +156,7 @@ const ProductCard = (props: ProductCardProps) => {
             <p className="text-1.5 text-primary font-semibold mb-1">
                 {/* Rs. {product.price} */}
                 {formatCurrency(product.price)}
-                <span className="text-0.75 text-gray-700">
+                <span className="text-1 font-medium text-gray-700">
                     {" "}
                     /{product.unitOfSale}
                 </span>
