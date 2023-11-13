@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
 import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
 import Counter from "../../components/Counter";
+import { formatCurrency } from "../../utils/currency";
 
 const ProductsSection = () => {
     const filteredProducts = useSelector((state: RootState) =>
@@ -153,7 +154,8 @@ const ProductCard = (props: ProductCardProps) => {
             />
             <h3 className="font-medium text-gray-900">{product.name}</h3>
             <p className="text-1.5 text-primary font-semibold mb-1">
-                Rs. {product.price}
+                {/* Rs. {product.price} */}
+                {formatCurrency(product.price)}
                 <span className="text-0.75 text-gray-700">
                     {" "}
                     /{product.unitOfSale}

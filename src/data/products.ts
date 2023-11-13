@@ -12,7 +12,7 @@ export const initialProducts = [
     {
         id: 1,
         name: "Apple",
-        price: 0.99,
+        price: 250,
         categoryId: 1,
         imageUrl: "/images/products/fruits/apple.jpg",
         quantityInStock: 50,
@@ -21,7 +21,7 @@ export const initialProducts = [
     {
         id: 2,
         name: "Avocado",
-        price: 1.49,
+        price: 150,
         categoryId: 1,
         imageUrl: "/images/products/fruits/avocado.jpg",
         quantityInStock: 30,
@@ -30,7 +30,7 @@ export const initialProducts = [
     {
         id: 3,
         name: "Banana",
-        price: 0.79,
+        price: 100,
         categoryId: 1,
         imageUrl: "/images/products/fruits/banana.jpg",
         quantityInStock: 40,
@@ -39,7 +39,7 @@ export const initialProducts = [
     {
         id: 4,
         name: "Blueberry",
-        price: 2.99,
+        price: 300,
         categoryId: 1,
         imageUrl: "/images/products/fruits/blueberry.jpg",
         quantityInStock: 20,
@@ -48,7 +48,7 @@ export const initialProducts = [
     {
         id: 5,
         name: "Kiwi",
-        price: 1.79,
+        price: 200,
         categoryId: 1,
         imageUrl: "/images/products/fruits/kiwi.jpg",
         quantityInStock: 25,
@@ -57,7 +57,7 @@ export const initialProducts = [
     {
         id: 6,
         name: "Lemon",
-        price: 0.89,
+        price: 120,
         categoryId: 1,
         imageUrl: "/images/products/fruits/lemon.jpg",
         quantityInStock: 35,
@@ -66,7 +66,7 @@ export const initialProducts = [
     {
         id: 7,
         name: "Lime",
-        price: 0.69,
+        price: 100,
         categoryId: 1,
         imageUrl: "/images/products/fruits/lime.jpg",
         quantityInStock: 30,
@@ -75,7 +75,7 @@ export const initialProducts = [
     {
         id: 8,
         name: "Orange",
-        price: 0.99,
+        price: 150,
         categoryId: 1,
         imageUrl: "/images/products/fruits/orange.jpg",
         quantityInStock: 45,
@@ -84,7 +84,7 @@ export const initialProducts = [
     {
         id: 9,
         name: "Peach",
-        price: 1.29,
+        price: 120,
         categoryId: 1,
         imageUrl: "/images/products/fruits/peach.jpg",
         quantityInStock: 30,
@@ -93,7 +93,7 @@ export const initialProducts = [
     {
         id: 10,
         name: "Pineapple",
-        price: 2.49,
+        price: 200,
         categoryId: 1,
         imageUrl: "/images/products/fruits/pineapple.jpg",
         quantityInStock: 20,
@@ -102,7 +102,7 @@ export const initialProducts = [
     {
         id: 11,
         name: "Strawberry",
-        price: 3.49,
+        price: 350,
         categoryId: 1,
         imageUrl: "/images/products/fruits/strawberry.jpg",
         quantityInStock: 25,
@@ -111,7 +111,7 @@ export const initialProducts = [
     {
         id: 12,
         name: "Bell Pepper",
-        price: 1.49,
+        price: 120,
         categoryId: 2,
         imageUrl: "/images/products/vegetables/bell-pepper.jpg",
         quantityInStock: 35,
@@ -120,7 +120,7 @@ export const initialProducts = [
     {
         id: 13,
         name: "Brinjal",
-        price: 0.99,
+        price: 100,
         categoryId: 2,
         imageUrl: "/images/products/vegetables/brinjal.jpg",
         quantityInStock: 30,
@@ -129,7 +129,7 @@ export const initialProducts = [
     {
         id: 14,
         name: "Broccoli",
-        price: 1.79,
+        price: 180,
         categoryId: 2,
         imageUrl: "/images/products/vegetables/broccoli.jpg",
         quantityInStock: 25,
@@ -138,7 +138,7 @@ export const initialProducts = [
     {
         id: 15,
         name: "Cabbage",
-        price: 0.89,
+        price: 90,
         categoryId: 2,
         imageUrl: "/images/products/vegetables/cabbage.jpg",
         quantityInStock: 40,
@@ -147,7 +147,7 @@ export const initialProducts = [
     {
         id: 16,
         name: "Baguette",
-        price: 2.49,
+        price: 250,
         categoryId: 3,
         imageUrl: "/images/products/breads/baguette.jpg",
         quantityInStock: 40,
@@ -156,7 +156,7 @@ export const initialProducts = [
     {
         id: 17,
         name: "Rye Bread",
-        price: 2.99,
+        price: 300,
         categoryId: 3,
         imageUrl: "/images/products/breads/rye-bread.jpg",
         quantityInStock: 30,
@@ -165,7 +165,7 @@ export const initialProducts = [
     {
         id: 18,
         name: "Sliced Bread",
-        price: 1.99,
+        price: 200,
         categoryId: 3,
         imageUrl: "/images/products/breads/sliced-bread.jpg",
         quantityInStock: 45,
@@ -174,7 +174,7 @@ export const initialProducts = [
     {
         id: 19,
         name: "White Bread",
-        price: 1.79,
+        price: 180,
         categoryId: 3,
         imageUrl: "/images/products/breads/white-bread.jpg",
         quantityInStock: 50,
@@ -183,7 +183,7 @@ export const initialProducts = [
     {
         id: 20,
         name: "Apple Juice",
-        price: 2.99,
+        price: 280,
         categoryId: 4,
         imageUrl: "/images/products/juices/apple-juice.jpg",
         quantityInStock: 30,
@@ -192,7 +192,7 @@ export const initialProducts = [
     {
         id: 21,
         name: "Orange Juice",
-        price: 3.49,
+        price: 350,
         categoryId: 4,
         imageUrl: "/images/products/juices/orange-juice.jpg",
         quantityInStock: 25,
@@ -201,7 +201,7 @@ export const initialProducts = [
     {
         id: 22,
         name: "Pear Juice",
-        price: 3.29,
+        price: 320,
         categoryId: 4,
         imageUrl: "/images/products/juices/pear-juice.jpg",
         quantityInStock: 20,
@@ -210,7 +210,7 @@ export const initialProducts = [
     {
         id: 23,
         name: "Tomato Juice",
-        price: 3.79,
+        price: 380,
         categoryId: 4,
         imageUrl: "/images/products/juices/tomato-juice.jpg",
         quantityInStock: 35,
