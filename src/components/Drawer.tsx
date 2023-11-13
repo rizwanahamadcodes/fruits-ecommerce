@@ -67,7 +67,7 @@ const DrawerBackground = (props: DrawerBackgroundProps) => {
     return (
         <div
             className={cn(
-                "transition-all fixed top-0 left-0 invisible opacity-0 overflow-hidden z-20 min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
+                "transition-all fixed top-0 left-0 invisible opacity-0 overflow-hidden z-[100] min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
                 isOpen && "visible opacity-100"
             )}
             onClick={(e) => handleBackgroundClick(e)}>
