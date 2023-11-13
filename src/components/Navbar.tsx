@@ -77,7 +77,7 @@ const Navbar = (props: NavbarProps) => {
                     scrolledPast80 && "shadow-soft",
                     location.pathname != pathConstants.HOME && ""
                 )}>
-                <Container className="flex gap-2 justify-between">
+                <Container className="flex gap-1 justify-between">
                     <BrandLogo />
                     <form
                         className="grow flex justify-center"
