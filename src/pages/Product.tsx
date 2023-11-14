@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Thumbs, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 import Container from "../components/Container";
@@ -32,6 +32,9 @@ const Product = () => {
                         <div className="md:w-2/5">
                             <Swiper
                                 className="border border-gray-100 rounded-1 mb-1"
+                                zoom={{
+                                    maxRatio: 5,
+                                }}
                                 spaceBetween={16}
                                 thumbs={{
                                     swiper:
@@ -39,7 +42,7 @@ const Product = () => {
                                             ? thumbsSwiper
                                             : null,
                                 }}
-                                modules={[Thumbs]}
+                                modules={[Thumbs, Zoom]}
                                 grabCursor={true}>
                                 <SwiperSlide className="pt-[100%] overflow-hidden relative">
                                     <img
@@ -71,7 +74,6 @@ const Product = () => {
                                     className="relative"
                                     onSwiper={setThumbsSwiper}
                                     slidesPerView={3}
-                                    slideToClickedSlide
                                     spaceBetween={16}
                                     modules={[Thumbs, Navigation]}
                                     onInit={() => setInit(true)}
