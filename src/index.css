@@ -49,3 +49,7 @@ input[type="search"]:focus::-webkit-search-cancel-button {
 input[type="search"].dark::-webkit-search-cancel-button {
     filter: invert(1);
 }
+
+.swiper-slide-thumb-active > div {
+    @apply border-primary/60;
+}

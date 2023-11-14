@@ -10,6 +10,7 @@ import { Swiper as SwiperType } from "swiper/types";
 import Container from "../components/Container";
 import { RootState } from "../store/rootReducer";
 import { selectProductById } from "../store/slices/productsSlice";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const Product = () => {
     const { productId } = useParams();
@@ -25,10 +26,10 @@ const Product = () => {
 
     return (
         <Container className="">
-            <div className="bg-white rounded-1 p-1 shadow-soft flex flex-col sm:flex-row">
+            <div className="bg-white rounded-1 p-1 shadow-soft flex flex-col md:flex-row">
                 {product ? (
                     <>
-                        <div className="sm:w-2/5">
+                        <div className="md:w-2/5">
                             <Swiper
                                 className="border border-gray-100 rounded-1 mb-1"
                                 spaceBetween={16}
@@ -59,8 +60,12 @@ const Product = () => {
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
-                            <div>
-                                <button ref={prevRef}>Prev</button>
+                            <div className="flex gap-1">
+                                <button
+                                    ref={prevRef}
+                                    className="text-primary text-1.5 disabled:text-gray-300">
+                                    <FaChevronLeft />
+                                </button>
                                 <Swiper
                                     style={{}}
                                     className="relative"
@@ -97,7 +102,11 @@ const Product = () => {
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
-                                <button ref={nextRef}>Next</button>
+                                <button
+                                    ref={nextRef}
+                                    className="text-primary text-1.5 disabled:text-gray-300">
+                                    <FaChevronRight />
+                                </button>
                             </div>
                         </div>
                         <div className="bg-gray-300"></div>
