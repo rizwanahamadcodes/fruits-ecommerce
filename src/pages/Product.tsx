@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "swiper/css";
@@ -7,10 +8,11 @@ import "swiper/css/thumbs";
 import { Navigation, Thumbs, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
+import Button from "../components/Button";
 import Container from "../components/Container";
 import { RootState } from "../store/rootReducer";
 import { selectProductById } from "../store/slices/productsSlice";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { formatCurrency } from "../utils/currency";
 
 const Product = () => {
     const { productId } = useParams();
@@ -27,7 +29,7 @@ const Product = () => {
 
     return (
         <Container className="">
-            <div className="bg-white rounded-1 p-1 shadow-soft flex flex-col md:flex-row">
+            <div className="bg-white rounded-1 p-1 shadow-soft flex gap-1 flex-col md:flex-row">
                 {product ? (
                     <>
                         <div className="md:w-2/5">
@@ -131,7 +133,27 @@ const Product = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className="bg-gray-300"></div>
+                        <div className="md:w-3/5">
+                            <h2 className="font-medium">{product.name}</h2>
+                            <p>
+                                <span className="font-medium text-primary text-2">
+                                    {formatCurrency(product.price)}
+                                </span>
+                                <span className="font-medium">
+                                    /{product.unitOfSale}
+                                </span>
+                            </p>
+                            <p className="mb-1">
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit. Natus quas quidem magnam
+                                quaerat corporis ducimus saepe doloribus, quo ex
+                                facilis odio rerum aperiam quia perspiciatis
+                                quos libero aliquam officia et.
+                            </p>
+                            <div>
+                                <Button>Add to Cart</Button>
+                            </div>
+                        </div>
                     </>
                 ) : (
                     "Sorry the product was not found"

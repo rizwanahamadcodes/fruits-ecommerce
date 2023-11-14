@@ -1,18 +1,8 @@
+import { FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import BrandLogo from "./BrandLogo";
-import Button from "./Button";
-import CloseButton from "./CloseButton";
-import Drawer, {
-    DrawerBody,
-    DrawerFoot,
-    DrawerHead,
-    useDrawer,
-} from "./Drawer";
-import Navbar from "./Navbar";
 import { RootState } from "../store/rootReducer";
 import {
     CartItem,
-    clearCart,
     removeItem,
     selectAllCartItems,
 } from "../store/slices/cartSlice";
@@ -20,9 +10,18 @@ import {
     selectAllProducts,
     selectProductById,
 } from "../store/slices/productsSlice";
-import Counter from "./Counter";
-import { FaTimes } from "react-icons/fa";
 import { formatCurrency } from "../utils/currency";
+import BrandLogo from "./BrandLogo";
+import Button from "./Button";
+import CloseButton from "./CloseButton";
+import Counter from "./Counter";
+import Drawer, {
+    DrawerBody,
+    DrawerFoot,
+    DrawerHead,
+    useDrawer,
+} from "./Drawer";
+import Navbar from "./Navbar";
 
 const Header = () => {
     const { isOpen, onClose, onOpen } = useDrawer(false);
@@ -33,8 +32,6 @@ const Header = () => {
     const products = useSelector((state: RootState) =>
         selectAllProducts(state)
     );
-
-    const dispatch = useDispatch();
 
     const totalInCart = cartItems.reduce((accumulator, currentValue) => {
         const product = products.find(
@@ -77,15 +74,6 @@ const Header = () => {
                     <div className="flex gap-1">
                         <Button className="w-full" variant="outline">
                             View Cart
-                        </Button>
-                        <Button
-                            colorScheme="gray-500"
-                            className="w-full"
-                            variant="outline"
-                            onClick={() => {
-                                dispatch(clearCart());
-                            }}>
-                            Clear Cart
                         </Button>
                     </div>
                     <Button>Checkout</Button>

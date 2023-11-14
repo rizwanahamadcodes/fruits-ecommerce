@@ -49,14 +49,6 @@ const Counter = (props: CounterProps) => {
                 }}>
                 <AiOutlineMinus className="text-1.25" />
             </Button>
-            {/* <input
-                type="number"
-                className="min-w-0 w-auto grow border-y border-y-gray-100 h-3 focus:outline-none text-center appearance-none"
-                value={itemInCart ? itemInCart.quantity : 0}
-                onChange={(e) => {
-                    handleQuantityChange(e);
-                }}
-            /> */}
             <p className="bg-white grow border-y border-y-gray-100 flex items-center justify-center text-gray-900 font-medium">
                 {itemInCart
                     ? !formattedInfo
