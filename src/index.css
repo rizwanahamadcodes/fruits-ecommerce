@@ -53,3 +53,7 @@ input[type="search"].dark::-webkit-search-cancel-button {
 .swiper-slide-thumb-active > div {
     @apply border-primary/60;
 }
+
+.swiper-button-lock {
+    display: block !important;
+}

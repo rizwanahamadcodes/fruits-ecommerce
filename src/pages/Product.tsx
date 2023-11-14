@@ -70,7 +70,7 @@ const Product = () => {
                                     style={{}}
                                     className="relative"
                                     onSwiper={setThumbsSwiper}
-                                    slidesPerView={4}
+                                    slidesPerView={3}
                                     slideToClickedSlide
                                     spaceBetween={16}
                                     modules={[Thumbs, Navigation]}
@@ -78,6 +78,11 @@ const Product = () => {
                                     navigation={{
                                         prevEl: prevRef.current,
                                         nextEl: nextRef.current,
+                                    }}
+                                    breakpoints={{
+                                        768: {
+                                            slidesPerView: 4,
+                                        },
                                     }}>
                                     <SwiperSlide className="cursor-pointer">
                                         <div className="w-full pt-[100%] overflow-hidden relative border-gray-100 border rounded-1">
