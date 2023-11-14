@@ -18,6 +18,7 @@ const Product = () => {
         productId ? selectProductById(state, parseInt(productId)) : null
     );
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType>();
+    const [mainSwiper, setMainSwiper] = useState<SwiperType>();
     const [_, setInit] = useState(false);
     console.log(_);
 
@@ -31,6 +32,7 @@ const Product = () => {
                     <>
                         <div className="md:w-2/5">
                             <Swiper
+                                onSwiper={setMainSwiper}
                                 className="border border-gray-100 rounded-1 mb-1"
                                 zoom={{
                                     maxRatio: 5,
@@ -66,7 +68,7 @@ const Product = () => {
                             <div className="flex gap-1">
                                 <button
                                     ref={prevRef}
-                                    className="text-primary text-1.5 disabled:text-gray-300">
+                                    className="text-primary text-1.5 disabled:text-gray-200">
                                     <FaChevronLeft />
                                 </button>
                                 <Swiper
@@ -75,6 +77,10 @@ const Product = () => {
                                     onSwiper={setThumbsSwiper}
                                     slidesPerView={3}
                                     spaceBetween={16}
+                                    centeredSlides
+                                    onSlideChange={(swiper) => {
+                                        mainSwiper?.slideTo(swiper.activeIndex);
+                                    }}
                                     modules={[Thumbs, Navigation]}
                                     onInit={() => setInit(true)}
                                     navigation={{
@@ -112,7 +118,7 @@ const Product = () => {
                                 </Swiper>
                                 <button
                                     ref={nextRef}
-                                    className="text-primary text-1.5 disabled:text-gray-300">
+                                    className="text-primary text-1.5 disabled:text-gray-200">
                                     <FaChevronRight />
                                 </button>
                             </div>
