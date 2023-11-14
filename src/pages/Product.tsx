@@ -37,6 +37,9 @@ const Product = () => {
                                 zoom={{
                                     maxRatio: 5,
                                 }}
+                                onSlideChange={(swiper) => {
+                                    thumbsSwiper?.slideTo(swiper.activeIndex);
+                                }}
                                 spaceBetween={16}
                                 thumbs={{
                                     swiper:
@@ -78,6 +81,11 @@ const Product = () => {
                                     slidesPerView={3}
                                     spaceBetween={16}
                                     centeredSlides
+                                    onClick={() => {
+                                        thumbsSwiper?.slideTo(
+                                            mainSwiper?.activeIndex as number
+                                        );
+                                    }}
                                     onSlideChange={(swiper) => {
                                         mainSwiper?.slideTo(swiper.activeIndex);
                                     }}
