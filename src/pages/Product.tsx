@@ -80,7 +80,8 @@ const Product = () => {
                                         nextEl: nextRef.current,
                                     }}
                                     breakpoints={{
-                                        768: {
+                                        // this is the sm breakpoint in tailwind
+                                        640: {
                                             slidesPerView: 4,
                                         },
                                     }}>
