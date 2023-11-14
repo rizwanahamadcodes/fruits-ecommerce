@@ -1,15 +1,15 @@
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Container from "../components/Container";
-import { RootState } from "../store/rootReducer";
-import { selectProductById } from "../store/slices/productsSlice";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Thumbs, Navigation } from "swiper/modules";
-import { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { Navigation, Thumbs } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
+import Container from "../components/Container";
+import { RootState } from "../store/rootReducer";
+import { selectProductById } from "../store/slices/productsSlice";
 
 const Product = () => {
     const { productId } = useParams();
@@ -17,6 +17,11 @@ const Product = () => {
         productId ? selectProductById(state, parseInt(productId)) : null
     );
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType>();
+    const [_, setInit] = useState(false);
+    console.log(_);
+
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
 
     return (
         <Container className="">
@@ -54,37 +59,46 @@ const Product = () => {
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
-                            <Swiper
-                                style={{}}
-                                className="relative"
-                                onSwiper={setThumbsSwiper}
-                                slidesPerView={4}
-                                slideToClickedSlide
-                                spaceBetween={16}
-                                modules={[Thumbs, Navigation]}>
-                                <SwiperSlide className="cursor-pointer">
-                                    <div className="w-full pt-[100%] overflow-hidden relative border-gray-100 border rounded-1">
-                                        <img
-                                            src={product.imageUrl}
-                                            alt=""
-                                            className="absolute top-0 left-0 w-full"
-                                        />
-                                    </div>
-                                </SwiperSlide>
-                                {product.moreImages.map((image, index) => (
-                                    <SwiperSlide
-                                        key={index}
-                                        className="cursor-pointer">
+                            <div>
+                                <button ref={prevRef}>Prev</button>
+                                <Swiper
+                                    style={{}}
+                                    className="relative"
+                                    onSwiper={setThumbsSwiper}
+                                    slidesPerView={4}
+                                    slideToClickedSlide
+                                    spaceBetween={16}
+                                    modules={[Thumbs, Navigation]}
+                                    onInit={() => setInit(true)}
+                                    navigation={{
+                                        prevEl: prevRef.current,
+                                        nextEl: nextRef.current,
+                                    }}>
+                                    <SwiperSlide className="cursor-pointer">
                                         <div className="w-full pt-[100%] overflow-hidden relative border-gray-100 border rounded-1">
                                             <img
-                                                src={image}
+                                                src={product.imageUrl}
                                                 alt=""
                                                 className="absolute top-0 left-0 w-full"
                                             />
                                         </div>
                                     </SwiperSlide>
-                                ))}
-                            </Swiper>
+                                    {product.moreImages.map((image, index) => (
+                                        <SwiperSlide
+                                            key={index}
+                                            className="cursor-pointer">
+                                            <div className="w-full pt-[100%] overflow-hidden relative border-gray-100 border rounded-1">
+                                                <img
+                                                    src={image}
+                                                    alt=""
+                                                    className="absolute top-0 left-0 w-full"
+                                                />
+                                            </div>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                                <button ref={nextRef}>Next</button>
+                            </div>
                         </div>
                         <div className="bg-gray-300"></div>
                     </>
