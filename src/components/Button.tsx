@@ -3,7 +3,7 @@ import cn from "../utils/cn";
 
 export const button = cva(
     [
-        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95",
+        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 text-white hover:text-white",
     ],
     {
         variants: {
@@ -27,7 +27,7 @@ export const button = cva(
                 variant: "solid",
                 colorScheme: "primary",
                 className:
-                    " bg-gradient-to-r from-primary to-primary-400 hover:to-primary",
+                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary",
             },
             {
                 variant: "solid",

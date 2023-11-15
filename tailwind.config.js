@@ -1,88 +1,51 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
-        spacing: {
-            0: "0",
-            "1px": "1px",
-            "2px": "2px",
-            0.25: "0.25rem",
-            0.5: "0.5rem",
-            0.75: "0.75rem",
-            1: "1rem",
-            1.5: "1.5rem",
-            1.75: "1.75rem",
-            2: "2rem",
-            2.5: "2.5rem",
-            3: "3rem",
-            4: "4rem",
-            5: "5rem",
-            6: "6rem",
-            7: "7rem",
-            8: "8rem",
-            9: "9rem",
-            10: "10rem",
-            11: "11rem",
-            12: "12rem",
-            13: "13rem",
-            14: "14rem",
-            15: "15rem",
-            16: "16rem",
-            17: "17rem",
-            18: "18rem",
-            19: "19rem",
-            20: "20rem",
-            21: "21rem",
-            22: "22rem",
-            23: "23rem",
-            24: "24rem",
-            25: "25rem",
-            30: "30rem",
-            35: "35rem",
-            navHeight: "5rem",
-            "svh-screen": "100svh",
+        spacing: () => {
+            const spacing = {};
+
+            for (let i = 0; i <= 20; i += 0.25) {
+                spacing[i] = `${i}rem`;
+            }
+
+            spacing["navHeight"] = "5rem";
+
+            return spacing;
         },
-        borderRadius: {
-            0: "0",
-            0.25: "0.25rem",
-            DEFAULT: "0.5rem",
-            0.75: "0.75rem",
-            1: "1rem",
-            1.5: "1.5rem",
-            2: "2rem",
-            3: "3rem",
-            4: "4rem",
-            5: "5rem",
-            6: "6rem",
-            7: "7rem",
-            8: "8rem",
-            9: "9rem",
-            10: "10rem",
-            full: "9999px",
+        borderRadius: () => {
+            const borderRadius = {};
+
+            for (let i = 0; i <= 10; i += 0.25) {
+                borderRadius[i] = `${i}rem`;
+            }
+
+            borderRadius["none"] = `0`;
+            borderRadius["full"] = `9999px`;
+
+            return borderRadius;
         },
-        fontSize: {
-            0.25: "0.25rem",
-            0.5: "0.5rem",
-            0.75: "0.75rem",
-            1: "1rem",
-            1.25: "1.25rem",
-            1.5: "1.5rem",
-            2: "2rem",
-            3: "3rem",
-            3.5: "3.5rem",
-            4: "4rem",
-            5: "5rem",
-            6: "6rem",
-            7: "7rem",
-            8: "8rem",
-            9: "9rem",
-            10: "10rem",
+        fontSize: () => {
+            const fontSize = {};
+
+            for (let i = 0; i <= 10; i += 0.25) {
+                fontSize[i] = `${i}rem`;
+            }
+
+            return fontSize;
         },
-        lineHeight: {
-            1: "1",
-            1.5: "1.5",
+        lineHeight: () => {
+            const lineHeight = {};
+
+            for (let i = 0; i <= 5; i += 0.25) {
+                lineHeight[i] = `${i}`;
+            }
+
+            return lineHeight;
         },
         colors: {
+            transparent: "transparent",
             white: "#fff",
             black: "#000",
             primary: {
@@ -90,6 +53,7 @@ module.exports = {
                 DEFAULT: "hsla(105deg, 99%, 29%, 1)",
                 600: "hsla(120deg, 100%, 21%, 1)",
             },
+
             gray: {
                 50: "hsla(105deg, 5%, 95%, 1)",
                 100: "hsla(105deg, 5%, 90%, 1)",
