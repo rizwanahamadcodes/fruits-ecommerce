@@ -31,7 +31,7 @@ const SelectCategories = () => {
                 container: () => cn("max-w-lg mx-auto"),
                 control: ({ isFocused }) =>
                     cn(
-                        "!rounded-full px-0.5 h-3 bg-white",
+                        "!rounded-full px-0.5 h-3 bg-white !border-none shadow-soft",
                         isFocused &&
                             "!border-primary !shadow-primary-border !border-1 outline-none"
                     ),

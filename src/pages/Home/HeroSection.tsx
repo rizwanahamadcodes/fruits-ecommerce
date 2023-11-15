@@ -21,11 +21,13 @@ const HeroSection = () => {
                 />
                 <Container className="flex flex-col items-center mt-2 gap-2">
                     <h1 className="text-5 text-center flex flex-col">
-                        <span className="text-1.5 sm:text-2">The best</span>
+                        <span className="text-1.5 sm:text-2 font-normal">
+                            The best
+                        </span>
                         <span className="text-3.5 font-dancing sm:text-5 md:text-6">
                             fruits & veggies
                         </span>
-                        <span className="text-1.5 sm:text-2">
+                        <span className="text-1.5 sm:text-2 font-normal">
                             right at your doorstep
                         </span>
                     </h1>

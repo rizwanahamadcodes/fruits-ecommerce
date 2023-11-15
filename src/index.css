@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    @apply bg-gray-100 font-medium text-gray-900;
+    @apply bg-gray-100 text-gray-900;
 }
 
 h1,
@@ -18,7 +18,7 @@ h3,
 h4,
 h5,
 h6 {
-    @apply text-gray-900;
+    @apply text-gray-900 font-semibold;
 }
 
 p {

@@ -77,7 +77,7 @@ const Navbar = (props: NavbarProps) => {
         <div>
             <nav
                 className={cn(
-                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
+                    "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
                     location.pathname != pathConstants.HOME && ""
                 )}>
@@ -95,13 +95,13 @@ const Navbar = (props: NavbarProps) => {
                                 handleSearchChange(e);
                             }}
                             type="search"
-                            className="grow w-0 max-w-lg h-3 px-1 border-gray-200 border rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition"
+                            className="grow w-0 max-w-lg h-3 px-1 border-gray-200 shadow-soft rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition"
                             placeholder="Search products"
                         />
                     </form>
                     <button
                         className={cn(
-                            "relative flex items-center justify-center bg-white rounded-full h-3 w-3 cursor-pointer border border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none focus:border-primary border-gray-200"
+                            "relative flex items-center justify-center bg-white rounded-full h-3 w-7 cursor-pointer shadow-soft border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none p-0.5 focus:border-primary border-gray-200 flex gap-1"
                         )}
                         onClick={() => {
                             if (onOpen) {
@@ -110,6 +110,7 @@ const Navbar = (props: NavbarProps) => {
                             }
                         }}>
                         <BsCart3 className="text-1.5 text-primary" />
+                        <span className="self-end font-medium">Cart</span>
                         {noOfItemsInCart != 0 && (
                             <span className="font-medium h-1.5 w-1.5 absolute text-white bg-primary right-0 translate-x-1/2 top-2 flex items-center justify-center rounded-full">
                                 {noOfItemsInCart}
