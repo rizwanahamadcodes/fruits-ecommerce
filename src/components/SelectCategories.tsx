@@ -28,7 +28,7 @@ const SelectCategories = () => {
             className="mb-2"
             options={options}
             classNames={{
-                container: () => cn("max-w-lg mx-auto"),
+                container: () => cn("max-w-lg"),
                 control: ({ isFocused }) =>
                     cn(
                         "!rounded-full px-0.5 h-3 bg-white !border-none shadow-soft",

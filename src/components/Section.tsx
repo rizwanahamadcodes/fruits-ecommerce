@@ -26,7 +26,7 @@ export const SectionTitle = (props: SectionTitleProps) => {
     const { children } = props;
 
     return (
-        <h2 className="text-center font-dancing text-3 font-medium text-primary-600 mb-1">
+        <h2 className="font-dancing text-3 font-medium text-primary-600 mb-1">
             {children}
         </h2>
     );

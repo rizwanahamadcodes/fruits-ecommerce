@@ -34,7 +34,7 @@ const ProductsSection = () => {
         <Section
             ref={referenceContext.productsSectionReference}
             id="products-section"
-            className="pt-0">
+            className="pt-1">
             <Container>
                 <SectionTitle>Our Products</SectionTitle>
                 <SelectCategories />
