@@ -1,9 +1,10 @@
 import { VariantProps, cva } from "class-variance-authority";
 import cn from "../utils/cn";
+import { IconType } from "react-icons";
 
 export const button = cva(
     [
-        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 text-white hover:text-white",
+        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 text-white transition",
     ],
     {
         variants: {
@@ -15,6 +16,7 @@ export const button = cva(
                 primary: "text-white",
                 gray: "text-white",
                 "gray-500": "text-white",
+                white: "text-gray-900",
             },
             size: {
                 medium: "h-3 px-1",
@@ -40,6 +42,11 @@ export const button = cva(
                 colorScheme: "gray-500",
                 className:
                     "bg-gradient-to-r from-gray-500 to-gray-400 hover:to-gray-500",
+            },
+            {
+                variant: "solid",
+                colorScheme: "white",
+                className: "bg-white hover:bg-gray-100",
             },
             {
                 variant: "outline",
@@ -83,6 +90,16 @@ export const Button = (props: ButtonProps) => {
             {children}
         </button>
     );
+};
+
+type ButtonIconProps = React.ComponentPropsWithoutRef<IconType> & {
+    icon: IconType;
+};
+
+export const ButtonIcon = (props: ButtonIconProps) => {
+    const { icon: Icon, className, ...otherProps } = props;
+
+    return <Icon className={cn("text-2xl", className)} {...otherProps} />;
 };
 
 export default Button;
