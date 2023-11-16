@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,7 +10,6 @@ import {
     selectSearchKeyword,
     updateSearchKeyword,
 } from "../store/slices/productsSlice";
-import cn from "../utils/cn";
 import BrandLogo from "./BrandLogo";
 import Container from "./Container";
 
@@ -76,7 +76,7 @@ const Navbar = (props: NavbarProps) => {
     return (
         <div>
             <nav
-                className={cn(
+                className={clsx(
                     "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
                     location.pathname != pathConstants.HOME && ""
@@ -100,9 +100,7 @@ const Navbar = (props: NavbarProps) => {
                         />
                     </form>
                     <button
-                        className={cn(
-                            "relative flex items-center justify-center bg-white rounded-full h-3 w-7 cursor-pointer shadow-soft border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none p-0.5 focus:border-primary border-gray-200 flex gap-1"
-                        )}
+                        className="relative flex items-center justify-center bg-white rounded-full h-3 w-7 cursor-pointer shadow-soft border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none p-0.5 focus:border-primary border-gray-200  gap-1"
                         onClick={() => {
                             if (onOpen) {
                                 console.log("hey");
@@ -120,7 +118,7 @@ const Navbar = (props: NavbarProps) => {
                 </Container>
             </nav>
             <div
-                className={cn(
+                className={clsx(
                     "h-navHeight w-full",
                     location.pathname === pathConstants.HOME && "absolute"
                 )}

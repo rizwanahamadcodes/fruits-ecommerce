@@ -1,15 +1,15 @@
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/rootReducer";
 import {
     decreaseQuantity,
     increaseQuantity,
     selectCartItemById,
 } from "../store/slices/cartSlice";
-import Button from "./Button";
-import { RootState } from "../store/rootReducer";
-import cn from "../utils/cn";
 import { selectProductById } from "../store/slices/productsSlice";
+import Button from "./Button";
+import clsx from "clsx";
 
 type CounterProps = React.ComponentPropsWithoutRef<"div"> & {
     formattedInfo?: boolean;
@@ -40,7 +40,9 @@ const Counter = (props: CounterProps) => {
     };
 
     return (
-        <div className={cn("flex justify-between", className)} {...otherProps}>
+        <div
+            className={clsx("flex justify-between", className)}
+            {...otherProps}>
             <Button
                 size={buttonSize}
                 className="rounded-r-0 z-10"

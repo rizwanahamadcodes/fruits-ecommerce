@@ -1,5 +1,5 @@
 import { VariantProps, cva } from "class-variance-authority";
-import cn from "../utils/cn";
+import clsx from "clsx";
 import { IconType } from "react-icons";
 
 export const button = cva(
@@ -29,7 +29,7 @@ export const button = cva(
                 variant: "solid",
                 colorScheme: "primary",
                 className:
-                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary",
+                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary hover:text-white",
             },
             {
                 variant: "solid",
@@ -80,12 +80,12 @@ type ButtonProps = React.ComponentPropsWithoutRef<"button"> &
     };
 
 export const Button = (props: ButtonProps) => {
-    const { children, className, variant, colorScheme, size, ...otherProps } =
+    const { children, variant, className, colorScheme, size, ...otherProps } =
         props;
 
     return (
         <button
-            className={cn(button({ variant, colorScheme, size }), className)}
+            className={clsx(button({ variant, colorScheme, size }), className)}
             {...otherProps}>
             {children}
         </button>
@@ -97,9 +97,9 @@ type ButtonIconProps = React.ComponentPropsWithoutRef<IconType> & {
 };
 
 export const ButtonIcon = (props: ButtonIconProps) => {
-    const { icon: Icon, className, ...otherProps } = props;
+    const { icon: Icon, ...otherProps } = props;
 
-    return <Icon className={cn("text-2xl", className)} {...otherProps} />;
+    return <Icon className="text-2xl" {...otherProps} />;
 };
 
 export default Button;
