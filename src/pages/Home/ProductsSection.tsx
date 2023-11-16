@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, LinkProps } from "react-router-dom";
 import { ReferenceContext } from "../../App";
 import Button, { ButtonIcon } from "../../components/Button";
 import Container from "../../components/Container";
 import Counter from "../../components/Counter";
 import Section, { SectionTitle } from "../../components/Section";
 import SelectCategories from "../../components/SelectCategories";
-import { Products } from "../../data/products";
+import { Product } from "../../data/products";
 import pathConstants from "../../routes/pathConstants";
 import { RootState } from "../../store/rootReducer";
 import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
@@ -37,27 +37,45 @@ const ProductsSection = () => {
             className="pt-1">
             <Container>
                 <SectionTitle>Our Products</SectionTitle>
+
                 <SelectCategories />
+
                 {filteredProducts.length === 0 ? (
                     <p className="text-center">
                         Sorry no products match your search criteria
                     </p>
                 ) : (
-                    <ProductWrapper>
+                    <ProductListLayout>
                         {filteredProducts.map((product) => (
-                            <ProductCard key={product.id} product={product} />
+                            <ProductWrapperWithLink
+                                key={product.id}
+                                to={`${pathConstants.PRODUCTS}/${product.id}`}>
+                                <ProductImage
+                                    src={product.imageUrl}
+                                    alt={product.name}
+                                />
+                                <ProductName>{product.name}</ProductName>
+                                <ProductPrice
+                                    unitOfSale={product.unitOfSale}
+                                    price={product.price}
+                                />
+                                <ProductCTA productId={product.id} />
+                                <ProductDescription>
+                                    {product.productDescription}
+                                </ProductDescription>
+                            </ProductWrapperWithLink>
                         ))}
-                    </ProductWrapper>
+                    </ProductListLayout>
                 )}
             </Container>
         </Section>
     );
 };
 
-type ProductWrapperProps = {
+type ProductListLayoutProps = {
     children: React.ReactNode;
 };
-const ProductWrapper = (props: ProductWrapperProps) => {
+const ProductListLayout = (props: ProductListLayoutProps) => {
     const { children } = props;
 
     return (
@@ -67,58 +85,112 @@ const ProductWrapper = (props: ProductWrapperProps) => {
     );
 };
 
-type ProductCardProps = {
-    product: Products;
-};
-const ProductCard = (props: ProductCardProps) => {
-    const { product } = props;
-    const dispatch = useDispatch();
+type ProductWrapperWithLinkProps = LinkProps;
 
-    const productInCart = useSelector((state: RootState) =>
-        selectCartItemById(state, product.id)
-    );
+const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
+    const { children, ...otherProps } = props;
 
     return (
         <Link
-            to={`${pathConstants.PRODUCTS}/${product.id}`}
-            className="overflow-hidden p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group">
-            <img
-                src={product.imageUrl}
-                alt=""
-                className="group-hover:scale-110 transition-all mb-1"
-            />
-            <h3 className="text-gray-900">{product.name}</h3>
-            <p className="text-1.5 text-primary font-semibold mb-1">
-                {formatCurrency(product.price)}
-                <span className="text-1 font-medium text-gray-700">
-                    {" "}
-                    /{product.unitOfSale}
-                </span>
-            </p>
-
-            {productInCart ? (
-                <Counter
-                    formattedInfo
-                    productId={product.id}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                    }}></Counter>
-            ) : (
-                <Button
-                    className="w-full"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-
-                        dispatch(addItem(product.id));
-                    }}>
-                    <ButtonIcon icon={BsCart3} />
-                    Add to Cart
-                </Button>
-            )}
+            className="overflow-hidden p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group"
+            {...otherProps}>
+            {children}
         </Link>
     );
+};
+
+type ProductImageProps = React.ComponentPropsWithoutRef<"img">;
+
+const ProductImage = (props: ProductImageProps) => {
+    const { ...otherProps } = props;
+
+    return (
+        <img
+            {...otherProps}
+            className="group-hover:scale-110 transition-all mb-1"
+        />
+    );
+};
+
+type ProductNameProps = React.ComponentPropsWithoutRef<"h3">;
+
+const ProductName = (props: ProductNameProps) => {
+    const { ...otherProps } = props;
+
+    return <h3 className="text-gray-900" {...otherProps} />;
+};
+
+type ProductPriceProps = {
+    unitOfSale: Product["unitOfSale"];
+    price: Product["price"];
+};
+
+const ProductPrice = (props: ProductPriceProps) => {
+    const { unitOfSale, price } = props;
+
+    return (
+        <p className="text-1.5 text-primary font-semibold mb-1">
+            {formatCurrency(price)}
+            <span className="text-1 font-medium text-gray-700">
+                {" "}
+                /{unitOfSale}
+            </span>
+        </p>
+    );
+};
+
+type ProductCTAProps = {
+    productId: Product["id"];
+};
+
+const ProductCTA = (props: ProductCTAProps) => {
+    const { productId } = props;
+    const dispatch = useDispatch();
+
+    const productInCart = useSelector((state: RootState) =>
+        selectCartItemById(state, productId)
+    );
+
+    return productInCart ? (
+        <Counter
+            formattedInfo
+            productId={productId}
+            onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+            }}
+        />
+    ) : (
+        <Button
+            className="w-full"
+            onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+
+                dispatch(addItem(productId));
+            }}>
+            <ButtonIcon icon={BsCart3} />
+            Add to Cart
+        </Button>
+    );
+};
+
+type ProductDescriptionProps = Omit<
+    React.ComponentPropsWithoutRef<"p">,
+    "children"
+> & {
+    children: Product["productDescription"];
+};
+
+const ProductDescription = (props: ProductDescriptionProps) => {
+    const { children, ...otherProps } = props;
+    const shortDescriptionLength = 80;
+    const content =
+        children.length === shortDescriptionLength
+            ? children
+            : `${children.slice(0, shortDescriptionLength)}...`;
+
+    return <p {...otherProps}>{content}</p>;
 };
 
 export default ProductsSection;

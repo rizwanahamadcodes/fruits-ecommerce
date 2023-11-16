@@ -1,4 +1,4 @@
-export type Products = {
+export type Product = {
     id: number;
     name: string;
     categoryId: number;
@@ -6,10 +6,11 @@ export type Products = {
     imageUrl: string;
     quantityInStock: number;
     unitOfSale: string;
-    moreImages: string[]; // New field
+    moreImages: string[];
+    productDescription: string;
 };
 
-export const initialProducts: Products[] = [
+export const initialProducts: Product[] = [
     {
         id: 1,
         name: "Apple",
@@ -30,6 +31,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "An apple is an edible fruit produced by an apple tree. Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today.",
     },
     {
         id: 2,
@@ -51,6 +54,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "An avocado is an edible fruit produced by an avocado tree. Avocados are cultivated worldwide and are the most widely grown species in the genus Persea. The tree originated in Central America, where its wild ancestor, Persea americana, is still found today.",
     },
     {
         id: 3,
@@ -72,6 +77,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "A banana is an edible fruit produced by several kinds of large herbaceous flowering plants in the genus Musa. In some countries, bananas used for cooking may be called plantains, distinguishing them from dessert bananas.",
     },
     {
         id: 4,
@@ -93,6 +100,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "Blueberries are perennial flowering plants with blue– or purple–colored berries. They are classified in the section Cyanococcus within the genus Vaccinium. Vaccinium also includes cranberries, bilberries, huckleberries and Madeira blueberries.",
     },
     {
         id: 5,
@@ -114,6 +123,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "Kiwifruit, or Chinese gooseberry is the edible berry of several species of woody vines in the genus Actinidia. The most common cultivar group of kiwifruit is oval, about the size of a large hen's egg. It has a thin, fuzzy, fibrous, tart but edible light brown skin and light green or golden flesh with rows of tiny, black, edible seeds. The fruit has a soft texture with a sweet and unique flavor.",
     },
     {
         id: 6,
@@ -135,6 +146,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "The lemon, Citrus limon, is a species of small evergreen tree in the flowering plant family Rutaceae, native to South Asia, primarily North eastern India. Its fruits are round in shape.",
     },
     {
         id: 7,
@@ -156,6 +169,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "The lime is a citrus fruit, which is typically round, green in color, 3–6 centimetres in diameter, and contains acidic juice vesicles.",
     },
     {
         id: 8,
@@ -177,6 +192,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "Orange is the fruit of various citrus species in the family Rutaceae; it primarily refers to Citrus × sinensis, which is also called sweet orange, to distinguish it from the related Citrus × aurantium, referred to as bitter orange.",
     },
     {
         id: 9,
@@ -198,6 +215,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/pineapple.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription:
+            "Peaches and nectarines are the same species, even though they are regarded commercially as different fruits. In contrast to peaches, whose fruits present the characteristic fuzz on the skin, nectarines are characterized by the absence of fruit-skin trichomes (fuzz-less fruit); genetic studies suggest nectarines are produced due to a recessive allele, whereas peaches are produced from a dominant allele for fuzzy skin.",
     },
     {
         id: 10,
@@ -219,6 +238,7 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/peach.jpg",
             "/images/products/fruits/strawberry.jpg",
         ],
+        productDescription: "",
     },
     {
         id: 11,
@@ -240,6 +260,8 @@ export const initialProducts: Products[] = [
             "/images/products/fruits/peach.jpg",
             "/images/products/fruits/pineapple.jpg",
         ],
+        productDescription:
+            "Strawberries are a bright red, sweet, and juicy edible fruit. They are a member of the rose family and scientifically known as Fragaria x ananassa. The fruit's name comes from the Old English word, streawberige.",
     },
     {
         id: 12,
@@ -255,6 +277,8 @@ export const initialProducts: Products[] = [
             "/images/products/vegetables/cabbage.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Bell peppers are a type of pepper that is not spicy. They can be green, red, yellow, or orange. Bell peppers are full of great health benefits—they're packed with vitamins and low in calories! They are an excellent source of vitamin A, vitamin C, and potassium. Bell Peppers also contain a healthy dose of fiber, folate, and iron.",
     },
     {
         id: 13,
@@ -270,6 +294,8 @@ export const initialProducts: Products[] = [
             "/images/products/vegetables/cabbage.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Brinjal is a vegetable that is also known as eggplant.",
     },
     {
         id: 14,
@@ -285,6 +311,8 @@ export const initialProducts: Products[] = [
             "/images/products/vegetables/cabbage.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Broccoli, a cabbage of a variety similar to the cauliflower, bearing heads of green or purplish flower buds.",
     },
     {
         id: 15,
@@ -300,6 +328,7 @@ export const initialProducts: Products[] = [
             "/images/products/vegetables/broccoli.jpg",
             // Add more image URLs as needed
         ],
+        productDescription: "Cabbage",
     },
     {
         id: 16,
@@ -315,6 +344,7 @@ export const initialProducts: Products[] = [
             "/images/products/breads/white-bread.jpg",
             // Add more image URLs as needed
         ],
+        productDescription: "Baguette is a long, thin loaf of French bread.",
     },
     {
         id: 17,
@@ -330,6 +360,8 @@ export const initialProducts: Products[] = [
             "/images/products/breads/white-bread.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Rye Bread is a type of bread made with various proportions of flour from rye grain. It can be light or dark in color, depending on the type of flour used and the addition of coloring agents, and is typically denser than bread made from wheat flour.",
     },
     {
         id: 18,
@@ -345,6 +377,8 @@ export const initialProducts: Products[] = [
             "/images/products/breads/white-bread.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Sliced Bread is a type of bread that is sliced before being packaged for sale in a bag or plastic wrapper and is usually sold in a large bag containing several slices or in a smaller bag containing a single slice or two, which is often sold at a convenience store or supermarket as an inexpensive snack or meal replacement which can be quickly eaten with minimal preparation required.",
     },
     {
         id: 19,
@@ -360,6 +394,7 @@ export const initialProducts: Products[] = [
             "/images/products/breads/sliced-bread.jpg",
             // Add more image URLs as needed
         ],
+        productDescription: "White Bread",
     },
     {
         id: 20,
@@ -375,6 +410,8 @@ export const initialProducts: Products[] = [
             "/images/products/juices/tomato-juice.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Apple juice is a fruit juice made by the maceration and pressing of an apple. The resulting expelled juice may be further treated by enzymatic and centrifugal clarification to remove the starch and pectin, which holds fine particulate in suspension, and then pasteurized for packaging in glass, metal or aseptic processing system containers, or further treated by dehydration processes to a concentrate. Due to the complex and costly equipment required to extract and clarify juice from apples in large volume, apple juice is normally produced commercially.",
     },
     {
         id: 21,
@@ -385,6 +422,8 @@ export const initialProducts: Products[] = [
         quantityInStock: 25,
         unitOfSale: "liter",
         moreImages: ["/images/products/juices/apple-juice.jpg"],
+        productDescription:
+            "Orange juice is a liquid extract of the orange tree fruit, produced by squeezing or reaming oranges. It comes in several different varieties, including blood orange, navel oranges, valencia orange, clementine, and tangerine.",
     },
 
     {
@@ -401,6 +440,8 @@ export const initialProducts: Products[] = [
             "/images/products/juices/tomato-juice.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Pear juice, the juice which is very rich in vitamin C, is a very healthy drink.",
     },
     {
         id: 23,
@@ -416,5 +457,7 @@ export const initialProducts: Products[] = [
             "/images/products/juices/tomato-juice.jpg",
             // Add more image URLs as needed
         ],
+        productDescription:
+            "Tomato juice is a juice made from tomatoes, usually used as a beverage, either plain or in cocktails such as a Bloody Mary or Michelada.",
     },
 ];
