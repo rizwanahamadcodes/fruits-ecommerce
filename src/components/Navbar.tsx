@@ -101,9 +101,17 @@ const Navbar = (props: NavbarProps) => {
                         />
                     </form>
 
-                    <Button colorScheme="white" onClick={onOpen}>
+                    <Button
+                        colorScheme="white"
+                        onClick={onOpen}
+                        className="relative">
                         <ButtonIcon icon={BsCart3} className="text-primary" />
-                        Cart
+                        <span className="hidden sm:inline-block">Cart</span>
+                        {noOfItemsInCart != 0 && (
+                            <span className="font-medium h-1.5 w-1.5 absolute text-white bg-primary right-0 translate-x-1/2 top-2 flex items-center justify-center rounded-full">
+                                {noOfItemsInCart}
+                            </span>
+                        )}
                     </Button>
                 </Container>
             </nav>
