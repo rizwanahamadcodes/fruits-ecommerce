@@ -40,9 +40,7 @@ const Counter = (props: CounterProps) => {
     };
 
     return (
-        <div
-            className={clsx("flex justify-between", className)}
-            {...otherProps}>
+        <div className={clsx("flex", className)} {...otherProps}>
             <Button
                 size={buttonSize}
                 className="rounded-r-0 z-10"
@@ -51,7 +49,7 @@ const Counter = (props: CounterProps) => {
                 }}>
                 <AiOutlineMinus className="text-1.25" />
             </Button>
-            <p className="bg-white grow border-y border-y-gray-100 flex items-center justify-center text-gray-900 font-medium">
+            <p className="bg-white overflow-hidden whitespace-nowrap grow px-0.5 border-y border-y-gray-100 flex items-center justify-center text-gray-900 font-medium">
                 {itemInCart
                     ? !formattedInfo
                         ? itemInCart.quantity

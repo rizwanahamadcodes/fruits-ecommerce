@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Products, initialProducts } from "../../data/products";
+import { Product, initialProducts } from "../../data/products";
 import { RootState } from "../rootReducer";
 
 type ProductsState = {
-    products: Products[];
+    products: Product[];
     searchKeyword: string;
     selectedCategory: number;
 };
@@ -16,7 +16,7 @@ const productsSlice = createSlice({
         selectedCategory: 0,
     } as ProductsState,
     reducers: {
-        addProduct: (state, action: PayloadAction<Products>) => {
+        addProduct: (state, action: PayloadAction<Product>) => {
             state.products.push(action.payload);
         },
         updateSearchKeyword: (state, action: PayloadAction<string>) => {

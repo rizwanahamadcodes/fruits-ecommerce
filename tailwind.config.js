@@ -75,6 +75,15 @@ module.exports = {
                 "danger-border": "0 0 0 4px hsla(0deg, 100%, 50%, 0.6)",
                 "success-border": "0 0 0 4px hsla(120deg, 100%, 40%, 0.6)",
             },
+            minHeight: () => {
+                const lineHeight = {};
+
+                for (let i = 0; i <= 5; i += 0.25) {
+                    lineHeight[i] = `${i}rem`;
+                }
+
+                return lineHeight;
+            },
         },
 
         fontFamily: {

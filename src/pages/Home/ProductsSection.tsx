@@ -14,6 +14,7 @@ import { RootState } from "../../store/rootReducer";
 import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
 import { selectFilteredProducts } from "../../store/slices/productsSlice";
 import { formatCurrency } from "../../utils/currency";
+import clsx from "clsx";
 
 // product card redesign strategy
 // product description at 16pt low contrast paragraph
@@ -50,19 +51,24 @@ const ProductsSection = () => {
                             <ProductWrapperWithLink
                                 key={product.id}
                                 to={`${pathConstants.PRODUCTS}/${product.id}`}>
-                                <ProductImage
-                                    src={product.imageUrl}
-                                    alt={product.name}
-                                />
-                                <ProductName>{product.name}</ProductName>
-                                <ProductPrice
-                                    unitOfSale={product.unitOfSale}
-                                    price={product.price}
-                                />
-                                <ProductCTA productId={product.id} />
-                                <ProductDescription>
-                                    {product.productDescription}
-                                </ProductDescription>
+                                <div className="flex flex-col gap-1">
+                                    <ProductImage
+                                        src={product.imageUrl}
+                                        alt={product.name}
+                                    />
+
+                                    <div className="flex flex-col gap-0.5">
+                                        <ProductName>
+                                            {product.name}
+                                        </ProductName>
+                                        <ProductPrice
+                                            unitOfSale={product.unitOfSale}
+                                            price={product.price}
+                                        />
+                                    </div>
+
+                                    <ProductCTA productId={product.id} />
+                                </div>
                             </ProductWrapperWithLink>
                         ))}
                     </ProductListLayout>
@@ -102,12 +108,12 @@ const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
 type ProductImageProps = React.ComponentPropsWithoutRef<"img">;
 
 const ProductImage = (props: ProductImageProps) => {
-    const { ...otherProps } = props;
+    const { className, ...otherProps } = props;
 
     return (
         <img
             {...otherProps}
-            className="group-hover:scale-110 transition-all mb-1"
+            className={clsx("group-hover:scale-110 transition-all", className)}
         />
     );
 };
@@ -115,21 +121,27 @@ const ProductImage = (props: ProductImageProps) => {
 type ProductNameProps = React.ComponentPropsWithoutRef<"h3">;
 
 const ProductName = (props: ProductNameProps) => {
-    const { ...otherProps } = props;
+    const { className, ...otherProps } = props;
 
-    return <h3 className="text-gray-900" {...otherProps} />;
+    return (
+        <h3
+            className={clsx("text-gray-900 relative z-[1]", className)}
+            {...otherProps}
+        />
+    );
 };
 
 type ProductPriceProps = {
     unitOfSale: Product["unitOfSale"];
     price: Product["price"];
+    className?: string;
 };
 
 const ProductPrice = (props: ProductPriceProps) => {
-    const { unitOfSale, price } = props;
+    const { className, unitOfSale, price } = props;
 
     return (
-        <p className="text-1.5 text-primary font-semibold mb-1">
+        <p className={clsx("text-1.25 leading-1 font-semibold", className)}>
             {formatCurrency(price)}
             <span className="text-1 font-medium text-gray-700">
                 {" "}
@@ -141,37 +153,43 @@ const ProductPrice = (props: ProductPriceProps) => {
 
 type ProductCTAProps = {
     productId: Product["id"];
+    className?: string;
 };
 
-const ProductCTA = (props: ProductCTAProps) => {
-    const { productId } = props;
+export const ProductCTA = (props: ProductCTAProps) => {
+    const { productId, className } = props;
     const dispatch = useDispatch();
 
     const productInCart = useSelector((state: RootState) =>
         selectCartItemById(state, productId)
     );
 
-    return productInCart ? (
-        <Counter
-            formattedInfo
-            productId={productId}
-            onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-            }}
-        />
-    ) : (
-        <Button
-            className="w-full"
-            onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
+    return (
+        <div className={className}>
+            {productInCart ? (
+                <Counter
+                    className="w-full"
+                    formattedInfo
+                    productId={productId}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                    }}
+                />
+            ) : (
+                <Button
+                    className="w-full"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
 
-                dispatch(addItem(productId));
-            }}>
-            <ButtonIcon icon={BsCart3} />
-            Add to Cart
-        </Button>
+                        dispatch(addItem(productId));
+                    }}>
+                    <ButtonIcon icon={BsCart3} />
+                    Add to Cart
+                </Button>
+            )}
+        </div>
     );
 };
 
@@ -182,15 +200,13 @@ type ProductDescriptionProps = Omit<
     children: Product["productDescription"];
 };
 
-const ProductDescription = (props: ProductDescriptionProps) => {
+export const ProductDescription = (props: ProductDescriptionProps) => {
     const { children, ...otherProps } = props;
-    const shortDescriptionLength = 80;
-    const content =
-        children.length === shortDescriptionLength
-            ? children
-            : `${children.slice(0, shortDescriptionLength)}...`;
-
-    return <p {...otherProps}>{content}</p>;
+    return (
+        <p className="min-h-5 overflow-ellipsis" {...otherProps}>
+            {children}
+        </p>
+    );
 };
 
 export default ProductsSection;

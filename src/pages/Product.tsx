@@ -8,13 +8,13 @@ import "swiper/css/thumbs";
 import { Navigation, Thumbs, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
-import Button from "../components/Button";
 import Container from "../components/Container";
 import { RootState } from "../store/rootReducer";
 import { selectProductById } from "../store/slices/productsSlice";
 import { formatCurrency } from "../utils/currency";
 import pathConstants from "../routes/pathConstants";
 import Section from "../components/Section";
+import { ProductCTA } from "./Home/ProductsSection";
 
 const Product = () => {
     const productId = useParams()[pathConstants.PRODUCT_DETAIL_PARAM];
@@ -143,7 +143,7 @@ const Product = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div className="md:w-3/5">
+                            <div className="md:w-3/5 flex flex-col items-start">
                                 <h2 className="font-medium">{product.name}</h2>
                                 <p>
                                     <span className="font-medium text-primary text-2">
@@ -160,8 +160,11 @@ const Product = () => {
                                     quo ex facilis odio rerum aperiam quia
                                     perspiciatis quos libero aliquam officia et.
                                 </p>
-                                <div>
-                                    <Button>Add to Cart</Button>
+                                <div className="self-start">
+                                    <ProductCTA
+                                        className="w-15"
+                                        productId={product.id}
+                                    />
                                 </div>
                             </div>
                         </>
