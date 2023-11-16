@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 type CloseButtonProps = React.ComponentPropsWithoutRef<"div">;
 
 const CloseButton = (props: CloseButtonProps) => {
@@ -9,8 +11,8 @@ const CloseButton = (props: CloseButtonProps) => {
         <div
             className="relative cursor-pointer flex h-1.75 w-1.75 flex-col justify-between"
             onClick={onClick}>
-            <span className={`${barClasses}, rotate-[45deg]`}></span>
-            <span className={`${barClasses}, rotate-[-45deg]`}></span>
+            <span className={clsx(barClasses, "rotate-[45deg]")}></span>
+            <span className={clsx(barClasses, "rotate-[-45deg]")}></span>
         </div>
     );
 };

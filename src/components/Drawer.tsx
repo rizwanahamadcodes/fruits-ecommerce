@@ -89,7 +89,7 @@ const DrawerMain = (props: DrawerMainProps) => {
     return (
         <div
             className={clsx(
-                "transition-all flex flex-col h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left overflow-hidden",
+                "transition-all flex flex-col h-full w-20 bg-gray-100 absolute top-0 right-0 shadow-soft-left overflow-hidden",
                 isOpen ? "translate-x-0" : "translate-x-full",
                 className
             )}>

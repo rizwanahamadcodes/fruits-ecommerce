@@ -97,11 +97,11 @@ const CartItem = (props: CartItemProps) => {
     return (
         <>
             {product && (
-                <div className="rounded relative bg-white shadow-soft flex p-1">
+                <div className="rounded-0.5 relative bg-white shadow-soft flex p-1">
                     <img
                         src={product.imageUrl}
                         alt={product.name}
-                        className=" h-6 self-center w-6 me-1 object-contain"
+                        className="h-6 self-center w-6 me-1 object-contain"
                     />
                     <div className="font-medium flex gap-0.5 grow flex-col">
                         <span>

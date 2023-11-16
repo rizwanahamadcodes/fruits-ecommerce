@@ -81,7 +81,7 @@ const ProductCard = (props: ProductCardProps) => {
     return (
         <Link
             to={`${pathConstants.PRODUCTS}/${product.id}`}
-            className="p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group">
+            className="overflow-hidden p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group">
             <img
                 src={product.imageUrl}
                 alt=""
