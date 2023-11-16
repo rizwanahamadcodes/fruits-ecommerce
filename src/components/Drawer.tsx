@@ -36,6 +36,7 @@ export const useDrawer = (initialDrawerState: boolean) => {
 
     const onOpen = () => {
         setIsOpen(true);
+        console.log("On open from drawer");
     };
     const onClose = () => {
         setIsOpen(false);
@@ -67,8 +68,8 @@ const DrawerBackground = (props: DrawerBackgroundProps) => {
     return (
         <div
             className={clsx(
-                "transition-all fixed top-0 left-0 invisible opacity-0 overflow-hidden z-[100] min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
-                isOpen && "visible opacity-100"
+                "transition-all fixed top-0 left-0 overflow-hidden z-[100] min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
+                isOpen ? "visible opacity-100" : " invisible opacity-0"
             )}
             onClick={(e) => handleBackgroundClick(e)}>
             {children}
@@ -88,8 +89,8 @@ const DrawerMain = (props: DrawerMainProps) => {
     return (
         <div
             className={clsx(
-                "transition-all flex flex-col h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left translate-x-full overflow-hidden",
-                isOpen && "translate-x-0",
+                "transition-all flex flex-col h-full w-20 bg-white absolute top-0 right-0 shadow-soft-left overflow-hidden",
+                isOpen ? "translate-x-0" : "translate-x-full",
                 className
             )}>
             {children}

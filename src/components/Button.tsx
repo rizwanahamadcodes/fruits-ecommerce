@@ -4,7 +4,7 @@ import { IconType } from "react-icons";
 
 export const button = cva(
     [
-        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 text-white transition",
+        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 transition",
     ],
     {
         variants: {
@@ -13,10 +13,10 @@ export const button = cva(
                 outline: "border-2 ",
             },
             colorScheme: {
-                primary: "text-white",
-                gray: "text-white",
-                "gray-500": "text-white",
-                white: "text-gray-900",
+                primary: "",
+                gray: "",
+                "gray-500": "",
+                white: "",
             },
             size: {
                 medium: "h-3 px-1",
@@ -29,7 +29,7 @@ export const button = cva(
                 variant: "solid",
                 colorScheme: "primary",
                 className:
-                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary hover:text-white",
+                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary text-white hover:text-white",
             },
             {
                 variant: "solid",
@@ -46,7 +46,8 @@ export const button = cva(
             {
                 variant: "solid",
                 colorScheme: "white",
-                className: "bg-white hover:bg-gray-100",
+                className:
+                    "bg-white text-gray-900 border border-transparent hover:border-primary",
             },
             {
                 variant: "outline",
@@ -94,12 +95,13 @@ export const Button = (props: ButtonProps) => {
 
 type ButtonIconProps = React.ComponentPropsWithoutRef<IconType> & {
     icon: IconType;
+    className?: string;
 };
 
 export const ButtonIcon = (props: ButtonIconProps) => {
-    const { icon: Icon, ...otherProps } = props;
+    const { icon: Icon, className, ...otherProps } = props;
 
-    return <Icon className="text-2xl" {...otherProps} />;
+    return <Icon className={clsx("text-1.25", className)} {...otherProps} />;
 };
 
 export default Button;

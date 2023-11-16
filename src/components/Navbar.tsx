@@ -11,6 +11,7 @@ import {
     updateSearchKeyword,
 } from "../store/slices/productsSlice";
 import BrandLogo from "./BrandLogo";
+import Button, { ButtonIcon } from "./Button";
 import Container from "./Container";
 
 type NavbarProps = {
@@ -95,26 +96,15 @@ const Navbar = (props: NavbarProps) => {
                                 handleSearchChange(e);
                             }}
                             type="search"
-                            className="grow w-0 max-w-lg h-3 px-1 border-gray-200 shadow-soft rounded-full focus:outline-none hover:border-primary focus:shadow-primary-border focus:border-primary transition"
+                            className="grow border border-transparent hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
                             placeholder="Search products"
                         />
                     </form>
-                    <button
-                        className="relative flex items-center justify-center bg-white rounded-full h-3 w-7 cursor-pointer shadow-soft border-white transition hover:border-primary active:scale-95 focus:shadow-primary-border focus:outline-none p-0.5 focus:border-primary border-gray-200  gap-1"
-                        onClick={() => {
-                            if (onOpen) {
-                                console.log("hey");
-                                onOpen();
-                            }
-                        }}>
-                        <BsCart3 className="text-1.5 text-primary" />
-                        <span className="self-end font-medium">Cart</span>
-                        {noOfItemsInCart != 0 && (
-                            <span className="font-medium h-1.5 w-1.5 absolute text-white bg-primary right-0 translate-x-1/2 top-2 flex items-center justify-center rounded-full">
-                                {noOfItemsInCart}
-                            </span>
-                        )}
-                    </button>
+
+                    <Button colorScheme="white" onClick={onOpen}>
+                        <ButtonIcon icon={BsCart3} className="text-primary" />
+                        Cart
+                    </Button>
                 </Container>
             </nav>
             <div

@@ -28,20 +28,21 @@ const SelectCategories = () => {
             className="mb-2"
             options={options}
             classNames={{
-                container: () => "max-w-lg",
+                container: () => "max-w-lg cursor-pointer",
                 control: ({ isFocused }) =>
                     clsx(
-                        "!rounded-full px-0.5 h-3 bg-white !border-none shadow-soft",
+                        "!rounded-full px-0.5 h-3 bg-white shadow-soft !cursor-pointer",
+                        !isFocused &&
+                            "!border-transparent border-gray-200 hover:border-primary",
                         isFocused &&
                             "!border-primary !shadow-primary-border !border-1 outline-none"
                     ),
-                menu: () => "!rounded-1.5 overflow-hidden",
+                menu: () => "!rounded-1.5 overflow-hidden !border-[0]",
                 menuList: () => "!py-0",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !pl-1 leading-[2rem] !cursor-pointer hover:bg-primary/30 !rounded-full",
-                        isSelected &&
-                            "!bg-gradient-to-r from-primary to-primary-400 text-white",
+                        "h-3 !pl-1 leading-[2rem] !cursor-pointer hover:bg-primary/30 !rounded-full !border-[0]",
+                        isSelected && "!bg-primary/50",
                         isFocused && "!bg-primary/20"
                     ),
                 dropdownIndicator: ({ isFocused }) =>

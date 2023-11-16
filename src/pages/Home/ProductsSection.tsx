@@ -3,7 +3,7 @@ import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReferenceContext } from "../../App";
-import Button from "../../components/Button";
+import Button, { ButtonIcon } from "../../components/Button";
 import Container from "../../components/Container";
 import Counter from "../../components/Counter";
 import Section, { SectionTitle } from "../../components/Section";
@@ -81,7 +81,7 @@ const ProductCard = (props: ProductCardProps) => {
     return (
         <Link
             to={`${pathConstants.PRODUCTS}/${product.id}`}
-            className="p-1 shadow bg-white rounded-1 group">
+            className="p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group">
             <img
                 src={product.imageUrl}
                 alt=""
@@ -113,7 +113,7 @@ const ProductCard = (props: ProductCardProps) => {
 
                         dispatch(addItem(product.id));
                     }}>
-                    <BsCart3 className="text-1.25" />
+                    <ButtonIcon icon={BsCart3} />
                     Add to Cart
                 </Button>
             )}
