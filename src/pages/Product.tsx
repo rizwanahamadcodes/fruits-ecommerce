@@ -13,9 +13,10 @@ import Container from "../components/Container";
 import { RootState } from "../store/rootReducer";
 import { selectProductById } from "../store/slices/productsSlice";
 import { formatCurrency } from "../utils/currency";
+import pathConstants from "../routes/pathConstants";
 
 const Product = () => {
-    const { productId } = useParams();
+    const productId = useParams()[pathConstants.PRODUCT_DETAIL_PARAM];
     const product = useSelector((state: RootState) =>
         productId ? selectProductById(state, parseInt(productId)) : null
     );

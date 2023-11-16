@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createContext, lazy, useRef } from "react";
+import { createContext, useRef } from "react";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Cart from "./pages/Cart";
-const Home = lazy(() => import("./pages/Home/Home"));
-const Layout = lazy(() => import("./pages/Layout"));
-const ProductsList = lazy(() => import("./pages/ProductsList"));
-const Product = lazy(() => import("./pages/Product"));
+import Home from "./pages/Home/Home";
+import Layout from "./pages/Layout";
+import ProductsList from "./pages/ProductsList";
+import Product from "./pages/Product";
 import pathConstants from "./routes/pathConstants";
 import rootReducer from "./store/rootReducer";
 
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                         element: <ProductsList />,
                     },
                     {
-                        path: ":productId",
+                        path: `${pathConstants.PRODUCTS}:${pathConstants.PRODUCT_DETAIL_PARAM}`,
                         element: <Product />,
                     },
                 ],
