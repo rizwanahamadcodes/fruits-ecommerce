@@ -36,7 +36,6 @@ export const useDrawer = (initialDrawerState: boolean) => {
 
     const onOpen = () => {
         setIsOpen(true);
-        console.log("On open from drawer");
     };
     const onClose = () => {
         setIsOpen(false);

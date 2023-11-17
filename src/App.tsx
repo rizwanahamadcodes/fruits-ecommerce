@@ -1,28 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { createContext, useRef } from "react";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
+import Product from "./pages/Products/Product/Product";
 import Products from "./pages/Products/Products";
 import pathConstants from "./routes/pathConstants";
 import rootReducer from "./store/rootReducer";
-import Product from "./pages/Products/Product/Product";
 
 const store = configureStore({
     reducer: rootReducer,
-});
-
-type referenceType = React.MutableRefObject<null> | null;
-type referenceContextType = {
-    heroSectionReference: referenceType;
-    productsSectionReference: referenceType;
-};
-
-export const ReferenceContext = createContext<referenceContextType>({
-    heroSectionReference: null,
-    productsSectionReference: null,
 });
 
 const router = createBrowserRouter([
@@ -59,13 +47,7 @@ function App() {
     return (
         <>
             <Provider store={store}>
-                <ReferenceContext.Provider
-                    value={{
-                        heroSectionReference: useRef(null),
-                        productsSectionReference: useRef(null),
-                    }}>
-                    <RouterProvider router={router} />
-                </ReferenceContext.Provider>
+                <RouterProvider router={router} />
             </Provider>
         </>
     );

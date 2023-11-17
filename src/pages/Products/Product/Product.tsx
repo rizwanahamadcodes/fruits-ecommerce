@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -14,7 +14,7 @@ import { selectProductById } from "../../../store/slices/productsSlice";
 import Section from "../../../components/Section";
 import Container from "../../../components/Container";
 import { formatCurrency } from "../../../utils/currency";
-import { ProductCTA } from "../ProductsSection";
+import { ProductCTA } from "../../../components/ProductCard/ProductCard";
 
 const Product = () => {
     const productId = useParams()[pathConstants.PRODUCT_DETAIL_PARAM];
@@ -24,8 +24,9 @@ const Product = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType>();
     const [mainSwiper, setMainSwiper] = useState<SwiperType>();
     const [_, setInit] = useState(false);
-    console.log(_);
-
+    useEffect(() => {
+        setInit(_);
+    }, []);
     const prevRef = useRef(null);
     const nextRef = useRef(null);
 

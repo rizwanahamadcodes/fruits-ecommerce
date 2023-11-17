@@ -57,7 +57,7 @@ const Header = () => {
                 </DrawerHead>
                 <DrawerBody className="flex overflow-y-auto flex-col p-1 gap-1">
                     {cartItems.map((item) => (
-                        <CartItem item={item}></CartItem>
+                        <CartItem key={item.productId} item={item}></CartItem>
                     ))}
                 </DrawerBody>
                 <DrawerFoot className="flex flex-col p-1 gap-1">
