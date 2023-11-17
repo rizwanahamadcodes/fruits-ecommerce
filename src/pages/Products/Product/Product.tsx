@@ -8,13 +8,13 @@ import "swiper/css/thumbs";
 import { Navigation, Thumbs, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
-import Container from "../components/Container";
-import { RootState } from "../store/rootReducer";
-import { selectProductById } from "../store/slices/productsSlice";
-import { formatCurrency } from "../utils/currency";
-import pathConstants from "../routes/pathConstants";
-import Section from "../components/Section";
-import { ProductCTA } from "./Home/ProductsSection";
+import pathConstants from "../../../routes/pathConstants";
+import { RootState } from "../../../store/rootReducer";
+import { selectProductById } from "../../../store/slices/productsSlice";
+import Section from "../../../components/Section";
+import Container from "../../../components/Container";
+import { formatCurrency } from "../../../utils/currency";
+import { ProductCTA } from "../ProductsSection";
 
 const Product = () => {
     const productId = useParams()[pathConstants.PRODUCT_DETAIL_PARAM];

@@ -5,10 +5,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout";
-import Product from "./pages/Product";
-import ProductsList from "./pages/ProductsList";
+import Products from "./pages/Products/Products";
 import pathConstants from "./routes/pathConstants";
 import rootReducer from "./store/rootReducer";
+import Product from "./pages/Products/Product/Product";
 
 const store = configureStore({
     reducer: rootReducer,
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <ProductsList />,
+                        element: <Products />,
                     },
                     {
                         path: `${pathConstants.PRODUCTS}:${pathConstants.PRODUCT_DETAIL_PARAM}`,
