@@ -42,12 +42,15 @@ export default ProductCard;
 
 type ProductWrapperWithLinkProps = LinkProps;
 
-const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
-    const { children, ...otherProps } = props;
+export const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
+    const { children, className, ...otherProps } = props;
 
     return (
         <Link
-            className="overflow-hidden p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group"
+            className={clsx(
+                "overflow-hidden p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group",
+                className
+            )}
             {...otherProps}>
             {children}
         </Link>
@@ -56,7 +59,7 @@ const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
 
 type ProductImageProps = React.ComponentPropsWithoutRef<"img">;
 
-const ProductImage = (props: ProductImageProps) => {
+export const ProductImage = (props: ProductImageProps) => {
     const { className, ...otherProps } = props;
 
     return (
@@ -67,14 +70,25 @@ const ProductImage = (props: ProductImageProps) => {
     );
 };
 
-type ProductNameProps = React.ComponentPropsWithoutRef<"h3">;
+type ProductNameProps = React.ComponentPropsWithoutRef<"h3"> & {
+    size?: "sm" | "md" | "lg";
+};
 
-const ProductName = (props: ProductNameProps) => {
-    const { className, ...otherProps } = props;
+export const ProductName = (props: ProductNameProps) => {
+    const { className, size = "md", ...otherProps } = props;
+    const sizeMap = {
+        sm: "text-1",
+        md: "text-1.5",
+        lg: "text-2",
+    };
 
     return (
         <h3
-            className={clsx("text-gray-900 relative z-[1]", className)}
+            className={clsx(
+                "text-gray-900 relative z-[1]",
+                sizeMap[size],
+                className
+            )}
             {...otherProps}
         />
     );
@@ -84,13 +98,24 @@ type ProductPriceProps = {
     unitOfSale: Product["unitOfSale"];
     price: Product["price"];
     className?: string;
+    size?: "sm" | "md" | "lg";
 };
 
-const ProductPrice = (props: ProductPriceProps) => {
-    const { className, unitOfSale, price } = props;
+export const ProductPrice = (props: ProductPriceProps) => {
+    const { className, unitOfSale, size = "md", price } = props;
+    const sizeMap = {
+        sm: "text-1",
+        md: "text-1.25",
+        lg: "text-1.75",
+    };
 
     return (
-        <p className={clsx("text-1.25 leading-1 font-semibold", className)}>
+        <p
+            className={clsx(
+                "leading-1 font-semibold",
+                sizeMap[size],
+                className
+            )}>
             {formatCurrency(price)}
             <span className="text-1 font-medium text-gray-700">
                 {" "}

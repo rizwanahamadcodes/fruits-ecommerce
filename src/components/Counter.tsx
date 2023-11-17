@@ -44,7 +44,10 @@ const Counter = (props: CounterProps) => {
             <Button
                 size={buttonSize}
                 className="rounded-r-0 z-10"
-                onClick={() => {
+                onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+
                     dispatch(decreaseQuantity(productId));
                 }}>
                 <AiOutlineMinus className="text-1.25" />
@@ -62,7 +65,10 @@ const Counter = (props: CounterProps) => {
             <Button
                 size={buttonSize}
                 className="rounded-l-0"
-                onClick={() => {
+                onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+
                     dispatch(increaseQuantity(productId));
                 }}>
                 <AiOutlinePlus className="text-1.25" />

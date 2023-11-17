@@ -1,5 +1,5 @@
-import { FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import pathConstants from "../routes/pathConstants";
 import { RootState } from "../store/rootReducer";
 import {
     CartItem,
@@ -22,6 +22,12 @@ import Drawer, {
     useDrawer,
 } from "./Drawer";
 import Navbar from "./Navbar";
+import {
+    ProductImage,
+    ProductName,
+    ProductPrice,
+    ProductWrapperWithLink,
+} from "./ProductCard/ProductCard";
 
 const Header = () => {
     const { isOpen, onClose, onOpen } = useDrawer(false);
@@ -57,7 +63,9 @@ const Header = () => {
                 </DrawerHead>
                 <DrawerBody className="flex overflow-y-auto flex-col p-1 gap-1">
                     {cartItems.map((item) => (
-                        <CartItem key={item.productId} item={item}></CartItem>
+                        <CartItemCard
+                            key={item.productId}
+                            item={item}></CartItemCard>
                     ))}
                 </DrawerBody>
                 <DrawerFoot className="flex flex-col p-1 gap-1">
@@ -83,11 +91,11 @@ const Header = () => {
     );
 };
 
-type CartItemProps = {
+type CartItemCardProps = {
     item: CartItem;
 };
 
-const CartItem = (props: CartItemProps) => {
+const CartItemCard = (props: CartItemCardProps) => {
     const { item } = props;
     const product = useSelector((state: RootState) =>
         selectProductById(state, item.productId)
@@ -97,44 +105,49 @@ const CartItem = (props: CartItemProps) => {
     return (
         <>
             {product && (
-                <div className="rounded-0.5 relative bg-white shadow-soft flex p-1">
-                    <img
-                        src={product.imageUrl}
-                        alt={product.name}
-                        className="h-6 self-center w-6 me-1 object-contain"
-                    />
-                    <div className="font-medium flex gap-0.5 grow flex-col">
-                        <span>
-                            <p className="text-gray-900">{product.name}</p>
-                            <p>
-                                <span className="text-primary">
-                                    {formatCurrency(product.price)}
-                                </span>
-                                <span className="text-gray-700 text-0.75">
-                                    {" "}
-                                    /{product.unitOfSale}
+                <ProductWrapperWithLink
+                    to={`${pathConstants.PRODUCTS}/${product.id}`}
+                    className="relative">
+                    <div className="flex items-center gap-1">
+                        <div className="w-7">
+                            <ProductImage src={product.imageUrl} />
+                        </div>
+                        <div className="z-[1] flex flex-col gap-0.5">
+                            <div className="flex flex-col gap-0.25">
+                                <ProductName size="sm">
+                                    {product.name}
+                                </ProductName>
+                                <ProductPrice
+                                    size="sm"
+                                    unitOfSale={product.unitOfSale}
+                                    price={product.price}
+                                />
+                            </div>
+                            <Counter
+                                productId={item.productId}
+                                buttonSize="small"></Counter>
+                            <p className="mt-auto font-medium">
+                                Total:{" "}
+                                <span className="text-gray-900">
+                                    {formatCurrency(
+                                        product.price * item.quantity
+                                    )}
                                 </span>
                             </p>
-                        </span>
-                        <Counter
-                            productId={item.productId}
-                            buttonSize="small"></Counter>
-
-                        <p className="mt-auto">
-                            <span className="text-gray-600">Total: </span>
-                            <span className="text-gray-900">
-                                {formatCurrency(product.price * item.quantity)}
-                            </span>
-                        </p>
+                        </div>
                     </div>
-                    <button
-                        className="absolute right-1 top-1 text-gray-300 active:text-[#cc0000]"
-                        onClick={() => {
-                            dispatch(removeItem(item.productId));
-                        }}>
-                        <FaTimes />
-                    </button>
-                </div>
+                    <span className="absolute top-1 right-1">
+                        <CloseButton
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                dispatch(removeItem(item.productId));
+                            }}
+                            size={"sm"}
+                            colorScheme={"gray-300"}
+                        />
+                    </span>
+                </ProductWrapperWithLink>
             )}
         </>
     );

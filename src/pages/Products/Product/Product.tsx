@@ -163,7 +163,7 @@ const Product = () => {
                                 </p>
                                 <div className="self-start">
                                     <ProductCTA
-                                        className="w-15"
+                                        className="w-16"
                                         productId={product.id}
                                     />
                                 </div>
