@@ -1,19 +1,20 @@
 import clsx from "clsx";
 
 type CloseButtonProps = React.ComponentPropsWithoutRef<"div"> & {
-    size?: "sm" | "md";
+    size?: "sm" | "md" | "lg";
     colorScheme?: "primary" | "gray-300";
 };
 
 const CloseButton = (props: CloseButtonProps) => {
-    const { onClick, size = "md", colorScheme = "primary" } = props;
+    const { onClick, size = "lg", colorScheme = "primary" } = props;
     const sizeMap = {
-        sm: "h-1.25 w-1.25",
-        md: "h-1.75 w-1.75",
+        sm: "h-1 w-1",
+        md: "h-1.25 w-1.25",
+        lg: "h-1.75 w-1.75",
     };
     const colorSchemeMap = {
-        primary: "bg-primary group-hover:bg-primary-600",
-        "gray-300": "bg-gray-300 group-hover:bg-gray-400",
+        primary: "bg-primary group-hover/closeButton:bg-primary-600",
+        "gray-300": "bg-gray-300 group-hover/closeButton:bg-gray-500",
     };
 
     const barClasses = clsx(
@@ -23,7 +24,7 @@ const CloseButton = (props: CloseButtonProps) => {
     return (
         <div
             className={clsx(
-                "relative cursor-pointer flex flex-col justify-between group",
+                "relative cursor-pointer flex flex-col justify-between group/closeButton",
                 sizeMap[size]
             )}
             onClick={onClick}>

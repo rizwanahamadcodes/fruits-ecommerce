@@ -53,7 +53,6 @@ const cartSlice = createSlice({
             );
 
             state.items = state.items.filter((item) => item.quantity > 0);
-            console.log(state.items);
         },
 
         clearCart: (state) => {

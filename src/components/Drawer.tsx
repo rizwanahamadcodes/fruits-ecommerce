@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-type DrawerProps = React.ComponentPropsWithoutRef<"div"> & {
+export type DrawerProps = React.ComponentPropsWithoutRef<"div"> & {
     children: React.ReactNode;
     isOpen: boolean;
     onOpen: () => void;
