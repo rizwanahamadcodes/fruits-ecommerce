@@ -22,6 +22,10 @@ export const button = cva(
                 medium: "h-3 px-1",
                 small: "h-2 px-0.5",
             },
+            nature: {
+                normal: "",
+                circular: "!px-0",
+            },
         },
 
         compoundVariants: [
@@ -64,12 +68,23 @@ export const button = cva(
                 colorScheme: "gray-500",
                 className: "text-gray-500 border-gray-500",
             },
+            {
+                size: "medium",
+                nature: "circular",
+                className: "w-3",
+            },
+            {
+                size: "small",
+                nature: "circular",
+                className: "w-2",
+            },
         ],
 
         defaultVariants: {
             variant: "solid",
             colorScheme: "primary",
             size: "medium",
+            nature: "normal",
         },
     }
 );
@@ -81,12 +96,22 @@ type ButtonProps = React.ComponentPropsWithoutRef<"button"> &
     };
 
 export const Button = (props: ButtonProps) => {
-    const { children, variant, className, colorScheme, size, ...otherProps } =
-        props;
+    const {
+        children,
+        variant,
+        nature,
+        className,
+        colorScheme,
+        size,
+        ...otherProps
+    } = props;
 
     return (
         <button
-            className={clsx(button({ variant, colorScheme, size }), className)}
+            className={clsx(
+                button({ variant, colorScheme, size, nature }),
+                className
+            )}
             {...otherProps}>
             {children}
         </button>

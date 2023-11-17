@@ -103,21 +103,30 @@ type ProductPriceProps = {
 
 export const ProductPrice = (props: ProductPriceProps) => {
     const { className, unitOfSale, size = "md", price } = props;
-    const sizeMap = {
+    const prizeSizeMap = {
         sm: "text-1",
         md: "text-1.25",
         lg: "text-1.75",
     };
 
+    const unitOfSaleSizeMap = {
+        sm: "text-1",
+        md: "text-1",
+        lg: "text-1.25",
+    };
     return (
         <p
             className={clsx(
-                "leading-1 font-semibold",
-                sizeMap[size],
+                "leading-1 font-medium text-gray-800",
+                prizeSizeMap[size],
                 className
             )}>
             {formatCurrency(price)}
-            <span className="text-1 font-medium text-gray-700">
+            <span
+                className={clsx(
+                    "font-medium text-gray-700",
+                    unitOfSaleSizeMap[size]
+                )}>
                 {" "}
                 /{unitOfSale}
             </span>
@@ -177,7 +186,7 @@ type ProductDescriptionProps = Omit<
 export const ProductDescription = (props: ProductDescriptionProps) => {
     const { children, ...otherProps } = props;
     return (
-        <p className="min-h-5 overflow-ellipsis" {...otherProps}>
+        <p className="overflow-ellipsis font-medium" {...otherProps}>
             {children}
         </p>
     );
