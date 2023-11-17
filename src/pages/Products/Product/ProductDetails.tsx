@@ -27,8 +27,8 @@ const ProductDetails = (props: ProductDetailsProps) => {
             <ProductDescription>
                 {product.productDescription}
             </ProductDescription>
-            <div className="self-start">
-                <ProductCTA className="w-16" productId={product.id} />
+            <div className="self-stretch">
+                <ProductCTA className="sm:w-16 w-auto" productId={product.id} />
             </div>
         </>
     );
