@@ -62,10 +62,13 @@ const Navbar = (props: NavbarProps) => {
         if (searchBarRef.current) {
             (searchBarRef.current as HTMLElement).blur();
         }
-        setSearchParams((prev) => {
-            prev.set("searchKeyword", searchInputValue);
-            return prev;
-        });
+        setSearchParams(
+            (prev) => {
+                prev.set("searchKeyword", searchInputValue);
+                return prev;
+            },
+            { replace: true }
+        );
     };
 
     const noOfItemsInCart = useSelector((state: RootState) =>
@@ -91,10 +94,16 @@ const Navbar = (props: NavbarProps) => {
                             value={searchParams.get("searchKeyword") || ""}
                             onChange={(e) => {
                                 setSearchInputValue(e.target.value);
-                                setSearchParams((prev) => {
-                                    prev.set("searchKeyword", e.target.value);
-                                    return prev;
-                                });
+                                setSearchParams(
+                                    (prev) => {
+                                        prev.set(
+                                            "searchKeyword",
+                                            e.target.value
+                                        );
+                                        return prev;
+                                    },
+                                    { replace: true }
+                                );
                             }}
                             type="search"
                             className="border-gray-100 grow border hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
