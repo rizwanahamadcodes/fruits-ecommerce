@@ -1,15 +1,11 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { BsCart3 } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import pathConstants from "../routes/pathConstants";
 import { RootState } from "../store/rootReducer";
 import { selectNoOfItemsInCart } from "../store/slices/cartSlice";
-import {
-    selectSearchKeyword,
-    updateSearchKeyword,
-} from "../store/slices/productsSlice";
 import BrandLogo from "./BrandLogo";
 import Button, { ButtonIcon } from "./Button";
 import Container from "./Container";
@@ -22,19 +18,16 @@ const Navbar = (props: NavbarProps) => {
     const { onOpen } = props;
 
     const [scrolledPast80, setScrolledPast80] = useState(false);
+    const [searchInputValue, setSearchInputValue] = useState("");
     const navSubstituteRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
     const searchBarRef = useRef(null);
 
-    const dispatch = useDispatch();
-    const searchKeyword = useSelector((state: RootState) =>
-        selectSearchKeyword(state)
-    );
-
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(updateSearchKeyword(e.target.value));
-    };
+    const [searchParams, setSearchParams] = useSearchParams({
+        searchKeyword: "",
+        selectedCategoty: "0",
+    });
 
     useEffect(() => {
         const navSubstitute = navSubstituteRef.current;
@@ -69,6 +62,9 @@ const Navbar = (props: NavbarProps) => {
         if (searchBarRef.current) {
             (searchBarRef.current as HTMLElement).blur();
         }
+
+        setSearchParams({ ...searchParams, searchKeyword: searchInputValue });
+        setSearchInputValue("");
     };
 
     const noOfItemsInCart = useSelector((state: RootState) =>
@@ -91,9 +87,9 @@ const Navbar = (props: NavbarProps) => {
                         }}>
                         <input
                             ref={searchBarRef}
-                            value={searchKeyword}
+                            value={searchInputValue}
                             onChange={(e) => {
-                                handleSearchChange(e);
+                                setSearchInputValue(e.target.value);
                             }}
                             type="search"
                             className="border-gray-100 grow border hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"

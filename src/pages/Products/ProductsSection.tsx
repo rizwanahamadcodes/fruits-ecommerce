@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import Container from "../../components/Container";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Section, { SectionTitle } from "../../components/Section";
@@ -17,8 +18,9 @@ import { selectFilteredProducts } from "../../store/slices/productsSlice";
 // group relevant information, create groups of groups thus spacing them with more and more distance, related details remain closer together
 
 const ProductsSection = () => {
+    const [searchParams] = useSearchParams();
     const filteredProducts = useSelector((state: RootState) =>
-        selectFilteredProducts(state)
+        selectFilteredProducts(state, searchParams)
     );
 
     return (

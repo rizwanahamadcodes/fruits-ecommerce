@@ -4,33 +4,16 @@ import { RootState } from "../rootReducer";
 
 type ProductsState = {
     products: Product[];
-    searchKeyword: string;
-    selectedCategory: number;
 };
 
 const productsSlice = createSlice({
     name: "products",
     initialState: {
         products: initialProducts,
-        searchKeyword: "",
-        selectedCategory: 0,
     } as ProductsState,
     reducers: {
         addProduct: (state, action: PayloadAction<Product>) => {
             state.products.push(action.payload);
-        },
-        updateSearchKeyword: (state, action: PayloadAction<string>) => {
-            state.searchKeyword = action.payload;
-        },
-        updateSelectedCategory: (state, action: PayloadAction<number>) => {
-            state.selectedCategory = action.payload;
-            state.searchKeyword = "";
-        },
-        clearSearchKeyword: (state) => {
-            state.searchKeyword = "";
-        },
-        clearSelectedCategory: (state) => {
-            state.selectedCategory = 0;
         },
     },
 });
@@ -39,40 +22,39 @@ export const selectAllProducts = (state: RootState) => {
     return state.products.products;
 };
 
-export const selectSearchKeyword = (state: RootState) => {
-    return state.products.searchKeyword;
-};
-export const selectSelectedCategory = (state: RootState) => {
-    return state.products.selectedCategory;
-};
+export const selectFilteredProducts = (
+    state: RootState,
+    searchParams: URLSearchParams
+) => {
+    const searchKeyword = searchParams.get("searchKeyword") || "";
+    const selectedCategory = parseInt(
+        searchParams.get("selectedCategory") || "0"
+    );
 
-export const selectFilteredProducts = (state: RootState) => {
-    return state.products.products
-        .filter((product) => {
-            if (state.products.selectedCategory === 0) {
+    const productsSelectedByCategory = state.products.products.filter(
+        (product) => {
+            if (selectedCategory === 0) {
                 return true;
             }
-            return product.categoryId === state.products.selectedCategory;
-        })
-        .filter((productSelectedByCategory) => {
-            if (state.products.searchKeyword === "") {
+            return product.categoryId === selectedCategory;
+        }
+    );
+
+    const productsSelectedByCategoryAndKeyword =
+        productsSelectedByCategory.filter((product) => {
+            if (searchKeyword === "") {
                 return true;
             }
-            return productSelectedByCategory.name
+            return product.name
                 .toLowerCase()
-                .includes(state.products.searchKeyword.toLowerCase());
+                .includes(searchKeyword.toLowerCase());
         });
-};
 
+    return productsSelectedByCategoryAndKeyword;
+};
 export const selectProductById = (state: RootState, productId: number) => {
     return state.products.products.find((product) => product.id === productId);
 };
 
 export const productsReducer = productsSlice.reducer;
-export const {
-    addProduct,
-    updateSearchKeyword,
-    updateSelectedCategory,
-    clearSelectedCategory,
-    clearSearchKeyword,
-} = productsSlice.actions;
+export const { addProduct } = productsSlice.actions;
