@@ -8,15 +8,6 @@ import SelectCategories from "../../components/SelectCategories";
 import { RootState } from "../../store/rootReducer";
 import { selectFilteredProducts } from "../../store/slices/productsSlice";
 
-// product card redesign strategy
-// product description at 16pt low contrast paragraph
-// product heading at 1.5*16 ie 24pt bold
-// product price at 18 or 16 regular or bold if 18 not bold if 16 bold
-// grayed out star rating at with review link
-// only the links and the button should have color not the price, that's not the focus
-// Longer product names
-// group relevant information, create groups of groups thus spacing them with more and more distance, related details remain closer together
-
 const ProductsSection = () => {
     const [searchParams] = useSearchParams();
     const filteredProducts = useSelector((state: RootState) =>
