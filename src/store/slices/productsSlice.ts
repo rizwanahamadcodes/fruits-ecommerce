@@ -26,7 +26,7 @@ export const selectFilteredProducts = (
     state: RootState,
     searchParams: URLSearchParams
 ) => {
-    const searchKeyword = searchParams.get("searchKeyword") || "";
+    const searchKeyword = (searchParams.get("searchKeyword") || "").trim();
     const selectedCategory = parseInt(
         searchParams.get("selectedCategory") || "0"
     );

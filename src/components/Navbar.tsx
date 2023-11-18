@@ -18,7 +18,6 @@ const Navbar = (props: NavbarProps) => {
     const { onOpen } = props;
 
     const [scrolledPast80, setScrolledPast80] = useState(false);
-    const [searchInputValue, setSearchInputValue] = useState("");
     const navSubstituteRef = useRef(null);
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,6 +27,7 @@ const Navbar = (props: NavbarProps) => {
         searchKeyword: "",
         selectedCategoty: "0",
     });
+    const [searchInputValue, setSearchInputValue] = useState("");
 
     useEffect(() => {
         const navSubstitute = navSubstituteRef.current;
@@ -62,9 +62,10 @@ const Navbar = (props: NavbarProps) => {
         if (searchBarRef.current) {
             (searchBarRef.current as HTMLElement).blur();
         }
-
-        setSearchParams({ ...searchParams, searchKeyword: searchInputValue });
-        setSearchInputValue("");
+        setSearchParams((prev) => {
+            prev.set("searchKeyword", searchInputValue);
+            return prev;
+        });
     };
 
     const noOfItemsInCart = useSelector((state: RootState) =>
@@ -87,9 +88,13 @@ const Navbar = (props: NavbarProps) => {
                         }}>
                         <input
                             ref={searchBarRef}
-                            value={searchInputValue}
+                            value={searchParams.get("searchKeyword") || ""}
                             onChange={(e) => {
                                 setSearchInputValue(e.target.value);
+                                setSearchParams((prev) => {
+                                    prev.set("searchKeyword", e.target.value);
+                                    return prev;
+                                });
                             }}
                             type="search"
                             className="border-gray-100 grow border hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"

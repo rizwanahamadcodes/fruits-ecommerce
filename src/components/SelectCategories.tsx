@@ -1,8 +1,7 @@
 import clsx from "clsx";
-import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import Select, { OptionProps, SingleValue, components } from "react-select";
 import { categories } from "../data/categories";
-import { updateSelectedCategory } from "../store/slices/productsSlice";
 
 type OptionType = {
     id: number;
@@ -11,22 +10,29 @@ type OptionType = {
     imageUrl: string;
 };
 
-const options = categories;
 const SelectCategories = () => {
-    const dispatch = useDispatch();
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams);
     const handleCategorySelect = (e: SingleValue<OptionType>) => {
         if (e) {
-            dispatch(updateSelectedCategory(e.id));
+            setSearchParams((prev) => {
+                prev.set("selectedCategory", e.id.toString());
+                return prev;
+            });
         }
     };
 
     return (
         <Select
+            value={categories.find(
+                (category) =>
+                    category.id ===
+                    parseInt(searchParams.get("selectedCategory") || "0")
+            )}
             onChange={(e) => handleCategorySelect(e as SingleValue<OptionType>)}
             placeholder="Select Category"
             className="mb-2"
-            options={options}
+            options={categories}
             classNames={{
                 container: () => "max-w-lg cursor-pointer",
                 control: ({ isFocused }) =>

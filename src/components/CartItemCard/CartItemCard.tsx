@@ -34,8 +34,8 @@ const CartItemCard = (props: CartItemCardProps) => {
                         src={product.imageUrl}
                         className="w-6 h-6 object-contain"
                     />
-                    <div className="z-[1] flex flex-col gap-0.5 grow">
-                        <div className="flex flex-col gap-0.25">
+                    <div className="z-[1] flex flex-col gap-0.75 grow">
+                        <div className="flex flex-col gap-0.5">
                             <ProductName size="sm">{product.name}</ProductName>
                             <ProductPrice
                                 size="sm"
