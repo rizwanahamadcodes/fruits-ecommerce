@@ -19,6 +19,7 @@ const ProductCard = (props: ProductCardProps) => {
 
     return (
         <ProductWrapperWithLink
+            className="overflow-hidden block"
             key={product.id}
             to={`${pathConstants.PRODUCTS}/${product.id}`}>
             <div className="flex flex-col gap-1">
@@ -65,7 +66,10 @@ export const ProductImage = (props: ProductImageProps) => {
     return (
         <img
             {...otherProps}
-            className={clsx("group-hover:scale-110 transition-all", className)}
+            className={clsx(
+                "group-hover:scale-110 rounded-1 transition-all",
+                className
+            )}
         />
     );
 };

@@ -96,14 +96,14 @@ const Navbar = (props: NavbarProps) => {
                                 handleSearchChange(e);
                             }}
                             type="search"
-                            className="grow border border-transparent hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
+                            className="border-gray-100 grow border hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
                             placeholder="Search products"
                         />
                     </form>
                     <Button
                         colorScheme="white"
                         onClick={onOpen}
-                        className="relative hidden sm:flex">
+                        className="relative hidden sm:flex !border-gray-100 hover:!border-primary border">
                         <ButtonIcon icon={BsCart3} className="text-primary" />
 
                         <span className="hidden sm:inline-block">Cart</span>
@@ -118,7 +118,7 @@ const Navbar = (props: NavbarProps) => {
                         nature="circular"
                         colorScheme="white"
                         onClick={onOpen}
-                        className="relative flex sm:hidden">
+                        className="relative flex sm:hidden !border-gray-100 hover:!border-primary border">
                         <ButtonIcon icon={BsCart3} className="text-primary" />
 
                         {noOfItemsInCart != 0 && (
