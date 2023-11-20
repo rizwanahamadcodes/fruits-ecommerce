@@ -7,11 +7,11 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { Product } from "../../../data/products";
+import { Image } from "../../../data/images";
 
 type ProductImageGalleryProps = {
-    imageUrl: Product["imageUrl"];
-    moreImages: Product["moreImages"];
+    imageUrl: Image["url"];
+    moreImages: Image["url"][];
 };
 
 const ProductImageGallery = (props: ProductImageGalleryProps) => {

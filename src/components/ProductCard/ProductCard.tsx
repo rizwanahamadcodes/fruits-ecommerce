@@ -9,6 +9,7 @@ import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
 import Button, { ButtonIcon } from "../Button";
 import Counter from "../Counter";
 import { formatCurrency } from "../../utils/currency";
+import { images } from "../../data/images";
 
 type ProductCardProps = {
     product: Product;
@@ -16,6 +17,9 @@ type ProductCardProps = {
 
 const ProductCard = (props: ProductCardProps) => {
     const { product } = props;
+    const productImage = images.find(
+        (image) => image.id === product.primaryImageId
+    );
 
     return (
         <ProductWrapperWithLink
@@ -23,7 +27,7 @@ const ProductCard = (props: ProductCardProps) => {
             key={product.id}
             to={`${pathConstants.PRODUCTS}/${product.id}`}>
             <div className="flex flex-col gap-1">
-                <ProductImage src={product.imageUrl} alt={product.name} />
+                <ProductImage src={productImage?.url} alt={product.name} />
 
                 <div className="flex flex-col gap-0.5">
                     <ProductName>{product.name}</ProductName>

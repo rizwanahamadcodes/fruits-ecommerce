@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Container from "../../../components/Container";
 import Section from "../../../components/Section";
+import { images } from "../../../data/images";
 import pathConstants from "../../../routes/pathConstants";
 import { RootState } from "../../../store/rootReducer";
 import { selectProductById } from "../../../store/slices/productsSlice";
@@ -13,6 +14,14 @@ const Product = () => {
     const product = useSelector((state: RootState) =>
         productId ? selectProductById(state, parseInt(productId)) : null
     );
+    const productImage = images.find(
+        (image) => image.id === product?.primaryImageId
+    );
+
+    const moreImages = images
+        .filter((image) => product?.moreImages.includes(image.id))
+        .map((image) => image.url);
+
     return (
         <Section>
             <Container className="">
@@ -21,8 +30,8 @@ const Product = () => {
                         <>
                             <div className="md:w-2/5">
                                 <ProductImageGallery
-                                    imageUrl={product.imageUrl}
-                                    moreImages={product.moreImages}
+                                    imageUrl={productImage?.url || ""}
+                                    moreImages={moreImages}
                                 />
                             </div>
                             <div className="md:w-3/5 flex flex-col items-start gap-1">
