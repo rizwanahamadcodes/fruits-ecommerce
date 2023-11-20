@@ -4,6 +4,7 @@ import {
     ProductName,
     ProductPrice,
 } from "../../../components/ProductCard/ProductCard";
+import Review from "../../../components/Review/Review";
 import { Product } from "../../../data/products";
 
 type ProductDetailsProps = {
@@ -17,6 +18,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
         <>
             <div className="flex flex-col gap-0.5">
                 <ProductName size="lg">{product.name}</ProductName>
+                <Review productId={product.id} />
                 <ProductPrice
                     size="lg"
                     price={product.price}
