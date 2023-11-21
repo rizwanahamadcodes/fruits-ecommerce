@@ -12,7 +12,6 @@ import pathConstants from "../../routes/pathConstants";
 import Counter from "../Counter";
 import { formatCurrency } from "../../utils/currency";
 import CloseButton from "../CloseButton";
-import { images } from "../../data/images";
 
 type CartItemCardProps = {
     item: CartItem;
@@ -23,11 +22,6 @@ const CartItemCard = (props: CartItemCardProps) => {
     const product = useSelector((state: RootState) =>
         selectProductById(state, item.productId)
     );
-
-    const productImage = images.find(
-        (image) => image.id === product?.primaryImageId
-    );
-
     const dispatch = useDispatch();
 
     return (
@@ -37,7 +31,7 @@ const CartItemCard = (props: CartItemCardProps) => {
                     to={`${pathConstants.PRODUCTS}/${product.id}`}
                     className="flex relative items-center gap-1">
                     <ProductImage
-                        src={productImage?.url}
+                        src={product.imageUrl}
                         className="w-6 h-6 object-contain"
                     />
                     <div className="z-[1] flex flex-col gap-0.75 grow">
