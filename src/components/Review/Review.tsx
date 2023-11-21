@@ -41,7 +41,7 @@ const Review = (props: ReviewProps) => {
 
     return (
         <div className="flex gap-0.5 items-end relative cursor-pointer group/ratings">
-            <p className="font-medium leading-1">{roundedRating}</p>
+            {/* <p className="font-medium leading-1">{roundedRating}</p> */}
             <div className="flex gap-0.25">
                 {stars.fullStars > 0 &&
                     [...Array(stars.fullStars)].map(() => (
@@ -59,7 +59,7 @@ const Review = (props: ReviewProps) => {
             <IoChevronDown className="text-gray-500 group-hover/ratings:text-gray-900" />
 
             <div className="absolute top-full left-0">
-                <div className="mt-0.5 flex flex-col gap-0.5 relative min-h-content bg-white shadow-soft rounded-0.5 border border-gray-100 p-1 ">
+                <div className="mt-0.5 flex flex-col gap-0.5 relative min-h-content bg-white shadow-soft rounded-0.5 border border-gray-100 p-1 opacity-0 group-hover/ratings:opacity-[1] transition">
                     <div className="flex items-end gap-1 min-w-max">
                         <div className="flex gap-0.25">
                             {stars.fullStars > 0 &&
@@ -132,6 +132,7 @@ const RatingBar = (props) => {
                     }}
                     className="bg-gradient-to-r from-primary to-primary-400 rounded-r-full"></div>
             </div>
+            {/* <p>{rating.slice(0, 4)}</p> */}
         </div>
     );
 };
