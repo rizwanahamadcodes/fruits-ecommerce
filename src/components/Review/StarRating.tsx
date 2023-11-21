@@ -37,7 +37,7 @@ const StarRating = (props: StarRatingProps) => {
     };
 
     return (
-        <div className="relative cursor-pointer flex items-end gap-2">
+        <div className="relative cursor-pointer flex items-end gap-2 w-full sm:w-auto">
             <div className="flex items-end gap-1 peer/stars">
                 <div className="flex gap-0.25">
                     {stars.fullStars > 0 &&
@@ -60,7 +60,7 @@ const StarRating = (props: StarRatingProps) => {
                 to="#reviews">
                 {productReviews.length} reviews
             </Link>
-            <div className="absolute opacity-0 top-full left-0 invisible peer-hover/stars:visible  peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20 overflow-hidden  shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content">
+            <div className="absolute opacity-0 top-full left-0 invisible peer-hover/stars:visible  peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20 overflow-hidden  shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content w-full sm:w-auto">
                 <div className="flex items-end gap-1 min-w-max">
                     <div className="flex gap-0.25">
                         {stars.fullStars > 0 &&

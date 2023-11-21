@@ -16,7 +16,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
 
     return (
         <>
-            <div className="flex flex-col gap-0.5">
+            <div className="flex flex-col gap-0.5 w-full">
                 <ProductName size="lg">{product.name}</ProductName>
                 <StarRating productId={product.id} />
                 <ProductPrice
