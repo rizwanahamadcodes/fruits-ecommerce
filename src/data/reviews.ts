@@ -40,7 +40,7 @@ export const reviews = [
         rating: 1,
         reviewerId: 9,
         date: new Date(),
-        productId: 1,
+        productId: 4,
     },
     {
         id: 5,
