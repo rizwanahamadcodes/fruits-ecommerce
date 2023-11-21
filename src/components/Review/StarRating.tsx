@@ -37,8 +37,8 @@ const StarRating = (props: StarRatingProps) => {
     };
 
     return (
-        <div className="relative cursor-pointer flex items-end gap-2 w-full sm:w-auto">
-            <div className="flex items-end gap-1 peer/stars">
+        <div className="relative flex items-end gap-2 w-full sm:w-auto">
+            <div className="flex cursor-pointer items-end gap-1 peer/stars">
                 <div className="flex gap-0.25">
                     {stars.fullStars > 0 &&
                         [...Array(stars.fullStars)].map(() => (
@@ -129,7 +129,7 @@ const RatingBar = (props: RatingBarProps) => {
     return (
         <div className="flex gap-0.5 items-center">
             <p className="min-w-[4rem]">{label}</p>
-            <div className="overflow-hidden w-full min-w-[15rem] rounded-full h-1 bg-gray-100">
+            <div className="overflow-hidden w-full sm:min-w-[15rem] rounded-full h-1 bg-gray-100">
                 <div
                     style={{
                         height: "100%",
