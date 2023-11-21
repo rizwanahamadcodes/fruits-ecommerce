@@ -37,7 +37,7 @@ const StarRating = (props: StarRatingProps) => {
     };
 
     return (
-        <div className="relative cursor-pointer">
+        <div className="relative cursor-pointer flex items-end gap-2">
             <div className="flex items-end gap-1 peer/stars">
                 <div className="flex gap-0.25">
                     {stars.fullStars > 0 &&
@@ -55,65 +55,63 @@ const StarRating = (props: StarRatingProps) => {
                 </div>
                 <IoChevronDown className="text-gray-500 group-hover/ratings:text-gray-900" />
             </div>
+            <Link
+                className="font-medium leading-1 text-primary underline"
+                to="#reviews">
+                {productReviews.length} reviews
+            </Link>
+            <div className="absolute opacity-0 top-full left-0 invisible peer-hover/stars:visible  peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20 overflow-hidden  shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content">
+                <div className="flex items-end gap-1 min-w-max">
+                    <div className="flex gap-0.25">
+                        {stars.fullStars > 0 &&
+                            [...Array(stars.fullStars)].map(() => (
+                                <IoStarSharp className="text-primary text-1.25" />
+                            ))}
 
-            <div className="absolute opacity-0 top-full left-0 invisible peer-hover/stars:visible  peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20">
-                <div className="mt-0.5 flex flex-col gap-0.5 relative min-h-content shadow-soft rounded-0.5 border border-gray-100 p-1">
-                    <div className="flex items-end gap-1 min-w-max">
-                        <div className="flex gap-0.25">
-                            {stars.fullStars > 0 &&
-                                [...Array(stars.fullStars)].map(() => (
-                                    <IoStarSharp className="text-primary text-1.25" />
-                                ))}
-
-                            {stars.halfStar && (
-                                <IoStarHalfSharp className="text-primary text-1.25" />
-                            )}
-                            {stars.grayStars > 0 &&
-                                [...Array(stars.grayStars)].map(() => (
-                                    <IoStarSharp className="text-primary/40  text-1.25" />
-                                ))}
-                        </div>
-                        <h4 className="font-medium grow">
-                            {roundedRating} out of 5
-                        </h4>
+                        {stars.halfStar && (
+                            <IoStarHalfSharp className="text-primary text-1.25" />
+                        )}
+                        {stars.grayStars > 0 &&
+                            [...Array(stars.grayStars)].map(() => (
+                                <IoStarSharp className="text-primary/40  text-1.25" />
+                            ))}
                     </div>
-                    <Link
-                        className="font-medium text-primary underline"
-                        to="#reviews">
-                        {productReviews.length} reviews
-                    </Link>
-                    <div>
-                        <RatingBar
-                            label="5 stars"
-                            rating={`${
-                                (ratings[5] / productReviews.length) * 100
-                            }%`}
-                        />
-                        <RatingBar
-                            label="4 stars"
-                            rating={`${
-                                (ratings[4] / productReviews.length) * 100
-                            }%`}
-                        />
-                        <RatingBar
-                            label="3 stars"
-                            rating={`${
-                                (ratings[3] / productReviews.length) * 100
-                            }%`}
-                        />
-                        <RatingBar
-                            label="2 stars"
-                            rating={`${
-                                (ratings[2] / productReviews.length) * 100
-                            }%`}
-                        />
-                        <RatingBar
-                            label="1 stars"
-                            rating={`${
-                                (ratings[1] / productReviews.length) * 100
-                            }%`}
-                        />
-                    </div>
+                    <h4 className="font-medium grow">
+                        {roundedRating} out of 5
+                    </h4>
+                </div>
+                <p className="font-medium">{productReviews.length} reviews</p>
+                <div>
+                    <RatingBar
+                        label="5 stars"
+                        rating={`${
+                            (ratings[5] / productReviews.length) * 100
+                        }%`}
+                    />
+                    <RatingBar
+                        label="4 stars"
+                        rating={`${
+                            (ratings[4] / productReviews.length) * 100
+                        }%`}
+                    />
+                    <RatingBar
+                        label="3 stars"
+                        rating={`${
+                            (ratings[3] / productReviews.length) * 100
+                        }%`}
+                    />
+                    <RatingBar
+                        label="2 stars"
+                        rating={`${
+                            (ratings[2] / productReviews.length) * 100
+                        }%`}
+                    />
+                    <RatingBar
+                        label="1 stars"
+                        rating={`${
+                            (ratings[1] / productReviews.length) * 100
+                        }%`}
+                    />
                 </div>
             </div>
         </div>
