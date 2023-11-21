@@ -118,8 +118,13 @@ const StarRating = (props: StarRatingProps) => {
     );
 };
 
-const RatingBar = (props) => {
-    const { label, rating, count } = props;
+type RatingBarProps = {
+    label: string;
+    rating: string;
+};
+
+const RatingBar = (props: RatingBarProps) => {
+    const { label, rating } = props;
 
     return (
         <div className="flex gap-0.5 items-center">
