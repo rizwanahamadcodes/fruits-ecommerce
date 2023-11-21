@@ -81,15 +81,15 @@ type ProductNameProps = React.ComponentPropsWithoutRef<"h3"> & {
 export const ProductName = (props: ProductNameProps) => {
     const { className, size = "md", ...otherProps } = props;
     const sizeMap = {
-        sm: "text-1",
-        md: "text-1.5",
-        lg: "text-2",
+        sm: "text-1.25",
+        md: "text-1.75",
+        lg: "text-2.25",
     };
 
     return (
         <h3
             className={clsx(
-                "text-gray-900 relative z-[1]",
+                "text-gray-900 font-medium relative z-[1]",
                 sizeMap[size],
                 className
             )}
