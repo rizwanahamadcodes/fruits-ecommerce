@@ -12,7 +12,6 @@ type OptionType = {
 
 const SelectCategories = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log(searchParams);
     const handleCategorySelect = (e: SingleValue<OptionType>) => {
         if (e) {
             setSearchParams((prev) => {
