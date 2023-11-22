@@ -194,4 +194,12 @@ export const reviews = [
         date: new Date(),
         productId: 15,
     },
+    {
+        id: 16,
+        review: "Great and refreshing",
+        rating: 4,
+        reviewerId: 20,
+        date: new Date(),
+        productId: 23,
+    },
 ];

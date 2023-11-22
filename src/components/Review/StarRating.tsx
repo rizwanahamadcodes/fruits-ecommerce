@@ -55,41 +55,48 @@ const StarRating = (props: StarRatingProps) => {
     return (
         <div className="relative flex items-end gap-2 w-full sm:w-auto">
             <div
-                className="flex cursor-pointer items-end group/stars gap-1 peer/stars"
+                className={clsx(
+                    "flex  items-end group/stars gap-1 peer/stars",
+                    noOfRatings !== 0 && "cursor-pointer"
+                )}
                 ref={showDetailsRef}
                 onClick={() => {
+                    if (noOfRatings === 0) return;
                     setShowDetails(!showDetails);
                 }}>
                 <FiveStars stars={stars} />
-                <IoChevronDown
-                    className={clsx(
-                        "text-gray-500 sm:group-hover/stars:text-gray-700 sm:group-hover/stars:rotate-180 transition",
-                        showDetails ? "rotate-180" : "rotate-0"
-                    )}
-                />
+                {noOfRatings !== 0 && (
+                    <IoChevronDown
+                        className={clsx(
+                            "text-gray-500 sm:group-hover/stars:text-gray-700 sm:group-hover/stars:rotate-180 transition",
+                            showDetails ? "rotate-180" : "rotate-0"
+                        )}
+                    />
+                )}
             </div>
 
             <Link
                 className="font-medium leading-1 text-primary underline"
                 to="#reviews">
                 {noOfRatings === 0
-                    ? "review this product"
+                    ? "Add a review"
                     : noOfRatings === 1
                     ? "1 review"
                     : `${noOfRatings} reviews`}
             </Link>
-
-            <RatingDetails
-                onClickOutside={() => {
-                    setShowDetails(false);
-                }}
-                showDetails={showDetails}
-                noOfRatings={noOfRatings}
-                percentageRatings={percentageRatings}
-                roundedAverageRating={roundedAverageRating}
-                stars={stars}
-                toggleButtonRef={showDetailsRef}
-            />
+            {noOfRatings !== 0 && (
+                <RatingDetails
+                    onClickOutside={() => {
+                        setShowDetails(false);
+                    }}
+                    showDetails={showDetails}
+                    noOfRatings={noOfRatings}
+                    percentageRatings={percentageRatings}
+                    roundedAverageRating={roundedAverageRating}
+                    stars={stars}
+                    toggleButtonRef={showDetailsRef}
+                />
+            )}
         </div>
     );
 };
