@@ -20,7 +20,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
                 <ProductName size="lg">{product.name}</ProductName>
                 <StarRating productId={product.id} />
                 <ProductPrice
-                    size="lg"
+                    size="md"
                     price={product.price}
                     unitOfSale={product.unitOfSale}
                 />

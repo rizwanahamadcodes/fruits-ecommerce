@@ -157,7 +157,7 @@ const RatingDetails = (props: RatingDetailsProps) => {
         <div
             ref={ratingDetailsRef}
             className={clsx(
-                "absolute top-full left-0 peer-hover/stars:visible  peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20 overflow-hidden  shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content w-full sm:w-auto ease-in-out",
+                "absolute top-full left-0 sm:peer-hover/stars:visible  sm:peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20 overflow-hidden  shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content w-full sm:w-auto ease-in-out",
                 showDetails ? "visible opacity-100" : "invisible opacity-0"
             )}>
             <div className="flex items-end gap-1 min-w-max">

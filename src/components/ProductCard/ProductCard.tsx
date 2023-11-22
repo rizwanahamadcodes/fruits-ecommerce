@@ -81,9 +81,9 @@ type ProductNameProps = React.ComponentPropsWithoutRef<"h3"> & {
 export const ProductName = (props: ProductNameProps) => {
     const { className, size = "md", ...otherProps } = props;
     const sizeMap = {
-        sm: "text-1.25",
-        md: "text-1.75",
-        lg: "text-2.25",
+        sm: "text-1",
+        md: "text-1.5",
+        lg: "text-2",
     };
 
     return (
@@ -121,14 +121,14 @@ export const ProductPrice = (props: ProductPriceProps) => {
     return (
         <p
             className={clsx(
-                "leading-1 font-medium text-gray-800",
+                "leading-1 font-medium text-gray-700",
                 prizeSizeMap[size],
                 className
             )}>
             {formatCurrency(price)}
             <span
                 className={clsx(
-                    "font-medium text-gray-700",
+                    "font-medium text-gray-500",
                     unitOfSaleSizeMap[size]
                 )}>
                 {" "}
