@@ -63,7 +63,7 @@ const StarRating = (props: StarRatingProps) => {
                 <FiveStars stars={stars} />
                 <IoChevronDown
                     className={clsx(
-                        "text-gray-500 group-hover/stars:text-gray-700 group-hover/stars:rotate-180 transition",
+                        "text-gray-500 sm:group-hover/stars:text-gray-700 sm:group-hover/stars:rotate-180 transition",
                         showDetails ? "rotate-180" : "rotate-0"
                     )}
                 />
