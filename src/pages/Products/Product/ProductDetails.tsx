@@ -4,7 +4,7 @@ import {
     ProductName,
     ProductPrice,
 } from "../../../components/ProductCard/ProductCard";
-import StarRating from "../../../components/Review/StarRating";
+import StarRating from "../../../components/Rating/StarRating";
 import { Product } from "../../../data/products";
 
 type ProductDetailsProps = {

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { forwardRef } from "react";
 
 type SectionProps = React.ComponentPropsWithoutRef<"section"> & {
@@ -6,12 +7,12 @@ type SectionProps = React.ComponentPropsWithoutRef<"section"> & {
 
 export const Section = forwardRef<HTMLDivElement, SectionProps>(
     (props, ref) => {
-        const { children, ...otherProps } = props;
+        const { children, className, ...otherProps } = props;
 
         return (
             <section
                 ref={ref}
-                className="py-2 scroll-mt-navHeight"
+                className={clsx("py-2 scroll-mt-navHeight", className)}
                 {...otherProps}>
                 {children}
             </section>
@@ -21,12 +22,17 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
 
 type SectionTitleProps = {
     children: React.ReactNode;
+    className: string;
 };
 export const SectionTitle = (props: SectionTitleProps) => {
-    const { children } = props;
+    const { className, children } = props;
 
     return (
-        <h2 className="font-dancing text-3 font-medium text-primary-600 mb-1">
+        <h2
+            className={clsx(
+                "font-dancing text-3 font-medium text-primary-600",
+                className
+            )}>
             {children}
         </h2>
     );
