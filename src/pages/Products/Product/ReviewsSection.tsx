@@ -1,9 +1,6 @@
 import formatDistance from "date-fns/formatDistance";
 import Container from "../../../components/Container";
-import {
-    FiveStars,
-    RatingDetails,
-} from "../../../components/Rating/StarRating";
+import { FiveStars } from "../../../components/Rating/StarRating";
 import Section, { SectionTitle } from "../../../components/Section";
 import { Product } from "../../../data/products";
 import { Review, reviews } from "../../../data/reviews";
@@ -27,7 +24,6 @@ const ReviewsSection = (props: ReviewsSectionType) => {
                     <Container>
                         <SectionTitle className="mb-2">Reviews</SectionTitle>
                         <div>
-                            <RatingDetails productId={productId} />
                             <div className="flex flex-col gap-2 min-h-[20rem]">
                                 {productReviews.map((review) => (
                                     <Review review={review} />
