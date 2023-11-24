@@ -22,7 +22,7 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
 
 type SectionTitleProps = {
     children: React.ReactNode;
-    className: string;
+    className?: string;
 };
 export const SectionTitle = (props: SectionTitleProps) => {
     const { className, children } = props;
