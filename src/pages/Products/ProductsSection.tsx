@@ -17,7 +17,7 @@ const ProductsSection = () => {
     return (
         <Section id="products-section" className="pt-1">
             <Container>
-                <SectionTitle>Our Products</SectionTitle>
+                <SectionTitle className="mb-1">Our Products</SectionTitle>
 
                 <SelectCategories />
 

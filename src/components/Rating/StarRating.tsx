@@ -18,8 +18,86 @@ const StarRating = (props: StarRatingProps) => {
     const productReviews = reviews.filter(
         (review) => review.productId === productId
     );
-
     const noOfRatings = productReviews.length;
+    const sumOfRatings = productReviews.reduce(
+        (acc, review) => acc + review.rating,
+        0
+    );
+    const averageRating = noOfRatings === 0 ? 0 : sumOfRatings / noOfRatings;
+    const roundedAverageRating = Math.round(averageRating * 2) / 2;
+
+    return (
+        <div className="relative flex items-end gap-2 w-full sm:w-auto">
+            <div
+                className={clsx(
+                    "flex items-end gap-1",
+                    noOfRatings !== 0 && "cursor-pointer"
+                )}
+                ref={showDetailsRef}
+                onClick={() => {
+                    if (noOfRatings === 0) return;
+                    setShowDetails(!showDetails);
+                }}>
+                <FiveStars rating={roundedAverageRating} />
+                {noOfRatings !== 0 && (
+                    <IoChevronDown
+                        className={clsx(
+                            "text-gray-500 transition",
+                            showDetails ? "rotate-180" : "rotate-0"
+                        )}
+                    />
+                )}
+            </div>
+
+            <Link
+                className="font-medium leading-1 text-primary underline"
+                to="#reviews">
+                {noOfRatings === 0
+                    ? "Add a review"
+                    : noOfRatings === 1
+                    ? "1 review"
+                    : `${noOfRatings} reviews`}
+            </Link>
+
+            {noOfRatings !== 0 && (
+                <RatingDetails
+                    productId={productId}
+                    showDetails={showDetails}
+                    onClickOutside={() => {
+                        setShowDetails(false);
+                    }}
+                    toggleButtonRef={showDetailsRef}
+                />
+            )}
+        </div>
+    );
+};
+
+type RatingDetailsProps = {
+    productId: Product["id"];
+    showDetails?: boolean;
+    onClickOutside?: () => void;
+    toggleButtonRef?: React.MutableRefObject<null>;
+};
+
+export const RatingDetails = (props: RatingDetailsProps) => {
+    const {
+        productId,
+        showDetails = true,
+        onClickOutside,
+        toggleButtonRef,
+    } = props;
+
+    const productReviews = reviews.filter(
+        (review) => review.productId === productId
+    );
+    const noOfRatings = productReviews.length;
+    const sumOfRatings = productReviews.reduce(
+        (acc, review) => acc + review.rating,
+        0
+    );
+    const averageRating = noOfRatings === 0 ? 0 : sumOfRatings / noOfRatings;
+    const roundedAverageRating = Math.round(averageRating * 2) / 2;
 
     const ratings = {
         "5": productReviews.filter((review) => review.rating === 5).length,
@@ -37,103 +115,7 @@ const StarRating = (props: StarRatingProps) => {
         "1": noOfRatings === 0 ? 0 : (ratings["1"] / noOfRatings) * 100,
     };
 
-    const sumOfRatings = productReviews.reduce(
-        (acc, review) => acc + review.rating,
-        0
-    );
-
-    const averageRating = noOfRatings === 0 ? 0 : sumOfRatings / noOfRatings;
-
-    const roundedAverageRating = Math.round(averageRating * 2) / 2;
-
-    const stars = {
-        fullStars: Math.floor(roundedAverageRating),
-        halfStar: roundedAverageRating % 1 !== 0,
-        grayStars: 5 - Math.ceil(roundedAverageRating),
-    };
-
-    return (
-        <div className="relative flex items-end gap-2 w-full sm:w-auto">
-            <div
-                className={clsx(
-                    "flex  items-end group/stars gap-1 peer/stars",
-                    noOfRatings !== 0 && "cursor-pointer"
-                )}
-                ref={showDetailsRef}
-                onClick={() => {
-                    if (noOfRatings === 0) return;
-                    setShowDetails(!showDetails);
-                }}>
-                <FiveStars stars={stars} />
-                {noOfRatings !== 0 && (
-                    <IoChevronDown
-                        className={clsx(
-                            "text-gray-500 sm:group-hover/stars:text-gray-700 sm:group-hover/stars:rotate-180 transition",
-                            showDetails ? "rotate-180" : "rotate-0"
-                        )}
-                    />
-                )}
-            </div>
-
-            <Link
-                className="font-medium leading-1 text-primary underline"
-                to="#reviews">
-                {noOfRatings === 0
-                    ? "Add a review"
-                    : noOfRatings === 1
-                    ? "1 review"
-                    : `${noOfRatings} reviews`}
-            </Link>
-            {noOfRatings !== 0 && (
-                <RatingDetails
-                    onClickOutside={() => {
-                        setShowDetails(false);
-                    }}
-                    showDetails={showDetails}
-                    noOfRatings={noOfRatings}
-                    percentageRatings={percentageRatings}
-                    roundedAverageRating={roundedAverageRating}
-                    stars={stars}
-                    toggleButtonRef={showDetailsRef}
-                />
-            )}
-        </div>
-    );
-};
-
-type RatingDetailsProps = {
-    showDetails: boolean;
-    roundedAverageRating: number;
-    stars: {
-        fullStars: number;
-        halfStar: boolean;
-        grayStars: number;
-    };
-    noOfRatings: number;
-    percentageRatings: {
-        "5": number;
-        "4": number;
-        "3": number;
-        "2": number;
-        "1": number;
-    };
-    onClickOutside: () => void;
-    toggleButtonRef?: React.MutableRefObject<null>;
-};
-
-const RatingDetails = (props: RatingDetailsProps) => {
-    const {
-        showDetails,
-        roundedAverageRating,
-        stars,
-        noOfRatings,
-        percentageRatings,
-        onClickOutside,
-        toggleButtonRef,
-    } = props;
-
     const ratingDetailsRef = useRef(null);
-
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
             if (
@@ -164,11 +146,11 @@ const RatingDetails = (props: RatingDetailsProps) => {
         <div
             ref={ratingDetailsRef}
             className={clsx(
-                "absolute top-full left-0 sm:peer-hover/stars:visible  sm:peer-hover/stars:opacity-100 transition-all hover:visible hover:opacity-100 bg-white backdrop-blur-sm z-20 overflow-hidden  shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content w-full sm:w-auto ease-in-out",
+                "absolute top-full left-0 transition-all bg-white backdrop-blur-sm z-20 overflow-hidden shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content w-full sm:w-auto ease-in-out",
                 showDetails ? "visible opacity-100" : "invisible opacity-0"
             )}>
             <div className="flex items-end gap-1 min-w-max">
-                <FiveStars stars={stars} />
+                <FiveStars rating={roundedAverageRating} />
                 <h4 className="font-medium grow">
                     {roundedAverageRating} out of 5
                 </h4>
@@ -225,15 +207,18 @@ const RatingBar = (props: RatingBarProps) => {
 };
 
 type FiveStarsProps = {
-    stars: {
-        fullStars: number;
-        halfStar?: boolean;
-        grayStars: number;
-    };
+    rating: number;
 };
 
 export const FiveStars = (props: FiveStarsProps) => {
-    const { stars } = props;
+    const { rating } = props;
+
+    const stars = {
+        fullStars: Math.floor(rating),
+        halfStar: rating % 1 !== 0,
+        grayStars: 5 - Math.ceil(rating),
+    };
+
     const { fullStars, halfStar = false, grayStars } = stars;
 
     return (

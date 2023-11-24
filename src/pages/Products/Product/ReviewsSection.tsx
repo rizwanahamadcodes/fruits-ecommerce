@@ -1,6 +1,9 @@
 import formatDistance from "date-fns/formatDistance";
 import Container from "../../../components/Container";
-import { FiveStars } from "../../../components/Rating/StarRating";
+import {
+    FiveStars,
+    RatingDetails,
+} from "../../../components/Rating/StarRating";
 import Section, { SectionTitle } from "../../../components/Section";
 import { Product } from "../../../data/products";
 import { Review, reviews } from "../../../data/reviews";
@@ -23,11 +26,13 @@ const ReviewsSection = (props: ReviewsSectionType) => {
                 <Section className="bg-white" id="reviews">
                     <Container>
                         <SectionTitle className="mb-2">Reviews</SectionTitle>
-
-                        <div className="flex flex-col gap-2 min-h-[20rem]">
-                            {productReviews.map((review) => (
-                                <Review review={review} />
-                            ))}
+                        <div>
+                            <RatingDetails productId={productId} />
+                            <div className="flex flex-col gap-2 min-h-[20rem]">
+                                {productReviews.map((review) => (
+                                    <Review review={review} />
+                                ))}
+                            </div>
                         </div>
                     </Container>
                 </Section>
@@ -70,15 +75,7 @@ const Review = (props: ReviewProps) => {
                     </div>
 
                     <div className="flex gap-1 items-end">
-                        <FiveStars
-                            stars={{
-                                fullStars: review.rating,
-                                grayStars: 5 - review.rating,
-                            }}
-                        />
-                        {/* <h4 className="font-medium grow">
-                            {review.rating} out of 5
-                        </h4> */}
+                        <FiveStars rating={review.rating} />
                     </div>
                 </div>
 
