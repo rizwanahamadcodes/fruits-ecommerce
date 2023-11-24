@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 type useClickOutsideProps = {
-    elementRef: React.MutableRefObject<null>;
-    excludeElementRef: React.MutableRefObject<null>;
-    onClickOutside: () => void;
+    elementRef?: React.MutableRefObject<null>;
+    excludeElementRef?: React.MutableRefObject<null>;
+    onClickOutside?: () => void;
 };
 
 export const useClickOutside = (props: useClickOutsideProps) => {
@@ -11,13 +11,12 @@ export const useClickOutside = (props: useClickOutsideProps) => {
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
-            console.log("I was ran");
             if (
-                elementRef.current &&
+                elementRef?.current &&
                 !(elementRef.current as HTMLElement).contains(e.target as Node)
             ) {
                 if (
-                    excludeElementRef.current &&
+                    excludeElementRef?.current &&
                     !(excludeElementRef.current as HTMLElement).contains(
                         e.target as Node
                     )

@@ -1,17 +1,19 @@
 import { IoChevronDown, IoStarHalfSharp, IoStarSharp } from "react-icons/io5";
 
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { Product } from "../../data/products";
 import { reviews } from "../../data/reviews";
+import { useToggle } from "../../hooks/useToggle";
+import PopOver from "../Popover/PopOver";
 
 type StarRatingProps = {
     productId: Product["id"];
 };
 
 const StarRating = (props: StarRatingProps) => {
-    const [showDetails, setShowDetails] = useState(false);
+    const { isOpen, close, toggle } = useToggle(false);
     const showDetailsRef = useRef(null);
 
     const { productId } = props;
@@ -36,14 +38,14 @@ const StarRating = (props: StarRatingProps) => {
                 ref={showDetailsRef}
                 onClick={() => {
                     if (noOfRatings === 0) return;
-                    setShowDetails(!showDetails);
+                    toggle();
                 }}>
                 <FiveStars rating={roundedAverageRating} />
                 {noOfRatings !== 0 && (
                     <IoChevronDown
                         className={clsx(
                             "text-gray-500 transition",
-                            showDetails ? "rotate-180" : "rotate-0"
+                            isOpen ? "rotate-180" : "rotate-0"
                         )}
                     />
                 )}
@@ -60,14 +62,15 @@ const StarRating = (props: StarRatingProps) => {
             </Link>
 
             {noOfRatings !== 0 && (
-                <RatingDetails
-                    productId={productId}
-                    showDetails={showDetails}
-                    onClickOutside={() => {
-                        setShowDetails(false);
-                    }}
-                    toggleButtonRef={showDetailsRef}
-                />
+                <>
+                    <PopOver
+                        close={close}
+                        toggleButtonRef={showDetailsRef}
+                        isOpen={isOpen}
+                        className="w-full mt-0.5 sm:w-[25rem]">
+                        <RatingDetails productId={productId} />
+                    </PopOver>
+                </>
             )}
         </div>
     );
@@ -75,18 +78,10 @@ const StarRating = (props: StarRatingProps) => {
 
 type RatingDetailsProps = {
     productId: Product["id"];
-    showDetails?: boolean;
-    onClickOutside?: () => void;
-    toggleButtonRef?: React.MutableRefObject<null>;
 };
 
 export const RatingDetails = (props: RatingDetailsProps) => {
-    const {
-        productId,
-        showDetails = true,
-        onClickOutside,
-        toggleButtonRef,
-    } = props;
+    const { productId } = props;
 
     const productReviews = reviews.filter(
         (review) => review.productId === productId
@@ -115,39 +110,10 @@ export const RatingDetails = (props: RatingDetailsProps) => {
         "1": noOfRatings === 0 ? 0 : (ratings["1"] / noOfRatings) * 100,
     };
 
-    const ratingDetailsRef = useRef(null);
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (
-                ratingDetailsRef.current &&
-                !(ratingDetailsRef.current as HTMLElement).contains(
-                    e.target as Node
-                )
-            ) {
-                if (
-                    toggleButtonRef?.current &&
-                    !(toggleButtonRef.current as HTMLElement).contains(
-                        e.target as Node
-                    )
-                ) {
-                    onClickOutside && onClickOutside();
-                }
-            }
-        };
-
-        document.addEventListener("click", handleClickOutside, true);
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside, true);
-        };
-    }, [onClickOutside, toggleButtonRef]);
-
     return (
         <div
-            ref={ratingDetailsRef}
             className={clsx(
-                "absolute top-full left-0 transition-all bg-white backdrop-blur-sm z-20 overflow-hidden shadow-soft rounded-0.5 border border-gray-100 p-1 mt-0.5 flex flex-col gap-0.5 min-h-content w-full sm:w-auto ease-in-out",
-                showDetails ? "visible opacity-100" : "invisible opacity-0"
+                "bg-white overflow-hidden shadow-soft rounded-0.5 border border-gray-100 p-1 flex flex-col gap-0.5 min-h-content w-full ease-in-out"
             )}>
             <div className="flex items-end gap-1 min-w-max">
                 <FiveStars rating={roundedAverageRating} />
@@ -193,7 +159,7 @@ const RatingBar = (props: RatingBarProps) => {
     return (
         <div className="flex gap-0.5 items-center">
             <p className="min-w-[4rem]">{label}</p>
-            <div className="overflow-hidden w-full sm:min-w-[15rem] rounded-full h-1 bg-gray-100">
+            <div className="overflow-hidden w-full  rounded-full h-1 bg-gray-100">
                 <div
                     style={{
                         height: "100%",

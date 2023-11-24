@@ -3,14 +3,15 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import clsx from "clsx";
 
 type PopOverProps = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     isOpen: boolean;
     close: () => void;
     toggleButtonRef: React.MutableRefObject<null>;
+    className?: string;
 };
 
 const PopOver = (props: PopOverProps) => {
-    const { isOpen, close, toggleButtonRef, children } = props;
+    const { isOpen, close, className, toggleButtonRef, children } = props;
 
     const popOverRef = useRef(null);
 
@@ -24,8 +25,9 @@ const PopOver = (props: PopOverProps) => {
         <div
             ref={popOverRef}
             className={clsx(
-                "p-1 rounded-full border absolute",
-                isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                "absolute top-full z-20 transition-all",
+                isOpen ? "opacity-100 visible" : "opacity-0 invisible",
+                className
             )}>
             {children}
         </div>
