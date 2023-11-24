@@ -4,10 +4,14 @@ import { IconType } from "react-icons";
 
 export const button = cva(
     [
-        "font-medium rounded-full flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 transition",
+        "font-medium flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 transition",
     ],
     {
         variants: {
+            rounding: {
+                full: "rounded-full",
+                none: "",
+            },
             variant: {
                 solid: "",
                 outline: "border-2 ",
@@ -82,6 +86,7 @@ export const button = cva(
         ],
 
         defaultVariants: {
+            rounding: "full",
             variant: "solid",
             colorScheme: "primary",
             size: "medium",
@@ -99,6 +104,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<"button"> &
 export const Button = (props: ButtonProps) => {
     const {
         children,
+        rounding,
         variant,
         nature,
         className,
@@ -110,7 +116,7 @@ export const Button = (props: ButtonProps) => {
     return (
         <button
             className={clsx(
-                button({ variant, colorScheme, size, nature }),
+                button({ rounding, variant, colorScheme, size, nature }),
                 className
             )}
             {...otherProps}>

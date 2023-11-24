@@ -32,7 +32,6 @@ const Product = () => {
         noOfReviewsPerPage * reviewPageNum,
         noOfReviewsPerPage * (reviewPageNum + 1)
     );
-    console.log(cutOutOfReviews);
 
     return (
         <>
@@ -86,6 +85,36 @@ const Review = (props: ReviewProps) => {
         }).format(date);
     };
 
+    const getTimeAgo = (date: Date) => {
+        const now = new Date();
+
+        const diffTime = now.getTime() - date.getTime();
+        const diffSeconds = now.getUTCSeconds() - date.getUTCSeconds();
+        const diffMinutes = now.getUTCMinutes() - date.getUTCMinutes();
+        const diffHours = now.getUTCHours() - date.getUTCHours();
+        const diffDay = now.getUTCDay() - date.getUTCDay();
+        const diffYear = now.getUTCFullYear() - date.getUTCFullYear();
+
+        const timeInMilliseconds = {
+            second: 1000,
+            minute: 1000 * 60,
+            hour: 1000 * 60 * 60,
+        };
+
+        for (const unit in timeInMilliseconds) {
+            const particularTimeInMillisecond =
+                timeInMilliseconds[unit as keyof typeof timeInMilliseconds];
+
+            if (diffTime < particularTimeInMillisecond) {
+                return {
+                    unit: unit,
+                    value: Math.round(diffTime / particularTimeInMillisecond),
+                };
+            }
+        }
+    };
+
+    console.log(getTimeAgo(new Date("2023/11/24/14:09:00")));
     return (
         <div className="flex gap-1">
             <img

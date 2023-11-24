@@ -12,7 +12,9 @@ module.exports = {
 
             spacing["navHeight"] = "5rem";
             spacing["btn-height-medium"] = "3rem";
+            spacing["btn-height-medium/2"] = "1.5rem";
             spacing["btn-height-small"] = "2rem";
+            spacing["btn-height-small/2"] = "1rem";
 
             return spacing;
         },
