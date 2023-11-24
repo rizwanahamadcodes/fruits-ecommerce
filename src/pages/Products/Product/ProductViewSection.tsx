@@ -1,15 +1,22 @@
+import { useSelector } from "react-redux";
 import Container from "../../../components/Container";
 import Section from "../../../components/Section";
 import { Product } from "../../../data/products";
 import ProductDetails from "./ProductDetails";
 import ProductImageGallery from "./ProductImageGallery";
+import { RootState } from "../../../store/rootReducer";
+import { selectProductById } from "../../../store/slices/productsSlice";
 
 type ProductViewSectionType = {
-    product: Product;
+    productId: Product["id"];
 };
 
 const ProductViewSection = (props: ProductViewSectionType) => {
-    const { product } = props;
+    const { productId } = props;
+
+    const product = useSelector((state: RootState) => {
+        return productId ? selectProductById(state, productId) : null;
+    });
 
     return (
         <Section>

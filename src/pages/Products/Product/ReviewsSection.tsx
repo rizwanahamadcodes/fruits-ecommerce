@@ -6,15 +6,20 @@ import Button from "../../../components/Button";
 import Container from "../../../components/Container";
 import { FiveStars } from "../../../components/Rating/StarRating";
 import Section, { SectionTitle } from "../../../components/Section";
-import { Review } from "../../../data/reviews";
+import { Product } from "../../../data/products";
+import { Review, reviews } from "../../../data/reviews";
 import { users } from "../../../data/user";
 
 type ReviewsSectionType = {
-    productReviews: Review[];
+    productId: Product["id"];
 };
 
 const ReviewsSection = (props: ReviewsSectionType) => {
-    const { productReviews } = props;
+    const { productId } = props;
+
+    const productReviews = reviews.filter(
+        (review) => review.productId === productId
+    );
 
     const [reviewPageNum, setreviewPageNum] = useState(0);
 
@@ -27,54 +32,59 @@ const ReviewsSection = (props: ReviewsSectionType) => {
     );
 
     return (
-        <Section className="bg-white" id="reviews">
-            <Container>
-                <SectionTitle className="mb-2">Reviews</SectionTitle>
+        <>
+            {productReviews.length === 0 ? null : (
+                <Section className="bg-white" id="reviews">
+                    <Container>
+                        <SectionTitle className="mb-2">Reviews</SectionTitle>
 
-                <div className="flex flex-col gap-2 min-h-[20rem]">
-                    {cutOutOfReviews.map((review) => (
-                        <Review review={review} />
-                    ))}
-                </div>
-                <div className="flex">
-                    <Button
-                        variant="ghost"
-                        nature="circular"
-                        rounding="none"
-                        className="rounded-l-full border border-gray-200"
-                        onClick={() => {
-                            setreviewPageNum(reviewPageNum - 1);
-                        }}>
-                        <FaChevronLeft />
-                    </Button>
-                    {[...Array(noOfPages)].map((_, index) => {
-                        return (
+                        <div className="flex flex-col gap-2 min-h-[20rem]">
+                            {cutOutOfReviews.map((review) => (
+                                <Review review={review} />
+                            ))}
+                        </div>
+                        <div className="flex">
                             <Button
-                                key={index}
                                 variant="ghost"
                                 nature="circular"
                                 rounding="none"
-                                className={clsx(
-                                    "border-t-[1px] border-b-[1px] border-gray-200",
-                                    index === reviewPageNum && "text-primary"
-                                )}>
-                                {index}
+                                className="rounded-l-full border border-gray-200"
+                                onClick={() => {
+                                    setreviewPageNum(reviewPageNum - 1);
+                                }}>
+                                <FaChevronLeft />
                             </Button>
-                        );
-                    })}
-                    <Button
-                        variant="ghost"
-                        nature="circular"
-                        rounding="none"
-                        className="rounded-r-full border border-gray-200"
-                        onClick={() => {
-                            setreviewPageNum(reviewPageNum + 1);
-                        }}>
-                        <FaChevronRight />
-                    </Button>
-                </div>
-            </Container>
-        </Section>
+                            {[...Array(noOfPages)].map((_, index) => {
+                                return (
+                                    <Button
+                                        key={index}
+                                        variant="ghost"
+                                        nature="circular"
+                                        rounding="none"
+                                        className={clsx(
+                                            "border-t-[1px] border-b-[1px] border-gray-200",
+                                            index === reviewPageNum &&
+                                                "text-primary"
+                                        )}>
+                                        {index}
+                                    </Button>
+                                );
+                            })}
+                            <Button
+                                variant="ghost"
+                                nature="circular"
+                                rounding="none"
+                                className="rounded-r-full border border-gray-200"
+                                onClick={() => {
+                                    setreviewPageNum(reviewPageNum + 1);
+                                }}>
+                                <FaChevronRight />
+                            </Button>
+                        </div>
+                    </Container>
+                </Section>
+            )}
+        </>
     );
 };
 
