@@ -6,11 +6,11 @@ import Button, { ButtonIcon } from "../Button";
 import { DrawerProps } from "../Drawer";
 
 type CartDrawerProps = {
-    onOpen?: DrawerProps["onOpen"];
+    open?: DrawerProps["open"];
 };
 
 const CartIcon = (props: CartDrawerProps) => {
-    const { onOpen } = props;
+    const { open } = props;
 
     const noOfItemsInCart = useSelector((state: RootState) =>
         selectNoOfItemsInCart(state)
@@ -20,7 +20,7 @@ const CartIcon = (props: CartDrawerProps) => {
         <>
             <Button
                 colorScheme="white"
-                onClick={onOpen}
+                onClick={open}
                 className="relative hidden sm:flex !border-gray-100 hover:!border-primary border">
                 <ButtonIcon icon={BsCart3} className="text-primary" />
 
@@ -33,7 +33,7 @@ const CartIcon = (props: CartDrawerProps) => {
             <Button
                 nature="circular"
                 colorScheme="white"
-                onClick={onOpen}
+                onClick={open}
                 className="relative flex sm:hidden !border-gray-100 hover:!border-primary border">
                 <ButtonIcon icon={BsCart3} className="text-primary" />
 

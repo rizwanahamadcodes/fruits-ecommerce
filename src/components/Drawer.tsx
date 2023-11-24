@@ -1,29 +1,29 @@
 import clsx from "clsx";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 export type DrawerProps = React.ComponentPropsWithoutRef<"div"> & {
     children: React.ReactNode;
     isOpen: boolean;
-    onOpen: () => void;
-    onClose: () => void;
-    onToggle?: () => void;
+    open: () => void;
+    close: () => void;
+    toggle?: () => void;
 };
 
 const Drawer = (props: DrawerProps) => {
-    const { children, isOpen, onClose, className } = props;
+    const { children, isOpen, close, className } = props;
     const location = useLocation();
 
-    const staticOnClose = useCallback(() => {
-        onClose();
+    const staticClose = useCallback(() => {
+        close();
     }, []);
 
     useEffect(() => {
-        staticOnClose();
-    }, [location.pathname, staticOnClose]);
+        staticClose();
+    }, [location.pathname, staticClose]);
 
     return (
-        <DrawerBackground isOpen={isOpen} onClose={onClose}>
+        <DrawerBackground isOpen={isOpen} close={close}>
             <DrawerMain className={className} isOpen={isOpen}>
                 {children}
             </DrawerMain>
@@ -31,36 +31,20 @@ const Drawer = (props: DrawerProps) => {
     );
 };
 
-export const useDrawer = (initialDrawerState: boolean) => {
-    const [isOpen, setIsOpen] = useState(initialDrawerState);
-
-    const onOpen = () => {
-        setIsOpen(true);
-    };
-    const onClose = () => {
-        setIsOpen(false);
-    };
-    const onToggle = () => {
-        setIsOpen(!isOpen);
-    };
-
-    return { isOpen, onOpen, onClose, onToggle };
-};
-
 type DrawerBackgroundProps = {
     children?: React.ReactNode;
     isOpen: boolean;
-    onClose: () => void;
+    close: () => void;
 };
 
 const DrawerBackground = (props: DrawerBackgroundProps) => {
-    const { children, isOpen, onClose } = props;
+    const { children, isOpen, close } = props;
 
     const handleBackgroundClick = (
         e: React.MouseEvent<HTMLDivElement, MouseEvent>
     ) => {
         if (e.target === e.currentTarget) {
-            onClose();
+            close();
         }
     };
 

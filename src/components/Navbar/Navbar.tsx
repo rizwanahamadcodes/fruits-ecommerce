@@ -7,13 +7,13 @@ import Container from "../Container";
 import CartDrawer from "../Drawers/CartDrawer";
 import CartIcon from "./CartIcon";
 import Searchbar from "./Searchbar";
-import { useDrawer } from "../Drawer";
+import { useToggle } from "../../hooks/useToggle";
 
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const navSubstituteRef = useRef(null);
     const location = useLocation();
-    const { isOpen, onClose, onOpen } = useDrawer(false);
+    const { isOpen, close, open } = useToggle(false);
 
     useEffect(() => {
         const navSubstitute = navSubstituteRef.current;
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <Container className="flex gap-1 justify-between">
                     <BrandLogo />
                     <Searchbar />
-                    <CartIcon onOpen={onOpen} />
+                    <CartIcon open={open} />
                 </Container>
             </nav>
             <div
@@ -60,7 +60,7 @@ const Navbar = () => {
                     location.pathname === pathConstants.HOME && "absolute"
                 )}
                 ref={navSubstituteRef}></div>
-            <CartDrawer isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+            <CartDrawer isOpen={isOpen} close={close} open={open} />
         </div>
     );
 };

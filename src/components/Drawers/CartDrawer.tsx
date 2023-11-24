@@ -17,7 +17,7 @@ import Drawer, {
 type CartDrawerProps = Omit<DrawerProps, "children">;
 
 const CartDrawer = (props: CartDrawerProps) => {
-    const { isOpen, onClose, onOpen } = props;
+    const { isOpen, close, open } = props;
 
     const cartItems = useSelector((state: RootState) =>
         selectAllCartItems(state)
@@ -40,12 +40,12 @@ const CartDrawer = (props: CartDrawerProps) => {
     return (
         <Drawer
             isOpen={isOpen}
-            onOpen={onOpen}
+            open={open}
             className="bg-gray-50"
-            onClose={onClose}>
+            close={close}>
             <DrawerHead className="pl-1 py-1 pr-[7vw] flex justify-between items-center">
                 <BrandLogo />
-                <CloseButton onClick={onClose} />
+                <CloseButton onClick={close} />
             </DrawerHead>
             <DrawerBody className="flex overflow-y-auto flex-col p-1 gap-1">
                 {cartItems.map((item) => (
