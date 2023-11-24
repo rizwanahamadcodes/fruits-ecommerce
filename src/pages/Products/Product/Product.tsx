@@ -89,32 +89,40 @@ const Review = (props: ReviewProps) => {
         const now = new Date();
 
         const diffTime = now.getTime() - date.getTime();
-        const diffSeconds = now.getUTCSeconds() - date.getUTCSeconds();
-        const diffMinutes = now.getUTCMinutes() - date.getUTCMinutes();
-        const diffHours = now.getUTCHours() - date.getUTCHours();
         const diffDay = now.getUTCDay() - date.getUTCDay();
+        const diffMonth = now.getUTCMonth() - date.getUTCMonth();
         const diffYear = now.getUTCFullYear() - date.getUTCFullYear();
 
+        console.log(date.getUTCMonth());
+
         const timeInMilliseconds = {
-            second: 1000,
-            minute: 1000 * 60,
+            month: 1000 * 60 * 60 * 24 * 7 * 4,
+            week: 1000 * 60 * 60 * 24 * 7,
+            day: 1000 * 60 * 60 * 24,
             hour: 1000 * 60 * 60,
+            minute: 1000 * 60,
+            second: 1000,
         };
 
-        for (const unit in timeInMilliseconds) {
-            const particularTimeInMillisecond =
-                timeInMilliseconds[unit as keyof typeof timeInMilliseconds];
+        if (diffTime < timeInMilliseconds.month) {
+            for (const unit in timeInMilliseconds) {
+                const particularTimeInMillisecond =
+                    timeInMilliseconds[unit as keyof typeof timeInMilliseconds];
 
-            if (diffTime < particularTimeInMillisecond) {
-                return {
-                    unit: unit,
-                    value: Math.round(diffTime / particularTimeInMillisecond),
-                };
+                if (diffTime > particularTimeInMillisecond) {
+                    return {
+                        unit: unit,
+                        value: Math.floor(
+                            diffTime / particularTimeInMillisecond
+                        ),
+                    };
+                }
             }
         }
     };
 
-    console.log(getTimeAgo(new Date("2023/11/24/14:09:00")));
+    console.log(getTimeAgo(new Date("2023/8/31/14:27:00")));
+
     return (
         <div className="flex gap-1">
             <img
