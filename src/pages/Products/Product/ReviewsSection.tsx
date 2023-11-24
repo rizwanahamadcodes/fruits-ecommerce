@@ -1,8 +1,4 @@
-import clsx from "clsx";
 import formatDistance from "date-fns/formatDistance";
-import { useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
-import Button from "../../../components/Button";
 import Container from "../../../components/Container";
 import { FiveStars } from "../../../components/Rating/StarRating";
 import Section, { SectionTitle } from "../../../components/Section";
@@ -21,16 +17,6 @@ const ReviewsSection = (props: ReviewsSectionType) => {
         (review) => review.productId === productId
     );
 
-    const [reviewPageNum, setreviewPageNum] = useState(0);
-
-    const noOfReviewsPerPage = 3;
-    const noOfPages = Math.ceil(productReviews.length / noOfReviewsPerPage);
-
-    const cutOutOfReviews = productReviews.slice(
-        noOfReviewsPerPage * reviewPageNum,
-        noOfReviewsPerPage * (reviewPageNum + 1)
-    );
-
     return (
         <>
             {productReviews.length === 0 ? null : (
@@ -39,47 +25,9 @@ const ReviewsSection = (props: ReviewsSectionType) => {
                         <SectionTitle className="mb-2">Reviews</SectionTitle>
 
                         <div className="flex flex-col gap-2 min-h-[20rem]">
-                            {cutOutOfReviews.map((review) => (
+                            {productReviews.map((review) => (
                                 <Review review={review} />
                             ))}
-                        </div>
-                        <div className="flex">
-                            <Button
-                                variant="ghost"
-                                nature="circular"
-                                rounding="none"
-                                className="rounded-l-full border border-gray-200"
-                                onClick={() => {
-                                    setreviewPageNum(reviewPageNum - 1);
-                                }}>
-                                <FaChevronLeft />
-                            </Button>
-                            {[...Array(noOfPages)].map((_, index) => {
-                                return (
-                                    <Button
-                                        key={index}
-                                        variant="ghost"
-                                        nature="circular"
-                                        rounding="none"
-                                        className={clsx(
-                                            "border-t-[1px] border-b-[1px] border-gray-200",
-                                            index === reviewPageNum &&
-                                                "text-primary"
-                                        )}>
-                                        {index}
-                                    </Button>
-                                );
-                            })}
-                            <Button
-                                variant="ghost"
-                                nature="circular"
-                                rounding="none"
-                                className="rounded-r-full border border-gray-200"
-                                onClick={() => {
-                                    setreviewPageNum(reviewPageNum + 1);
-                                }}>
-                                <FaChevronRight />
-                            </Button>
                         </div>
                     </Container>
                 </Section>
@@ -112,17 +60,28 @@ const Review = (props: ReviewProps) => {
                 alt={user?.name}
                 className="shrink-0 h-2.75 w-2.75 rounded-full object-cover object-center"
             />
-            <div className="flex flex-col gap-0.25">
-                <div className="flex gap-0.75">
-                    <h4>{user?.name}</h4>
-                    <p className="leading-[1rem]">{getTimeAgo(review.date)}</p>
+            <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-0.25">
+                    <div className="flex gap-0.75">
+                        <h4>{user?.name}</h4>
+                        <p className="leading-[1rem]">
+                            {getTimeAgo(review.date)}
+                        </p>
+                    </div>
+
+                    <div className="flex gap-1 items-end">
+                        <FiveStars
+                            stars={{
+                                fullStars: review.rating,
+                                grayStars: 5 - review.rating,
+                            }}
+                        />
+                        {/* <h4 className="font-medium grow">
+                            {review.rating} out of 5
+                        </h4> */}
+                    </div>
                 </div>
-                <FiveStars
-                    stars={{
-                        fullStars: review.rating,
-                        grayStars: 5 - review.rating,
-                    }}
-                />
+
                 <p>{review.review}</p>
             </div>
         </div>
