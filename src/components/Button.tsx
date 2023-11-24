@@ -4,7 +4,7 @@ import { IconType } from "react-icons";
 
 export const button = cva(
     [
-        "font-medium flex justify-center items-center gap-0.75 shadow-soft focus:shadow-primary-border focus:outline-none active:scale-95 transition",
+        "font-medium flex justify-center items-center gap-0.75 focus:shadow-primary-border focus:outline-none active:scale-95 transition",
     ],
     {
         variants: {
@@ -13,8 +13,8 @@ export const button = cva(
                 none: "",
             },
             variant: {
-                solid: "",
-                outline: "border-2 ",
+                solid: "shadow-soft",
+                outline: " shadow-soft border-2 ",
                 ghost: "",
             },
             colorScheme: {
