@@ -7,6 +7,9 @@ export type Review = {
     userId: User["id"];
     date: Date;
     productId: number;
+    likeCount: number;
+    dislikeCount: number;
+    disliked: boolean;
 };
 
 export const reviews = [
@@ -17,6 +20,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/05/06 15:19:42"),
         productId: 1,
+        likeCount: 67,
+        dislikeCount: 10,
+        disliked: false,
     },
     {
         id: 13,
@@ -25,6 +31,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/08/17 10:01:19"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: false,
     },
     {
         id: 14,
@@ -33,6 +42,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/06/03 21:50:12"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 15,
@@ -41,6 +53,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/09/20 00:12:50"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 16,
@@ -49,30 +64,42 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/10/17 00:26:21"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 9,
         review: "Not impressed. Product did not meet expectations. The Banana disappointed me.",
         rating: 2,
         userId: 1,
-        date: new Date("2023/02/06 22:57:36"),
+        date: new Date("2023/05/06 15:19:42"),
         productId: 3,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 10,
         review: "Good value for the money. Happy with the purchase. The Blueberry was worth it.",
         rating: 4,
         userId: 1,
-        date: new Date("2023/11/01 05:07:43"),
+        date: new Date("2023/05/06 15:19:42"),
         productId: 3,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 11,
         review: "Meh. Average product, nothing special. The Kiwi didn't stand out.",
         rating: 3,
         userId: 1,
-        date: new Date("2023/01/06 08:00:02"),
+        date: new Date("2023/05/06 15:19:42"),
         productId: 3,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 1,
@@ -81,6 +108,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/04/20 14:43:42"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 2,
@@ -89,6 +119,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/10/17 16:48:48"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 3,
@@ -97,6 +130,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/02/20 21:17:57"),
         productId: 1,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 4,
@@ -105,14 +141,20 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/02/22 01:34:56"),
         productId: 3,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 5,
         review: "Decent product, fair price. The Kiwi was reasonably priced.",
         rating: 4,
         userId: 1,
-        date: new Date("2023/03/00 19:31:58"),
+        date: new Date("2023/03/01 19:31:58"),
         productId: 3,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 6,
@@ -121,6 +163,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/02/21 02:39:59"),
         productId: 6,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 7,
@@ -129,6 +174,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/01/17 04:38:58"),
         productId: 7,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 8,
@@ -137,6 +185,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/03/00 22:02:12"),
         productId: 8,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 9,
@@ -145,6 +196,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/10/19 23:12:36"),
         productId: 9,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 10,
@@ -153,6 +207,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/02/16 00:55:53"),
         productId: 10,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 11,
@@ -161,6 +218,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/04/19 16:43:21"),
         productId: 11,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 12,
@@ -169,6 +229,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/06/18 08:12:07"),
         productId: 12,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 14,
@@ -177,6 +240,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/09/19 06:39:00"),
         productId: 14,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 15,
@@ -185,6 +251,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/11/02 09:19:15"),
         productId: 15,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
     {
         id: 16,
@@ -193,6 +262,9 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/09/15 19:39:31"),
         productId: 23,
+        likeCount: 45,
+        dislikeCount: 12,
+        disliked: true,
     },
 ];
 

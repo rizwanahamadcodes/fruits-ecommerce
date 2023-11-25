@@ -1,13 +1,18 @@
 import formatDistance from "date-fns/formatDistance";
+import { useSelector } from "react-redux";
+import Card, { CardBody, CardTitle } from "../../../components/Card/Card";
 import Container from "../../../components/Container";
-import {
-    FiveStars,
-    RatingDetails,
-} from "../../../components/Rating/StarRating";
-import Section, { SectionTitle } from "../../../components/Section";
+import RatingDetails, {
+    FiveRatingBars,
+    FiveStarsAndRatingOutOfFive,
+} from "../../../components/Rating/RatingDetails";
+import { FiveStars } from "../../../components/Rating/StarRating";
+import Section from "../../../components/Section";
 import { Product } from "../../../data/products";
-import { Review, reviews } from "../../../data/reviews";
+import { Review } from "../../../data/reviews";
 import { users } from "../../../data/user";
+import { RootState } from "../../../store/rootReducer";
+import { selectReviewsById } from "../../../store/slices/reviewsSlice";
 
 type ReviewsSectionType = {
     productId: Product["id"];
@@ -16,25 +21,43 @@ type ReviewsSectionType = {
 const ReviewsSection = (props: ReviewsSectionType) => {
     const { productId } = props;
 
-    const productReviews = reviews.filter(
-        (review) => review.productId === productId
+    const productReviews = useSelector((state: RootState) =>
+        selectReviewsById(state, productId)
     );
 
     return (
         <>
             {productReviews.length === 0 ? null : (
-                <Section className="bg-white" id="reviews">
-                    <Container>
-                        <SectionTitle className="mb-2">Reviews</SectionTitle>
-                        <div className="flex flex-col sm:flex-row gap-3 items-start">
-                            <div className="w-full basis-3/5">
-                                <RatingDetails productId={productId} />
-                            </div>
-                            <div className="flex flex-col gap-2 min-h-[20rem]">
-                                {productReviews.map((review) => (
-                                    <Review review={review} />
-                                ))}
-                            </div>
+                <Section className="bg-gray-200" id="reviews">
+                    <Container className="flex flex-col gap-2">
+                        <div className="flex gap-2 items-stretch">
+                            <Card className="w-1/4">
+                                <CardTitle>Ratings Breakdown</CardTitle>
+                                <CardBody>
+                                    <RatingDetails productId={productId}>
+                                        <FiveStarsAndRatingOutOfFive />
+                                    </RatingDetails>
+                                </CardBody>
+                            </Card>
+                            <Card className="w-1/4">
+                                <CardTitle>Ratings Breakdown</CardTitle>
+                                <CardBody>
+                                    <RatingDetails productId={productId}>
+                                        <FiveRatingBars />
+                                    </RatingDetails>
+                                </CardBody>
+                            </Card>
+                            <Card className="grow">
+                                <CardTitle>Most Helpful Review</CardTitle>
+                                <CardBody>
+                                    The thing is useful, trust be bro
+                                </CardBody>
+                            </Card>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            {productReviews.map((review) => (
+                                <Review review={review} />
+                            ))}
                         </div>
                     </Container>
                 </Section>
@@ -61,28 +84,33 @@ const Review = (props: ReviewProps) => {
     };
 
     return (
-        <div className="flex gap-1">
-            <img
-                src={user?.profileImageUrl}
-                alt={user?.name}
-                className="shrink-0 h-2.75 w-2.75 rounded-full object-cover object-center"
-            />
-            <div className="flex flex-col gap-1">
-                <div className="flex flex-col gap-0.25">
-                    <div className="flex gap-0.75">
-                        <h4>{user?.name}</h4>
-                        <p className="leading-[1rem]">
-                            {getTimeAgo(review.date)}
-                        </p>
-                    </div>
+        <Card>
+            <CardTitle>I am a user</CardTitle>
+            <CardBody>
+                <div className="flex gap-1">
+                    <img
+                        src={user?.profileImageUrl}
+                        alt={user?.name}
+                        className="shrink-0 h-2.75 w-2.75 rounded-full object-cover object-center"
+                    />
+                    <div className="flex flex-col gap-0.5">
+                        <div className="flex flex-col gap-0.25">
+                            <div className="flex gap-0.75">
+                                <h4>{user?.name}</h4>
+                                <p className="leading-[1rem]">
+                                    {getTimeAgo(review.date)}
+                                </p>
+                            </div>
 
-                    <div className="flex gap-1 items-end">
-                        <FiveStars rating={review.rating} />
+                            <div className="flex gap-1 items-end">
+                                <FiveStars rating={review.rating} />
+                            </div>
+                        </div>
+
+                        <p>{review.review}</p>
                     </div>
                 </div>
-
-                <p>{review.review}</p>
-            </div>
-        </div>
+            </CardBody>
+        </Card>
     );
 };

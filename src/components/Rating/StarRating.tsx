@@ -7,6 +7,12 @@ import { Product } from "../../data/products";
 import { reviews } from "../../data/reviews";
 import { useToggle } from "../../hooks/useToggle";
 import PopOver from "../Popover/PopOver";
+import RatingDetails, {
+    FiveRatingBars,
+    FiveStarsAndRatingOutOfFive,
+    NoOfRatings,
+} from "./RatingDetails";
+import Card, { CardBody, CardTitle } from "../Card/Card";
 
 type StarRatingProps = {
     productId: Product["id"];
@@ -68,106 +74,18 @@ const StarRating = (props: StarRatingProps) => {
                         toggleButtonRef={showDetailsRef}
                         isOpen={isOpen}
                         className="w-full mt-0.5 sm:w-[25rem]">
-                        <RatingDetails productId={productId} />
+                        <Card>
+                            <CardBody>
+                                <RatingDetails productId={productId}>
+                                    <FiveStarsAndRatingOutOfFive />
+                                    <NoOfRatings />
+                                    <FiveRatingBars />
+                                </RatingDetails>
+                            </CardBody>
+                        </Card>
                     </PopOver>
                 </>
             )}
-        </div>
-    );
-};
-
-type RatingDetailsProps = {
-    productId: Product["id"];
-};
-
-export const RatingDetails = (props: RatingDetailsProps) => {
-    const { productId } = props;
-
-    const productReviews = reviews.filter(
-        (review) => review.productId === productId
-    );
-    const noOfRatings = productReviews.length;
-    const sumOfRatings = productReviews.reduce(
-        (acc, review) => acc + review.rating,
-        0
-    );
-    const averageRating = noOfRatings === 0 ? 0 : sumOfRatings / noOfRatings;
-    const roundedAverageRating = Math.round(averageRating * 2) / 2;
-
-    const ratings = {
-        "5": productReviews.filter((review) => review.rating === 5).length,
-        "4": productReviews.filter((review) => review.rating === 4).length,
-        "3": productReviews.filter((review) => review.rating === 3).length,
-        "2": productReviews.filter((review) => review.rating === 2).length,
-        "1": productReviews.filter((review) => review.rating === 1).length,
-    };
-
-    const percentageRatings = {
-        "5": noOfRatings === 0 ? 0 : (ratings["5"] / noOfRatings) * 100,
-        "4": noOfRatings === 0 ? 0 : (ratings["4"] / noOfRatings) * 100,
-        "3": noOfRatings === 0 ? 0 : (ratings["3"] / noOfRatings) * 100,
-        "2": noOfRatings === 0 ? 0 : (ratings["2"] / noOfRatings) * 100,
-        "1": noOfRatings === 0 ? 0 : (ratings["1"] / noOfRatings) * 100,
-    };
-
-    return (
-        <div
-            className={clsx(
-                "bg-white overflow-hidden shadow-soft rounded-0.5 border border-gray-100 p-1 flex flex-col gap-0.5 min-h-content w-full ease-in-out"
-            )}>
-            <div className="flex items-end gap-1 min-w-max">
-                <FiveStars rating={roundedAverageRating} />
-                <h4 className="font-medium grow">
-                    {roundedAverageRating} out of 5
-                </h4>
-            </div>
-            <p className="font-medium">{noOfRatings} reviews</p>
-            <div>
-                <RatingBar
-                    label="5 stars"
-                    percentageRating={percentageRatings[5]}
-                />
-                <RatingBar
-                    label="4 stars"
-                    percentageRating={percentageRatings[4]}
-                />
-                <RatingBar
-                    label="3 stars"
-                    percentageRating={percentageRatings[3]}
-                />
-                <RatingBar
-                    label="2 stars"
-                    percentageRating={percentageRatings[2]}
-                />
-                <RatingBar
-                    label="1 stars"
-                    percentageRating={percentageRatings[1]}
-                />
-            </div>
-        </div>
-    );
-};
-
-type RatingBarProps = {
-    label: string;
-    percentageRating: number;
-};
-
-const RatingBar = (props: RatingBarProps) => {
-    const { label, percentageRating } = props;
-
-    return (
-        <div className="flex gap-0.5 items-center">
-            <p className="min-w-[4rem]">{label}</p>
-            <div className="overflow-hidden w-full  rounded-full h-1 bg-gray-100">
-                <div
-                    style={{
-                        height: "100%",
-                        width: percentageRating + "%",
-                    }}
-                    className="bg-gradient-to-r from-primary to-primary-400 rounded-r-full"></div>
-            </div>
-            <p className="min-w-[2rem]">{`${Math.round(percentageRating)}%`}</p>
         </div>
     );
 };
@@ -179,10 +97,12 @@ type FiveStarsProps = {
 export const FiveStars = (props: FiveStarsProps) => {
     const { rating } = props;
 
+    const roundedRating = Math.round(rating * 2) / 2;
+
     const stars = {
-        fullStars: Math.floor(rating),
-        halfStar: rating % 1 !== 0,
-        grayStars: 5 - Math.ceil(rating),
+        fullStars: Math.floor(roundedRating),
+        halfStar: roundedRating % 1 !== 0,
+        grayStars: 5 - Math.ceil(roundedRating),
     };
 
     const { fullStars, halfStar = false, grayStars } = stars;
