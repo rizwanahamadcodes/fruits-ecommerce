@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import { Product } from "../../data/products";
 import { reviews } from "../../data/reviews";
 import { useToggle } from "../../hooks/useToggle";
+import Card, { CardBody } from "../Card/Card";
 import PopOver from "../Popover/PopOver";
 import RatingDetails, {
     FiveRatingBars,
     FiveStarsAndRatingOutOfFive,
     NoOfRatings,
 } from "./RatingDetails";
-import Card, { CardBody, CardTitle } from "../Card/Card";
 
 type StarRatingProps = {
     productId: Product["id"];
