@@ -30,8 +30,8 @@ const ReviewsSection = (props: ReviewsSectionType) => {
             {productReviews.length === 0 ? null : (
                 <Section className="bg-gray-200" id="reviews">
                     <Container className="flex flex-col gap-2">
-                        <div className="flex gap-2 items-stretch">
-                            <Card className="w-1/4">
+                        <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] xl:grid-cols-[1fr_1fr_2fr] gap-1 items-stretch flex-wrap">
+                            <Card>
                                 <CardTitle>Ratings Breakdown</CardTitle>
                                 <CardBody>
                                     <RatingDetails productId={productId}>
@@ -39,7 +39,7 @@ const ReviewsSection = (props: ReviewsSectionType) => {
                                     </RatingDetails>
                                 </CardBody>
                             </Card>
-                            <Card className="w-1/4">
+                            <Card>
                                 <CardTitle>Ratings Breakdown</CardTitle>
                                 <CardBody>
                                     <RatingDetails productId={productId}>
@@ -47,7 +47,7 @@ const ReviewsSection = (props: ReviewsSectionType) => {
                                     </RatingDetails>
                                 </CardBody>
                             </Card>
-                            <Card className="grow">
+                            <Card className="sm:col-span-2 xl:col-auto">
                                 <CardTitle>Most Helpful Review</CardTitle>
                                 <CardBody>
                                     The thing is useful, trust be bro
