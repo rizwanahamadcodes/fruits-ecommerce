@@ -70,12 +70,13 @@ export const selectMostLikeReviewById = (
     const productReviews = state.reviews.reviews.filter(
         (review) => review.productId === productId
     );
+    if (productReviews.length != 0) {
+        return productReviews.reduce((a, b) =>
+            Math.max(a.likeCount, b.likeCount) === a.likeCount ? a : b
+        );
+    }
 
-    const mostLikedReview = productReviews.reduce((a, b) =>
-        Math.max(a.likeCount, b.likeCount) === a.likeCount ? a : b
-    );
-
-    return mostLikedReview;
+    return null;
 };
 
 export const reviewsReducer = reviewsSlice.reducer;
