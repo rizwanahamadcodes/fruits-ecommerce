@@ -60,7 +60,9 @@ const ReviewsSection = (props: ReviewsSectionType) => {
                                 <Card className="sm:col-span-2 xl:col-auto">
                                     <CardTitle>Most Helpful Review</CardTitle>
                                     <CardBody>
-                                        <Review review={mostLikedReview} />
+                                        {mostLikedReview ? (
+                                            <Review review={mostLikedReview} />
+                                        ) : null}
                                     </CardBody>
                                 </Card>
                             </div>
