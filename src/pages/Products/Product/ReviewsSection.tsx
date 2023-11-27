@@ -128,7 +128,9 @@ const Review = (props: ReviewProps) => {
                 <p>{review.review}</p>
 
                 <div className="flex justify-end flex-col gap-0.5 sm:flex-row sm:items-end">
-                    <p className="text-gray-500">Was this review helpful?</p>
+                    <p className="text-gray-500 leading-1">
+                        Was this review helpful?
+                    </p>
                     <div className="flex gap-1">
                         <Button
                             variant="outline"
