@@ -9,7 +9,8 @@ export type Review = {
     productId: number;
     likeCount: number;
     dislikeCount: number;
-    disliked: boolean;
+    dislikedAsGuest: boolean;
+    likedAsGuest: boolean;
 };
 
 export const reviews = [
@@ -20,9 +21,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/05/06 15:19:42"),
         productId: 1,
-        likeCount: 67,
+        likeCount: 1,
         dislikeCount: 10,
-        disliked: false,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 13,
@@ -31,9 +33,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/08/17 10:01:19"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: false,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 14,
@@ -42,9 +45,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/06/03 21:50:12"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 15,
@@ -53,9 +57,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/09/20 00:12:50"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 16,
@@ -64,9 +69,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/10/17 00:26:21"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 9,
@@ -77,7 +83,8 @@ export const reviews = [
         productId: 3,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 10,
@@ -88,7 +95,8 @@ export const reviews = [
         productId: 3,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 11,
@@ -99,7 +107,8 @@ export const reviews = [
         productId: 3,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 1,
@@ -108,9 +117,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/04/20 14:43:42"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 2,
@@ -119,9 +129,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/10/17 16:48:48"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 3,
@@ -130,9 +141,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/02/20 21:17:57"),
         productId: 1,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 4,
@@ -143,7 +155,8 @@ export const reviews = [
         productId: 3,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 5,
@@ -154,7 +167,8 @@ export const reviews = [
         productId: 3,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 6,
@@ -165,7 +179,8 @@ export const reviews = [
         productId: 6,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 7,
@@ -176,7 +191,8 @@ export const reviews = [
         productId: 7,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 8,
@@ -187,7 +203,8 @@ export const reviews = [
         productId: 8,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 9,
@@ -198,7 +215,8 @@ export const reviews = [
         productId: 9,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 10,
@@ -207,9 +225,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/02/16 00:55:53"),
         productId: 10,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 11,
@@ -218,9 +237,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/04/19 16:43:21"),
         productId: 11,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 12,
@@ -229,9 +249,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/06/18 08:12:07"),
         productId: 12,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 14,
@@ -240,9 +261,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/09/19 06:39:00"),
         productId: 14,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 15,
@@ -251,9 +273,10 @@ export const reviews = [
         userId: 1,
         date: new Date("2023/11/02 09:19:15"),
         productId: 15,
-        likeCount: 45,
+        likeCount: 1,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
     {
         id: 16,
@@ -264,7 +287,8 @@ export const reviews = [
         productId: 23,
         likeCount: 45,
         dislikeCount: 12,
-        disliked: true,
+        dislikedAsGuest: false,
+        likedAsGuest: false,
     },
 ];
 

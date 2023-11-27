@@ -13,8 +13,39 @@ const reviewsSlice = createSlice({
         reviews: reviews,
     } as ReviewsState,
     reducers: {
-        addReview: (state, action: PayloadAction<Review>) => {
-            state.reviews.push(action.payload);
+        likeReview: (state, action: PayloadAction<Review["id"]>) => {
+            state.reviews = state.reviews.map((review) =>
+                review.id === action.payload
+                    ? review.likedAsGuest
+                        ? {
+                              ...review,
+                              likeCount: review.likeCount - 1,
+                              likedAsGuest: false,
+                          }
+                        : {
+                              ...review,
+                              likeCount: review.likeCount + 1,
+                              likedAsGuest: true,
+                          }
+                    : review
+            );
+        },
+        dislikeReview: (state, action: PayloadAction<Review["id"]>) => {
+            state.reviews = state.reviews.map((review) =>
+                review.id === action.payload
+                    ? review.dislikedAsGuest
+                        ? {
+                              ...review,
+                              dislikeCount: review.dislikeCount - 1,
+                              dislikedAsGuest: false,
+                          }
+                        : {
+                              ...review,
+                              dislikeCount: review.dislikeCount + 1,
+                              dislikedAsGuest: true,
+                          }
+                    : review
+            );
         },
     },
 });
@@ -32,5 +63,20 @@ export const selectReviewsById = (
     );
 };
 
+export const selectMostLikeReviewById = (
+    state: RootState,
+    productId: Product["id"]
+) => {
+    const productReviews = state.reviews.reviews.filter(
+        (review) => review.productId === productId
+    );
+
+    const mostLikedReview = productReviews.reduce((a, b) =>
+        Math.max(a.likeCount, b.likeCount) === a.likeCount ? a : b
+    );
+
+    return mostLikedReview;
+};
+
 export const reviewsReducer = reviewsSlice.reducer;
-export const { addReview } = reviewsSlice.actions;
+export const { likeReview, dislikeReview } = reviewsSlice.actions;

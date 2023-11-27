@@ -4,7 +4,7 @@ import { IconType } from "react-icons";
 
 export const button = cva(
     [
-        "font-medium flex justify-center items-center gap-0.75 focus:shadow-primary-border focus:outline-none active:scale-95 transition",
+        "font-medium flex justify-center items-center gap-0.75 focus:outline-none active:scale-95 transition",
     ],
     {
         variants: {
@@ -38,19 +38,19 @@ export const button = cva(
                 variant: "solid",
                 colorScheme: "primary",
                 className:
-                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary text-white hover:text-white",
+                    "bg-gradient-to-r from-primary to-primary-400 hover:to-primary text-white hover:text-white focus:shadow-primary-border",
             },
             {
                 variant: "solid",
                 colorScheme: "gray",
                 className:
-                    "bg-gradient-to-r from-gray-900 to-gray-800 hover:to-gray-900",
+                    "bg-gradient-to-r from-gray-900 to-gray-800 hover:to-gray-900 focus:shadow-gray-900-border",
             },
             {
                 variant: "solid",
                 colorScheme: "gray-500",
                 className:
-                    "bg-gradient-to-r from-gray-500 to-gray-400 hover:to-gray-500",
+                    "bg-gradient-to-r from-gray-500 to-gray-400 hover:to-gray-500 ",
             },
             {
                 variant: "solid",
@@ -61,17 +61,20 @@ export const button = cva(
             {
                 variant: "outline",
                 colorScheme: "primary",
-                className: "text-primary border-primary",
+                className:
+                    "text-primary border-primary focus:shadow-primary-border",
             },
             {
                 variant: "outline",
                 colorScheme: "gray",
-                className: "text-gray-900 border-gray-900",
+                className:
+                    "text-gray-900 border-gray-900  focus:shadow-gray-900-border",
             },
             {
                 variant: "outline",
                 colorScheme: "gray-500",
-                className: "text-gray-500 border-gray-500",
+                className:
+                    "text-gray-500 border-gray-500 focus:shadow-gray-500-border",
             },
             {
                 size: "medium",

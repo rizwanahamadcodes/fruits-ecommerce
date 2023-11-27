@@ -76,6 +76,8 @@ module.exports = {
                 soft: "0 1px 4px 0 rgba(0,0,0,0.1)",
                 "soft-left": "-1px 0px 4px 0 rgba(0,0,0,0.1)",
                 "primary-border": "0 0 0 4px hsla(105deg, 99%, 29%, 0.5)",
+                "gray-500-border": "0 0 0 4px hsla(105deg, 5%, 50%, 0.5)",
+                "gray-900-border": "0 0 0 4px hsla(105deg, 5%, 10%, 0.5)",
                 "danger-border": "0 0 0 4px hsla(0deg, 100%, 50%, 0.6)",
                 "success-border": "0 0 0 4px hsla(120deg, 100%, 40%, 0.6)",
             },

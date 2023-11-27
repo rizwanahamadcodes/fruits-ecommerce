@@ -36,7 +36,7 @@ type CardBodyProps = {
 export const CardBody = (props: CardBodyProps) => {
     const { children } = props;
 
-    return <div>{children}</div>;
+    return <div className="w-full">{children}</div>;
 };
 
 export default Card;

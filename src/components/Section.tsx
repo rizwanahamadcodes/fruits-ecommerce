@@ -37,5 +37,16 @@ export const SectionTitle = (props: SectionTitleProps) => {
         </h2>
     );
 };
+type SectionCategoryTitleProps = {
+    children: React.ReactNode;
+    className?: string;
+};
+export const SectionCategoryTitle = (props: SectionCategoryTitleProps) => {
+    const { className, children } = props;
+
+    return (
+        <h3 className={clsx("text-1.75 font-medium", className)}>{children}</h3>
+    );
+};
 
 export default Section;
