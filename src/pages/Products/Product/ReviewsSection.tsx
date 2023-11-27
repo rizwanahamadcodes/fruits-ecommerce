@@ -127,30 +127,30 @@ const Review = (props: ReviewProps) => {
 
                 <p>{review.review}</p>
 
-                <div className="flex gap-1 justify-end items-end">
-                    <p className="overflow-ellipsis whitespace-nowrap text-gray-500">
-                        Was this review helpful?
-                    </p>
-                    <Button
-                        variant="outline"
-                        size="small"
-                        colorScheme={
-                            review.likedAsGuest ? "primary" : "gray-500"
-                        }
-                        onClick={() => dispatch(likeReview(review.id))}>
-                        <ButtonIcon icon={BiSolidLike} /> |{" "}
-                        <span>{review.likeCount}</span>
-                    </Button>
-                    <Button
-                        variant="outline"
-                        size="small"
-                        nature="circular"
-                        colorScheme={
-                            review.dislikedAsGuest ? "primary" : "gray-500"
-                        }
-                        onClick={() => dispatch(dislikeReview(review.id))}>
-                        <ButtonIcon icon={BiSolidDislike} />
-                    </Button>
+                <div className="flex justify-end flex-col gap-0.5 sm:flex-row sm:items-end">
+                    <p className="text-gray-500">Was this review helpful?</p>
+                    <div className="flex gap-1">
+                        <Button
+                            variant="outline"
+                            size="small"
+                            colorScheme={
+                                review.likedAsGuest ? "primary" : "gray-500"
+                            }
+                            onClick={() => dispatch(likeReview(review.id))}>
+                            <ButtonIcon icon={BiSolidLike} /> |{" "}
+                            <span>{review.likeCount}</span>
+                        </Button>
+                        <Button
+                            variant="outline"
+                            size="small"
+                            nature="circular"
+                            colorScheme={
+                                review.dislikedAsGuest ? "primary" : "gray-500"
+                            }
+                            onClick={() => dispatch(dislikeReview(review.id))}>
+                            <ButtonIcon icon={BiSolidDislike} />
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>
