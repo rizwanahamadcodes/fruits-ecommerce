@@ -52,7 +52,7 @@ const Input = (props: InputProps) => {
 
 const BillingForm = () => {
     return (
-        <form className="grid grid-cols-2 gap-0.75">
+        <form className="grid grid-cols-1 sm:grid-cols-2 gap-0.75">
             <Input placeholder="First Name" type="text" />
             <Input placeholder="Last Name" type="text" />
             <Input placeholder="Username" type="text" />
@@ -60,7 +60,7 @@ const BillingForm = () => {
             <Input placeholder="Address Line 1" type="text" />
             <Input placeholder="Address Line 2" type="text" />
             <SelectCountry className="" />
-            <div className="relative flex gap-1 col-span-2">
+            <div className="relative flex gap-1 cols-span-1 sm:col-span-2">
                 <input
                     id="agreedToTerms"
                     type="checkbox"
@@ -151,8 +151,8 @@ const OptionWithIcon = (props: OptionProps<OptionType>) => {
 };
 const PaymentForm = () => {
     return (
-        <form className="grid grid-cols-2 gap-0.75">
-            <div className="flex gap-1.5 col-span-2">
+        <form className="grid grid-cols-1 sm:grid-cols-2 gap-0.75">
+            <div className="flex gap-1.5 col-span-1 sm:col-span-2">
                 <span className="flex gap-0.5">
                     <input
                         name="paymentMethod"
