@@ -29,7 +29,7 @@ const SelectCategories = () => {
                     parseInt(searchParams.get("selectedCategory") || "0")
             )}
             onChange={(e) => handleCategorySelect(e as SingleValue<OptionType>)}
-            placeholder="Select Category"
+            placeholder="Select Country"
             className="mb-2"
             options={categories}
             classNames={{
