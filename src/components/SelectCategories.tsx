@@ -29,7 +29,7 @@ const SelectCategories = () => {
                     parseInt(searchParams.get("selectedCategory") || "0")
             )}
             onChange={(e) => handleCategorySelect(e as SingleValue<OptionType>)}
-            placeholder="Select Country"
+            placeholder="Select Category"
             className="mb-2"
             options={categories}
             classNames={{
@@ -46,9 +46,10 @@ const SelectCategories = () => {
                 menuList: () => "!py-0",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !pl-1 leading-[2rem] !cursor-pointer hover:bg-primary/30 !rounded-full !border-[0]",
+                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !rounded-full !border border-transparent mb-0.25 last:mb-0",
                         isSelected && "!bg-primary/50",
-                        isFocused && "!bg-primary/20"
+                        isFocused && "!border-primary",
+                        isFocused && !isSelected && "!bg-transparent"
                     ),
                 dropdownIndicator: ({ isFocused }) =>
                     clsx("!transition-all", isFocused && "rotate-180"),

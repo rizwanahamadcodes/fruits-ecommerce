@@ -16,17 +16,18 @@ const Checkout = () => {
         <Section>
             <Container className="flex flex-col sm:flex-row">
                 <div className="grow">
-                    <div className="mb-2">
+                    <div className="">
                         <SectionCategoryTitle className="mb-1">
                             Billing Address
                         </SectionCategoryTitle>
                         <BillingForm />
                     </div>
+                    <div className="h-[1px] bg-gray-300 my-2"></div>
                     <div>
-                        <SectionCategoryTitle>
-                            <PaymentForm />
+                        <SectionCategoryTitle className="mb-1">
+                            Payment
                         </SectionCategoryTitle>
-                        {/* <PaymentForm /> */}
+                        <PaymentForm />
                     </div>
                 </div>
                 <div className="sm:w-1/3">Cart</div>
@@ -44,54 +45,86 @@ const Input = (props: InputProps) => {
     return (
         <input
             {...otherProps}
-            className="border-gray-100 grow border hover:border-primary text-1 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
+            className="border-gray-200 grow border hover:border-primary text-1 max-w-lg h-3 px-1 rounded-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
         />
     );
 };
 
 const BillingForm = () => {
     return (
-        <form className="grid grid-cols-2 gap-1">
+        <form className="grid grid-cols-2 gap-0.75">
             <Input placeholder="First Name" type="text" />
             <Input placeholder="Last Name" type="text" />
             <Input placeholder="Username" type="text" />
             <Input placeholder="Email" type="email" />
             <Input placeholder="Address Line 1" type="text" />
             <Input placeholder="Address Line 2" type="text" />
-            <SelectCountry />
+            <SelectCountry className="" />
+            <div className="relative flex gap-1 col-span-2">
+                <input
+                    id="agreedToTerms"
+                    type="checkbox"
+                    className="peer cursor-pointer relative appearance-none shrink-0 w-1.25 h-1.25 border border-gray-200 bg-white
+                    focus:outline-none focus:border hover:border hover:border-primary focus:shadow-primary-border focus:border-primary focus:ring-1 focus:ring-blue-100
+                    checked:bg-primary/50 checked:border-0
+                    disabled:border-gray-400 disabled:bg-gray-400"
+                />
+                <svg
+                    className="absolute w-1 h-1 top-[0.125rem] left-[0.125rem] pointer-events-none hidden peer-checked:block stroke-white outline-none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <label
+                    htmlFor="agreedToTerms"
+                    className="text-gray-800 cursor-pointer font-medium">
+                    Agree to terms and policeis policies
+                </label>
+            </div>
         </form>
     );
 };
 
-const SelectCountry = () => {
+type SelectCountryProps = {
+    className: string;
+};
+
+const SelectCountry = (props: SelectCountryProps) => {
+    const { className } = props;
+
     const countriesOptions: OptionType[] = countries.map((country) => {
         return { id: country.code, value: country.code, label: country.name };
     });
 
     return (
-        <div>
-            <label htmlFor="" className="font-medium">
+        <div className={className}>
+            <label htmlFor="" className="font-medium text-gray-800">
                 Country:
             </label>
             <Select
                 placeholder="Select Country"
-                className="mb-2"
+                className=""
                 options={countriesOptions}
                 classNames={{
-                    container: () => "max-w-lg cursor-pointer mt-0.5",
+                    container: () => "max-w-lg cursor-pointer mt-0.25",
                     control: ({ isFocused }) =>
                         clsx(
-                            "!rounded-full px-0.5 h-3 bg-white shadow-soft !cursor-pointer",
+                            "!rounded-1 !border-gray-200 !border px-0.5 h-3 bg-white !cursor-pointer",
                             !isFocused &&
                                 "!border-transparent border-gray-200 hover:border-primary",
                             isFocused &&
                                 "!border-primary !shadow-primary-border !border-1 outline-none"
                         ),
-                    menu: () => "!rounded-1.5 overflow-hidden !border-[0]",
+                    menu: () => "!rounded-1 overflow-hidden !border-[0]",
                     menuList: () => "!py-0",
                     option: ({ isSelected, isFocused }) =>
                         clsx(
-                            "h-3 !pl-1 leading-[2rem] !cursor-pointer !rounded-full !border border-transparent",
+                            "h-3 !pl-1 leading-[2rem] !cursor-pointer !rounded-1 !border border-transparent mb-0.25 last:mb-0",
                             isSelected && "!bg-primary/50",
                             isFocused && "!border-primary",
                             isFocused && !isSelected && "!bg-transparent"
@@ -117,5 +150,40 @@ const OptionWithIcon = (props: OptionProps<OptionType>) => {
     );
 };
 const PaymentForm = () => {
-    return <div>PaymentForm</div>;
+    return (
+        <form className="grid grid-cols-2 gap-0.75">
+            <div className="flex gap-1.5 col-span-2">
+                <span className="flex gap-0.5">
+                    <input
+                        name="paymentMethod"
+                        id="paymentMethod1"
+                        type="radio"
+                        className="relative cursor-pointer flex items-center justify-center appearance-none h-1.25 w-1.25 bg-white rounded-full border-gray-200 border checked:after:content-[''] checked:after:block checked:after:h-0.5 checked:after:w-0.5 checked:after:bg-primary checked:after:rounded-full"
+                    />
+                    <label
+                        htmlFor="paymentMethod1"
+                        className="text-gray-800 font-medium cursor-pointer">
+                        Debit Card
+                    </label>
+                </span>
+                <span className="flex gap-0.5">
+                    <input
+                        name="paymentMethod"
+                        id="paymentMethod2"
+                        type="radio"
+                        className="relative cursor-pointer flex items-center justify-center appearance-none h-1.25 w-1.25 bg-white rounded-full border-gray-200 border checked:after:content-[''] checked:after:block checked:after:h-0.5 checked:after:w-0.5 checked:after:bg-primary checked:after:rounded-full"
+                    />
+                    <label
+                        htmlFor="paymentMethod2"
+                        className="text-gray-800 font-medium cursor-pointer">
+                        Credit Card
+                    </label>
+                </span>
+            </div>
+            <Input type="text" placeholder="Name on the card" />
+            <Input type="text" placeholder="Card Number" />
+            <Input type="text" placeholder="Expiration" />
+            <Input type="text" placeholder="CVV" />
+        </form>
+    );
 };
