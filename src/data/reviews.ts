@@ -199,7 +199,7 @@ export const reviews = [
         review: "Average at best, expected more for the price. The Orange was just average.",
         rating: 3,
         userId: 1,
-        date: new Date("2023/03/00 22:02:12"),
+        date: new Date("2023/03/01 22:02:12"),
         productId: 8,
         likeCount: 45,
         dislikeCount: 12,

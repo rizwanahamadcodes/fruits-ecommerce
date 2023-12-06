@@ -28,6 +28,14 @@ const ProductImageGallery = (props: ProductImageGalleryProps) => {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
 
+    const mainSwiperSlideClassNames =
+        "overflow-hidden relative flex items-center h-[80vw] md:h-auto justify-center p-1";
+    const mainSwiperImageClassNames = "w-full h-full object-contain";
+
+    const thumbSwiperSlideClassNames =
+        "w-full min-h-[6rem] overflow-hidden relative border-gray-100 border rounded-1 h-full flex items-center justify-center p-0.25";
+    const thumbSwiperImageClassNames = "w-full  h-full object-contain";
+
     return (
         <>
             <Swiper
@@ -48,21 +56,21 @@ const ProductImageGallery = (props: ProductImageGalleryProps) => {
                 }}
                 modules={[Thumbs, Zoom]}
                 grabCursor={true}>
-                <SwiperSlide className="pt-[100%] overflow-hidden relative">
+                <SwiperSlide className={mainSwiperSlideClassNames}>
                     <img
                         src={imageUrl}
                         alt=""
-                        className="absolute top-0 left-0 width-full"
+                        className={mainSwiperImageClassNames}
                     />
                 </SwiperSlide>
                 {moreImages.map((image, index) => (
                     <SwiperSlide
                         key={index}
-                        className="pt-[100%] overflow-hidden relative">
+                        className={mainSwiperSlideClassNames}>
                         <img
                             src={image}
                             alt=""
-                            className="absolute top-0 left-0 width-full"
+                            className={mainSwiperImageClassNames}
                         />
                     </SwiperSlide>
                 ))}
@@ -101,21 +109,21 @@ const ProductImageGallery = (props: ProductImageGalleryProps) => {
                         },
                     }}>
                     <SwiperSlide className="cursor-pointer">
-                        <div className="w-full pt-[100%] overflow-hidden relative border-gray-100 border rounded-1">
+                        <div className={thumbSwiperSlideClassNames}>
                             <img
                                 src={imageUrl}
                                 alt=""
-                                className="absolute top-0 left-0 w-full"
+                                className={thumbSwiperImageClassNames}
                             />
                         </div>
                     </SwiperSlide>
                     {moreImages.map((image, index) => (
                         <SwiperSlide key={index} className="cursor-pointer">
-                            <div className="w-full pt-[100%] overflow-hidden relative border-gray-100 border rounded-1">
+                            <div className={thumbSwiperSlideClassNames}>
                                 <img
                                     src={image}
                                     alt=""
-                                    className="absolute top-0 left-0 w-full"
+                                    className={thumbSwiperImageClassNames}
                                 />
                             </div>
                         </SwiperSlide>
