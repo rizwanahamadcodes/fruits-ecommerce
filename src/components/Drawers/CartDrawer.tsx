@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import pathConstants from "../../routes/pathConstants";
 import { RootState } from "../../store/rootReducer";
 import { selectAllCartItems } from "../../store/slices/cartSlice";
 import { selectAllProducts } from "../../store/slices/productsSlice";
 import { formatCurrency } from "../../utils/currency";
 import BrandLogo from "../BrandLogo";
-import Button, { button } from "../Button";
+import { button } from "../Button";
 import CartItemCard from "../CartItemCard/CartItemCard";
 import CloseButton from "../CloseButton";
 import Drawer, {
@@ -13,8 +15,6 @@ import Drawer, {
     DrawerHead,
     DrawerProps,
 } from "../Drawer";
-import { Link } from "react-router-dom";
-import pathConstants from "../../routes/pathConstants";
 
 type CartDrawerProps = Omit<DrawerProps, "children">;
 
