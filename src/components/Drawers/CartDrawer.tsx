@@ -67,11 +67,6 @@ const CartDrawer = (props: CartDrawerProps) => {
                         </p>
                     </div>
                 )}
-                <div className="flex gap-1">
-                    <Button className="w-full" variant="outline">
-                        View Cart
-                    </Button>
-                </div>
                 <Link to={pathConstants.CHECKOUT} className={button()}>
                     Checkout
                 </Link>
