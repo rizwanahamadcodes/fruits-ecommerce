@@ -44,7 +44,7 @@ const Navbar = () => {
         <div>
             <nav
                 className={clsx(
-                    "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
+                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
                     location.pathname != pathConstants.HOME && ""
                 )}>

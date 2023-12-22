@@ -30,7 +30,7 @@ export const SectionTitle = (props: SectionTitleProps) => {
     return (
         <h2
             className={clsx(
-                "font-dancing text-3 font-medium text-primary-600",
+                "text-2.5 font-medium text-primary-600",
                 className
             )}>
             {children}
