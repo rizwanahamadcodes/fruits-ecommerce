@@ -45,7 +45,7 @@ const SelectCategories = () => {
                 menuList: () => "!py-0",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !border border-transparent mb-0.25 last:mb-0",
+                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !border border-transparent mb-0.25 last:mb-0 last:rounded-b-1.5 first:rounded-t-1.5",
                         isSelected &&
                             "!text-primary !bg-white !border-y-primary",
                         isFocused && "!border-y-primary",
@@ -67,6 +67,7 @@ const OptionWithIcon = (props: OptionProps<OptionType>) => {
     return (
         <Option {...props} className={clsx("h-3", isSelected && "font-white")}>
             <span>{label}</span>
+            <span className=""></span>
         </Option>
     );
 };
