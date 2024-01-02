@@ -46,7 +46,7 @@ export default ProductsSection;
 type ProductListLayoutProps = {
     children: React.ReactNode;
 };
-const ProductListLayout = (props: ProductListLayoutProps) => {
+export const ProductListLayout = (props: ProductListLayoutProps) => {
     const { children } = props;
 
     return (

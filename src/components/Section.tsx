@@ -22,15 +22,36 @@ export const Section = forwardRef<HTMLDivElement, SectionProps>(
 
 type SectionTitleProps = {
     children: React.ReactNode;
+    defaultBottomMargin?: boolean;
     className?: string;
 };
 export const SectionTitle = (props: SectionTitleProps) => {
-    const { className, children } = props;
+    const { className, defaultBottomMargin, children } = props;
 
     return (
         <h2
             className={clsx(
                 "text-2.25 font-normal text-primary-600",
+                defaultBottomMargin ? "mb-0.5" : "",
+                className
+            )}>
+            {children}
+        </h2>
+    );
+};
+type SectionSubtitleProps = {
+    children: React.ReactNode;
+    defaultBottomMargin?: boolean;
+    className?: string;
+};
+export const SectionSubtitle = (props: SectionSubtitleProps) => {
+    const { className, defaultBottomMargin = true, children } = props;
+
+    return (
+        <h2
+            className={clsx(
+                "text-1.25 text-gray-700 font-normal",
+                defaultBottomMargin ? "mb-2" : "",
                 className
             )}>
             {children}
