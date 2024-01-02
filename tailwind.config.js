@@ -94,7 +94,6 @@ module.exports = {
 
         fontFamily: {
             sans: ["Montserrat", "system-ui"],
-            dancing: ["Dancing Script"],
         },
     },
     plugins: [],
