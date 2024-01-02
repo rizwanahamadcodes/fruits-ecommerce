@@ -33,7 +33,7 @@ const ProductImageGallery = (props: ProductImageGalleryProps) => {
     const mainSwiperImageClassNames = "w-full h-full object-contain";
 
     const thumbSwiperSlideClassNames =
-        "w-full min-h-[6rem] overflow-hidden relative border-gray-100 border rounded-1 h-full flex items-center justify-center p-0.25";
+        "w-full overflow-hidden relative border-gray-100 border rounded-1 h-full flex items-center justify-center p-0.25";
     const thumbSwiperImageClassNames = "w-full  h-full object-contain";
 
     return (
