@@ -3,7 +3,10 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import Container from "../../components/Container";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import Section, { SectionTitle } from "../../components/Section";
+import Section, {
+    SectionCategoryTitle,
+    SectionTitle,
+} from "../../components/Section";
 import SelectCategories from "../../components/SelectCategories";
 import { RootState } from "../../store/rootReducer";
 import { selectFilteredProducts } from "../../store/slices/productsSlice";
@@ -18,9 +21,10 @@ const ProductsSection = () => {
         <Section id="products-section" className="pt-1">
             <Container>
                 <SectionTitle className="mb-1">Our Products</SectionTitle>
-
-                <SelectCategories />
-
+                <div className="flex w-full max-w-xl mb-2 gap-1 items-center">
+                    <SectionCategoryTitle>Category: </SectionCategoryTitle>
+                    <SelectCategories />
+                </div>
                 {filteredProducts.length === 0 ? (
                     <p className="bg-white rounded-1 p-1 shadow-soft">
                         Sorry no products match your search criteria

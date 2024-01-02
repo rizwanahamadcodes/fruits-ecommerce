@@ -30,10 +30,9 @@ const SelectCategories = () => {
             )}
             onChange={(e) => handleCategorySelect(e as SingleValue<OptionType>)}
             placeholder="Select Category"
-            className="mb-2"
             options={categories}
             classNames={{
-                container: () => "max-w-lg cursor-pointer",
+                container: () => "w-full cursor-pointer",
                 control: ({ isFocused }) =>
                     clsx(
                         "!rounded-full px-0.5 h-3 bg-white shadow-soft !cursor-pointer",

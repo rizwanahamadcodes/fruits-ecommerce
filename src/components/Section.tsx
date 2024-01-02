@@ -45,7 +45,9 @@ export const SectionCategoryTitle = (props: SectionCategoryTitleProps) => {
     const { className, children } = props;
 
     return (
-        <h3 className={clsx("text-1.25 font-medium", className)}>{children}</h3>
+        <h3 className={clsx("text-1.25 font-medium text-gray-800", className)}>
+            {children}
+        </h3>
     );
 };
 

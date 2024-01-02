@@ -16,7 +16,7 @@ const HeroSection = () => {
                     alt="hero lemonade banner"
                 />
                 <Container className="flex flex-col items-center mt-2 gap-2">
-                    <h1 className="text-center w-full max-w-[720px]">
+                    <h1 className="text-center w-full max-w-3xl">
                         <span className="text-1.5 text-gray-700 sm:text-2 font-normal">
                             The best
                         </span>
