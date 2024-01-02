@@ -185,7 +185,9 @@ const OverallRating = (props: OverallRatingProps) => {
                 <span> /5</span>
             </p>
             <FiveStars rating={roundedAverageRating} />
-            <p>{noOfRatings} reviews</p>
+            <p>
+                {noOfRatings} {noOfRatings === 1 ? "review" : "reviews"}
+            </p>
         </div>
     );
 };
