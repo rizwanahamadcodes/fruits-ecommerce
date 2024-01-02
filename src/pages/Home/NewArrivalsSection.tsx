@@ -19,7 +19,7 @@ const NewArrivalsSection = () => {
     console.log(allProducts);
 
     return (
-        <Section className="bg-[url('./images/backgrounds/grundge_bg.svg')] bg-no-repeat bg-cover py-4">
+        <Section className="bg-[url('/images/backgrounds/grundge_bg.svg')] bg-no-repeat bg-cover py-4">
             <Container>
                 <SectionTitle defaultBottomMargin>New Arrivals</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>
