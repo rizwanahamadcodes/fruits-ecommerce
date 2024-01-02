@@ -111,12 +111,11 @@ const BillingForm = () => {
                     id="agreedToTerms"
                     type="checkbox"
                     className="peer cursor-pointer relative appearance-none shrink-0 w-1.25 h-1.25 border border-gray-200 bg-white
-                    focus:outline-none focus:border hover:border hover:border-primary focus:shadow-primary-border focus:border-primary focus:ring-1 focus:ring-blue-100
-                    checked:bg-primary/50 checked:border-0
+                    focus:outline-none focus:shadow-primary-border focus:border-primary checked:border-primary
                     disabled:border-gray-400 disabled:bg-gray-400"
                 />
                 <svg
-                    className="absolute w-1 h-1 top-[0.125rem] left-[0.125rem] pointer-events-none hidden peer-checked:block stroke-white outline-none"
+                    className="absolute w-1 h-1 top-[0.125rem] left-[0.125rem] pointer-events-none hidden peer-checked:block stroke-primary outline-none"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="none"
@@ -204,7 +203,7 @@ const PaymentForm = () => {
                         name="paymentMethod"
                         id="paymentMethod1"
                         type="radio"
-                        className="relative cursor-pointer flex items-center justify-center appearance-none h-1.25 w-1.25 bg-white rounded-full border-gray-200 border checked:after:content-[''] checked:after:block checked:after:h-0.5 checked:after:w-0.5 checked:after:bg-primary checked:after:rounded-full"
+                        className="relative cursor-pointer flex items-center justify-center appearance-none h-1.25 w-1.25 bg-white rounded-full border-gray-200 border checked:border-primary checked:after:content-[''] checked:after:block checked:after:h-0.5 checked:after:w-0.5 checked:after:bg-primary checked:after:rounded-full focus:shadow-primary-border                     focus:outline-none"
                     />
                     <label
                         htmlFor="paymentMethod1"
@@ -217,7 +216,7 @@ const PaymentForm = () => {
                         name="paymentMethod"
                         id="paymentMethod2"
                         type="radio"
-                        className="relative cursor-pointer flex items-center justify-center appearance-none h-1.25 w-1.25 bg-white rounded-full border-gray-200 border checked:after:content-[''] checked:after:block checked:after:h-0.5 checked:after:w-0.5 checked:after:bg-primary checked:after:rounded-full"
+                        className="relative cursor-pointer flex items-center justify-center appearance-none h-1.25 w-1.25 bg-white rounded-full border-gray-200 border checked:border-primary checked:after:content-[''] checked:after:block checked:after:h-0.5 checked:after:w-0.5 checked:after:bg-primary checked:after:rounded-full focus:shadow-primary-border                     focus:outline-none"
                     />
                     <label
                         htmlFor="paymentMethod2"
