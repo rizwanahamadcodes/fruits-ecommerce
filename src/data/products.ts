@@ -373,4 +373,20 @@ export const initialProducts: Product[] = [
         productDescription:
             "Refreshing and vibrant, strawberry juice is a delightful beverage bursting with the sweet essence of ripe strawberries. Its luscious flavor and bright red hue make it a perfect thirst-quencher, embodying the essence of summer in every sip",
     },
+    {
+        id: 24,
+        name: "Blackberry",
+        price: 799,
+        categoryId: 1,
+        imageUrl: "/images/products/fruits/blackberry.jpg",
+        quantityInStock: 20,
+        unitOfSale: "pint",
+        moreImages: [
+            "/images/products/fruits/blackberry-2.jpg",
+            "/images/products/fruits/blackberry-3.jpg",
+            "/images/products/fruits/blackberry-4.jpg",
+        ],
+        productDescription:
+            "Blueberries are perennial flowering plants with blue– or purple–colored berries. They are classified in the section Cyanococcus within the genus Vaccinium. Vaccinium also includes cranberries, bilberries, huckleberries and Madeira blueberries.",
+    },
 ];
