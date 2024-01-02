@@ -45,9 +45,10 @@ const SelectCategories = () => {
                 menuList: () => "!py-0",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !rounded-full !border border-transparent mb-0.25 last:mb-0",
-                        isSelected && "!bg-primary/50",
-                        isFocused && "!border-primary",
+                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !border border-transparent mb-0.25 last:mb-0",
+                        isSelected &&
+                            "!text-primary !bg-white !border-y-primary",
+                        isFocused && "!border-y-primary",
                         isFocused && !isSelected && "!bg-transparent"
                     ),
                 dropdownIndicator: ({ isFocused }) =>
