@@ -16,8 +16,6 @@ const BestSellerSection = () => {
         selectAllProducts(state)
     );
 
-    console.log(allProducts);
-
     return (
         <Section>
             <Container>

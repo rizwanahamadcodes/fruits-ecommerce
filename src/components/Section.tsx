@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { forwardRef } from "react";
 
 type SectionProps = React.ComponentPropsWithoutRef<"section"> & {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 };
 
 export const Section = forwardRef<HTMLDivElement, SectionProps>(
@@ -26,12 +26,12 @@ type SectionTitleProps = {
     className?: string;
 };
 export const SectionTitle = (props: SectionTitleProps) => {
-    const { className, defaultBottomMargin, children } = props;
+    const { className, defaultBottomMargin = true, children } = props;
 
     return (
         <h2
             className={clsx(
-                "text-2.25 font-normal text-primary-600",
+                "text-1.75 font-medium text-primary-600",
                 defaultBottomMargin ? "mb-0.5" : "",
                 className
             )}>

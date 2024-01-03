@@ -16,8 +16,6 @@ const NewArrivalsSection = () => {
         selectAllProducts(state)
     );
 
-    console.log(allProducts);
-
     return (
         <Section className="bg-[url('/images/backgrounds/grundge_bg.svg')] bg-no-repeat bg-cover py-4">
             <Container>
