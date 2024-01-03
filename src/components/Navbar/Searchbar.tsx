@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import pathConstants from "../../routes/pathConstants";
 import { useRef, useState } from "react";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const Searchbar = () => {
     const navigate = useNavigate();
@@ -35,23 +36,30 @@ const Searchbar = () => {
             onSubmit={(e) => {
                 handleSearchSubmit(e);
             }}>
-            <input
-                ref={searchBarRef}
-                value={searchParams.get("searchKeyword") || ""}
-                onChange={(e) => {
-                    setSearchInputValue(e.target.value);
-                    setSearchParams(
-                        (prev) => {
-                            prev.set("searchKeyword", e.target.value);
-                            return prev;
-                        },
-                        { replace: true }
-                    );
-                }}
-                type="search"
-                className="border-gray-100 grow border hover:border-primary w-0 max-w-lg h-3 px-1 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
-                placeholder="Search products"
-            />
+            <div className="relative w-full max-w-lg flex items-center">
+                <button
+                    type="submit"
+                    className="w-2 h-2 rounded-full flex items-center justify-center absolute ml-0.5 hover:bg-gray-100">
+                    <HiMagnifyingGlass className="text-gray-600 text-1.25" />
+                </button>
+                <input
+                    ref={searchBarRef}
+                    value={searchParams.get("searchKeyword") || ""}
+                    onChange={(e) => {
+                        setSearchInputValue(e.target.value);
+                        setSearchParams(
+                            (prev) => {
+                                prev.set("searchKeyword", e.target.value);
+                                return prev;
+                            },
+                            { replace: true }
+                        );
+                    }}
+                    type="search"
+                    className="border-gray-100 grow border hover:border-primary w-0 h-3 pl-3 pr-0.5 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
+                    placeholder="Search"
+                />
+            </div>
         </form>
     );
 };
