@@ -16,8 +16,7 @@ const FlashDealsSection = () => {
                     Limited time offers on selected products
                 </SectionSubtitle>
 
-                <CountDownTimer
-                    countDownTime={new Date("2024/2/1")}></CountDownTimer>
+                <CountDownTimer countDownTime={new Date("2024/3/1")} />
             </Container>
         </Section>
     );
