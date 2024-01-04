@@ -9,7 +9,7 @@ const Layout = () => {
         .split("/")
         .filter((segment) => segment != "");
     const matches = matchPath(pathConstants.PRODUCTS, "/products");
-    console.log(matches);
+    // console.log(matches);
     return (
         <>
             <Header />
