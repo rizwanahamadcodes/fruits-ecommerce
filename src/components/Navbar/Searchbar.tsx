@@ -15,8 +15,8 @@ const Searchbar = () => {
 
     const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (location.pathname != pathConstants.PRODUCTS) {
-            navigate(pathConstants.PRODUCTS);
+        if (location.pathname != pathConstants.PRODUCTS.path) {
+            navigate(pathConstants.PRODUCTS.path);
         }
         if (searchBarRef.current) {
             (searchBarRef.current as HTMLElement).blur();

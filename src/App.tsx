@@ -14,9 +14,10 @@ const store = configureStore({
     reducer: rootReducer,
 });
 
+console.log(pathConstants.PRODUCT_DETAILS.path);
 const router = createBrowserRouter([
     {
-        path: pathConstants.HOME,
+        path: pathConstants.HOME.path,
         element: <Layout />,
         children: [
             {
@@ -24,24 +25,24 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: pathConstants.PRODUCTS,
+                path: pathConstants.PRODUCTS.path,
                 children: [
                     {
                         index: true,
                         element: <Products />,
                     },
                     {
-                        path: `${pathConstants.PRODUCTS}:${pathConstants.PRODUCT_DETAIL_PARAM}`,
+                        path: pathConstants.PRODUCT_DETAILS.path,
                         element: <Product />,
                     },
                 ],
             },
             {
-                path: pathConstants.CART,
+                path: pathConstants.CART.path,
                 element: <Cart />,
             },
             {
-                path: pathConstants.CHECKOUT,
+                path: pathConstants.CHECKOUT.path,
                 element: <Checkout />,
             },
         ],

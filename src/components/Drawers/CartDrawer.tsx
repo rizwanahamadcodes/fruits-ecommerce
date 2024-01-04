@@ -67,7 +67,7 @@ const CartDrawer = (props: CartDrawerProps) => {
                         </p>
                     </div>
                 )}
-                <Link to={pathConstants.CHECKOUT} className={button()}>
+                <Link to={pathConstants.CHECKOUT.path} className={button()}>
                     Checkout
                 </Link>
             </DrawerFoot>

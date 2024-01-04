@@ -34,7 +34,7 @@ const HeroSection = () => {
                             variant: "solid",
                             colorScheme: "primary",
                         })}
-                        to={pathConstants.PRODUCTS}>
+                        to={pathConstants.PRODUCTS.path}>
                         Start Shopping
                         <FaChevronRight />
                     </Link>

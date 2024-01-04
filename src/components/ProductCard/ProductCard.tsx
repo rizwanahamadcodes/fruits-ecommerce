@@ -21,7 +21,7 @@ const ProductCard = (props: ProductCardProps) => {
         <ProductWrapperWithLink
             className="overflow-hidden block"
             key={product.id}
-            to={`${pathConstants.PRODUCTS}/${product.id}`}>
+            to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
             <div className="flex flex-col gap-1">
                 <ProductImage src={product.imageUrl} alt={product.name} />
 

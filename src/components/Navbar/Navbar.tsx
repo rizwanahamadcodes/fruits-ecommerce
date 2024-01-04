@@ -46,7 +46,7 @@ const Navbar = () => {
                 className={clsx(
                     "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft",
-                    location.pathname != pathConstants.HOME && ""
+                    location.pathname != pathConstants.HOME.path && ""
                 )}>
                 <Container className="flex gap-1 justify-between">
                     <BrandLogo />
@@ -57,7 +57,7 @@ const Navbar = () => {
             <div
                 className={clsx(
                     "h-navHeight w-full",
-                    location.pathname === pathConstants.HOME && "absolute"
+                    location.pathname === pathConstants.HOME.path && "absolute"
                 )}
                 ref={navSubstituteRef}></div>
             <CartDrawer isOpen={isOpen} close={close} open={open} />

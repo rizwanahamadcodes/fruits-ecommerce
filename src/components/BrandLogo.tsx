@@ -5,7 +5,7 @@ import pathConstants from "../routes/pathConstants";
 const BrandLogo = () => {
     return (
         <Link
-            to={pathConstants.HOME}
+            to={pathConstants.HOME.path}
             className="flex h-3 w-3 basis-3 items-center justify-center rounded-full focus:outline-none focus:shadow-primary-border  border-gray-200">
             <img
                 src={brandLogo}

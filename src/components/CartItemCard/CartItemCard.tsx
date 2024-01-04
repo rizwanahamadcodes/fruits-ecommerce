@@ -28,7 +28,7 @@ const CartItemCard = (props: CartItemCardProps) => {
         <>
             {product && (
                 <ProductWrapperWithLink
-                    to={`${pathConstants.PRODUCTS}/${product.id}`}
+                    to={`${pathConstants.PRODUCTS.path}/${product.id}`}
                     className="flex relative flex-wrap items-center gap-1">
                     <ProductImage
                         src={product.imageUrl}
