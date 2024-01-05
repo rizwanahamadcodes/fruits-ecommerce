@@ -1,10 +1,12 @@
-import { Link, matchPath } from "react-router-dom";
-import Container from "./Container";
+import { PathMatch, matchPath } from "react-router-dom";
+
+type dynamicBreadcrumbLabelGeneratorsType = {
+    [key: string]: (id: string) => string;
+};
 
 type RouteType = {
     path: string;
     breadcrumbLabel: string;
-    dynamicBreadcrumbLabelGenerator?: (id: string) => string;
 };
 
 type BreadcrumbProps = {
@@ -12,6 +14,21 @@ type BreadcrumbProps = {
     pathname: string;
     separator?: string;
     breadcrumbLabelTransformer?: (label: string) => string;
+    dynamicBreadcrumbLabelGenerators?: dynamicBreadcrumbLabelGeneratorsType;
+};
+
+type crumbType = {
+    label: string;
+    href: string;
+};
+
+type preCrumbType = {
+    label: string;
+    href: string;
+    lastParam?: {
+        name: string;
+        value: string;
+    };
 };
 
 const Breadcrumb = (props: BreadcrumbProps) => {
@@ -20,101 +37,96 @@ const Breadcrumb = (props: BreadcrumbProps) => {
         pathname,
         separator = "/",
         breadcrumbLabelTransformer = (label) => label,
+        dynamicBreadcrumbLabelGenerators,
     } = props;
-
-    const getBreadCrumbs = () => {
-        const crumbs = [];
-
+    const getPathnameParts = (pathname: string): string[] => {
         const pathnameWithoutQuery = pathname.split("?")[0];
-        const pathnameParts = pathnameWithoutQuery
+        return pathnameWithoutQuery
             .split("/")
             .filter((part) => part.length != 0);
+    };
 
-        const pathnameLinks = pathnameParts.map((part, index) => {
+    const getCrumbLinks = (pathnameParts: string[]): string[] => {
+        return pathnameParts.map((part, index) => {
             return "/" + pathnameParts.slice(0, index + 1).join("/");
         });
+    };
 
-        for (let i = 0; i < pathnameLinks.length; i++) {
-            for (let j = 0; j < routes.length; j++) {
-                const match = matchPath(routes[j].path, pathnameLinks[i]);
-                if (match) {
-                    let crumb = {
-                        label: routes[j].breadcrumbLabel,
-                        href: match.pathname,
-                    };
-                    const labelGenerator =
-                        routes[j].dynamicBreadcrumbLabelGenerator;
+    const getPreCrumb = (pathnameLink: string): preCrumbType | null => {
+        for (let i = 0; i < routes.length; i++) {
+            const match = matchPath(routes[i].path, pathnameLink);
+            if (match) {
+                const preCrumb = {
+                    label: routes[i].breadcrumbLabel,
+                    href: match.pathname,
+                };
 
-                    if (labelGenerator) {
-                        const paramNames = Object.keys(match.params);
-                        if (paramNames.length > 0) {
-                            const pattern = match?.pattern.path;
-                            const lastParamInPattern = pattern
-                                .split(":")
-                                .pop()
-                                ?.split("/")[0];
-                            crumb = {
-                                ...crumb,
-                                label: labelGenerator(
-                                    match.params[
-                                        lastParamInPattern as string
-                                    ] as string
-                                ),
-                            };
-                        }
+                if (Object.keys(match.params).length != 0) {
+                    const paramNames = Object.keys(match.params);
+                    if (paramNames.length > 0) {
+                        const pattern = match?.pattern.path;
+                        const lastParamInPattern = pattern
+                            .split(":")
+                            .pop()
+                            ?.split("/")[0];
+                        Object.assign(preCrumb, {
+                            lastParam: {
+                                name: lastParamInPattern,
+                                value: match.params[
+                                    lastParamInPattern as string
+                                ],
+                            },
+                        });
                     }
-                    crumbs.push(crumb);
                 }
+
+                return preCrumb;
             }
         }
 
-        return [{ label: "Home", href: "/" }, ...crumbs];
+        return null;
     };
+
+    const getBreadCrumbs = (): crumbType[] => {
+        const preCrumbs: preCrumbType[] = [];
+
+        const pathnameParts = getPathnameParts(pathname);
+        const pathnameLinks = getCrumbLinks(pathnameParts);
+
+        pathnameLinks.forEach((pathnameLink) => {
+            const preCrumb = getPreCrumb(pathnameLink);
+            if (preCrumb) {
+                preCrumbs.push(preCrumb);
+            }
+        });
+
+        const crumbs: crumbType[] = preCrumbs.map((preCrumb) => {
+            if (preCrumb.lastParam) {
+                if (dynamicBreadcrumbLabelGenerators) {
+                    const dynamicBreadcrumbLabelGenerator =
+                        dynamicBreadcrumbLabelGenerators[
+                            preCrumb.lastParam.name
+                        ];
+                    if (dynamicBreadcrumbLabelGenerator) {
+                        return {
+                            label: preCrumb.label,
+                            href: dynamicBreadcrumbLabelGenerator(
+                                preCrumb.lastParam.value
+                            ),
+                        };
+                    }
+                }
+            }
+
+            return preCrumb;
+        });
+
+        return crumbs;
+    };
+
     const crumbs = getBreadCrumbs();
-
-    return (
-        <div className="fixed top-navHeight w-full z-[200] border-y-[1px] backdrop-blur-sm border-gray-200 h-3.5 flex items-center ">
-            <Container className="flex h-full px-1 items-center rounded-0.25">
-                {crumbs.map((crumb, index) => {
-                    const last = index === crumbs.length - 1;
-                    return (
-                        <>
-                            <Crumb
-                                last={last}
-                                label={crumb.label}
-                                href={crumb.href}
-                            />
-                            {!last ? <p>{separator}</p> : ""}
-                        </>
-                    );
-                })}
-            </Container>
-        </div>
-    );
-};
-
-type CrumbProps = {
-    last?: boolean;
-    label: string;
-    href: string;
-};
-
-const Crumb = (props: CrumbProps) => {
-    const { last = false, label, href } = props;
-    const crumbClasses = "px-1 font-medium";
-
-    return (
-        <>
-            {" "}
-            {last ? (
-                <span className={crumbClasses + " text-primary"}>{label}</span>
-            ) : (
-                <Link to={href} className={crumbClasses}>
-                    {label}
-                </Link>
-            )}
-        </>
-    );
+    console.log(crumbs);
+    return <></>;
 };
 
 export default Breadcrumb;

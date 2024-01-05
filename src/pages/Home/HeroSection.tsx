@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { button } from "../../components/Button";
 import Container from "../../components/Container";
 import Section from "../../components/Section";
-import pathConstants from "../../routes/pathConstants";
+import pathConstants, { routes } from "../../routes/pathConstants";
 import veggiesBanner from "/images/veggies-banner-2.jpg";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const HeroSection = () => {
     return (

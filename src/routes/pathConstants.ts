@@ -1,25 +1,5 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../store/rootReducer";
-import { selectProductById } from "../store/slices/productsSlice";
-
 export const paramConstants = {
     PRODUCTID: "productId",
-};
-
-const getProductNameFromId = (id: string) => {
-    return useProductName(id);
-};
-const useProductName = (id: string) => {
-    const productId = parseInt(id);
-    const productName = useSelector((state: RootState) =>
-        selectProductById(state, productId)
-    )?.name;
-
-    if (!productId) {
-        return "Product Detail";
-    }
-
-    return productName;
 };
 
 const pathConstants = {
@@ -49,7 +29,6 @@ export const routes = [
     {
         path: "/products/:productId",
         breadcrumbLabel: "Product details",
-        dynamicBreadcrumbLabelGenerator: getProductNameFromId,
     },
     {
         path: "/checkout",

@@ -15,8 +15,15 @@ const Product = () => {
             {productId && (
                 <>
                     <div className="h-navHeight"></div>
+                    <Breadcrumb
+                        routes={routes}
+                        pathname={location.pathname}
+                        dynamicBreadcrumbLabelGenerators={{
+                            productId: (id: string) => "I was dynamic " + id,
+                        }}
+                    />
 
-                    <Breadcrumb routes={routes} pathname={location.pathname} />
+                    {/* <Breadcrumb routes={routes} pathname={location.pathname} /> */}
                     <div className="h-breadcrumbHeight"></div>
                     <ProductViewSection productId={productId} />
                     <ReviewsSection productId={productId} />
