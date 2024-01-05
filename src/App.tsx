@@ -8,7 +8,7 @@ import Product from "./pages/Products/Product/Product";
 import Products from "./pages/Products/Products";
 import pathConstants from "./routes/pathConstants";
 import rootReducer from "./store/rootReducer";
-import Checkout from "./pages/Checkout";
+import Checkout from "./pages/Checkout.1";
 
 const store = configureStore({
     reducer: rootReducer,

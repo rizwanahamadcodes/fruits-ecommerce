@@ -18,7 +18,7 @@ const ProductsSection = () => {
     );
 
     return (
-        <Section id="products-section" className="pt-1">
+        <Section id="products-section" className="pt-3">
             <Container>
                 <SectionTitle className="mb-1">Our Products</SectionTitle>
                 <div className="flex w-full max-w-xl mb-2 gap-1 items-center">

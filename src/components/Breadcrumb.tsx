@@ -1,4 +1,5 @@
 import { Link, matchPath } from "react-router-dom";
+import Container from "./Container";
 
 type RouteType = {
     path: string;
@@ -17,7 +18,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     const {
         routes,
         pathname,
-        separator,
+        separator = "/",
         breadcrumbLabelTransformer = (label) => label,
     } = props;
 
@@ -72,21 +73,22 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     const crumbs = getBreadCrumbs();
 
     return (
-        <div className="bg-primary">
-            {crumbs.map((crumb, index) => {
-                const last = index === crumbs.length - 1;
-                return (
-                    <>
-                        <Crumb
-                            last={last}
-                            label={crumb.label}
-                            href={crumb.href}
-                        />
-
-                        <p>{separator}</p>
-                    </>
-                );
-            })}
+        <div className="fixed top-navHeight w-full z-[200] border-y-[1px] backdrop-blur-sm border-gray-200 h-3.5 flex items-center ">
+            <Container className="flex h-full px-1 items-center rounded-0.25">
+                {crumbs.map((crumb, index) => {
+                    const last = index === crumbs.length - 1;
+                    return (
+                        <>
+                            <Crumb
+                                last={last}
+                                label={crumb.label}
+                                href={crumb.href}
+                            />
+                            {!last ? <p>{separator}</p> : ""}
+                        </>
+                    );
+                })}
+            </Container>
         </div>
     );
 };
@@ -99,8 +101,20 @@ type CrumbProps = {
 
 const Crumb = (props: CrumbProps) => {
     const { last = false, label, href } = props;
+    const crumbClasses = "px-1 font-medium";
 
-    return <> {last ? <p>{label}</p> : <Link to={href}>{label}</Link>}</>;
+    return (
+        <>
+            {" "}
+            {last ? (
+                <span className={crumbClasses + " text-primary"}>{label}</span>
+            ) : (
+                <Link to={href} className={crumbClasses}>
+                    {label}
+                </Link>
+            )}
+        </>
+    );
 };
 
 export default Breadcrumb;
