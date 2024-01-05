@@ -41,7 +41,7 @@ const Checkout = () => {
     }, 0);
     return (
         <>
-            {/* <Breadcrumb routes={routes} pathname={location.pathname} /> */}
+            <Breadcrumb routes={routes} pathname={location.pathname} />
             <div className="h-breadcrumbHeight"></div>
             <Section>
                 <div className="h-navHeight"></div>

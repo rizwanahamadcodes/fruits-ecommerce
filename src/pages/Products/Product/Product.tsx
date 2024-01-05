@@ -22,9 +22,6 @@ const Product = () => {
                             productId: (id: string) => "I was dynamic " + id,
                         }}
                     />
-
-                    {/* <Breadcrumb routes={routes} pathname={location.pathname} /> */}
-                    <div className="h-breadcrumbHeight"></div>
                     <ProductViewSection productId={productId} />
                     <ReviewsSection productId={productId} />
                 </>

@@ -1,4 +1,5 @@
-import { PathMatch, matchPath } from "react-router-dom";
+import { Link, matchPath } from "react-router-dom";
+import Container from "./Container";
 
 type dynamicBreadcrumbLabelGeneratorsType = {
     [key: string]: (id: string) => string;
@@ -36,7 +37,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
         routes,
         pathname,
         separator = "/",
-        breadcrumbLabelTransformer = (label) => label,
+        // breadcrumbLabelTransformer = (label) => label,
         dynamicBreadcrumbLabelGenerators,
     } = props;
     const getPathnameParts = (pathname: string): string[] => {
@@ -47,7 +48,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     };
 
     const getCrumbLinks = (pathnameParts: string[]): string[] => {
-        return pathnameParts.map((part, index) => {
+        return pathnameParts.map((_, index) => {
             return "/" + pathnameParts.slice(0, index + 1).join("/");
         });
     };
@@ -109,8 +110,8 @@ const Breadcrumb = (props: BreadcrumbProps) => {
                         ];
                     if (dynamicBreadcrumbLabelGenerator) {
                         return {
-                            label: preCrumb.label,
-                            href: dynamicBreadcrumbLabelGenerator(
+                            href: preCrumb.href,
+                            label: dynamicBreadcrumbLabelGenerator(
                                 preCrumb.lastParam.value
                             ),
                         };
@@ -121,12 +122,54 @@ const Breadcrumb = (props: BreadcrumbProps) => {
             return preCrumb;
         });
 
-        return crumbs;
+        return [{ label: "Home", href: "/" }, ...crumbs];
     };
 
     const crumbs = getBreadCrumbs();
     console.log(crumbs);
-    return <></>;
+    return (
+        <div>
+            <div className="fixed w-full z-[300] backdrop-blur-sm h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex">
+                <Container className="flex gap-2">
+                    {crumbs.map((crumb, index) => {
+                        const last = index === crumbs.length - 1;
+                        return (
+                            <>
+                                <Crumb crumb={crumb} last={last} />
+                                {!last ? <p>{separator}</p> : ""}
+                            </>
+                        );
+                    })}
+                </Container>
+            </div>
+            <div className="h-breadcrumbHeight"></div>
+        </div>
+    );
+};
+
+type CrumbProps = {
+    crumb: crumbType;
+    last: boolean;
+};
+
+const Crumb = (props: CrumbProps) => {
+    const { crumb, last } = props;
+
+    const crumbClasses = "font-medium";
+
+    if (last) {
+        return (
+            <span className={crumbClasses + " " + "text-primary"}>
+                {crumb.label}
+            </span>
+        );
+    }
+
+    return (
+        <Link to={crumb.href} className={crumbClasses}>
+            {crumb.label}
+        </Link>
+    );
 };
 
 export default Breadcrumb;

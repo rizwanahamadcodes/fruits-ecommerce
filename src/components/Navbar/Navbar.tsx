@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { useToggle } from "../../hooks/useToggle";
 import BrandLogo from "../BrandLogo";
 import Container from "../Container";
@@ -11,7 +10,6 @@ import Searchbar from "./Searchbar";
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const navSubstituteRef = useRef(null);
-    const location = useLocation();
     const { isOpen, close, open } = useToggle(false);
 
     useEffect(() => {
