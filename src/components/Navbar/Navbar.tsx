@@ -1,13 +1,12 @@
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import pathConstants from "../../routes/pathConstants";
+import { useToggle } from "../../hooks/useToggle";
 import BrandLogo from "../BrandLogo";
 import Container from "../Container";
 import CartDrawer from "../Drawers/CartDrawer";
 import CartIcon from "./CartIcon";
 import Searchbar from "./Searchbar";
-import { useToggle } from "../../hooks/useToggle";
 
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
@@ -45,8 +44,7 @@ const Navbar = () => {
             <nav
                 className={clsx(
                     "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-50 items-center transition-[box-shadow] duration-500",
-                    scrolledPast80 && "shadow-soft",
-                    location.pathname != pathConstants.HOME.path && ""
+                    scrolledPast80 && "shadow-soft"
                 )}>
                 <Container className="flex gap-1 justify-between">
                     <BrandLogo />
@@ -55,10 +53,7 @@ const Navbar = () => {
                 </Container>
             </nav>
             <div
-                className={clsx(
-                    "h-navHeight w-full",
-                    location.pathname === pathConstants.HOME.path && "absolute"
-                )}
+                className={clsx("h-navHeight w-full absolute")}
                 ref={navSubstituteRef}></div>
             <CartDrawer isOpen={isOpen} close={close} open={open} />
         </div>

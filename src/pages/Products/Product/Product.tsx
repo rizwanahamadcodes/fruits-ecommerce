@@ -12,6 +12,7 @@ const Product = () => {
         <>
             {productId && (
                 <>
+                    <div className="h-navHeight"></div>
                     <ProductViewSection productId={productId} />
                     <ReviewsSection productId={productId} />
                 </>

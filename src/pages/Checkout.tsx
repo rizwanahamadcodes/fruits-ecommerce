@@ -37,6 +37,7 @@ const Checkout = () => {
     }, 0);
     return (
         <Section>
+            <div className="h-navHeight"></div>
             <Container className="flex flex-col sm:flex-row gap-2">
                 <div className="grow">
                     <div className="">
