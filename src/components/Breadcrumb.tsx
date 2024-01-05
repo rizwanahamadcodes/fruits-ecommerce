@@ -130,7 +130,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     return (
         <div>
             <div className="fixed w-full z-[300] backdrop-blur-sm h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex">
-                <Container className="flex gap-2">
+                <Container className="flex gap-1 overflow-x-auto">
                     {crumbs.map((crumb, index) => {
                         const last = index === crumbs.length - 1;
                         return (
@@ -159,7 +159,10 @@ const Crumb = (props: CrumbProps) => {
 
     if (last) {
         return (
-            <span className={crumbClasses + " " + "text-primary"}>
+            <span
+                className={
+                    crumbClasses + " " + "text-primary whitespace-nowrap"
+                }>
                 {crumb.label}
             </span>
         );
