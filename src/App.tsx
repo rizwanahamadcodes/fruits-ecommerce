@@ -14,7 +14,6 @@ const store = configureStore({
     reducer: rootReducer,
 });
 
-console.log(pathConstants.PRODUCT_DETAILS.path);
 const router = createBrowserRouter([
     {
         path: pathConstants.HOME.path,

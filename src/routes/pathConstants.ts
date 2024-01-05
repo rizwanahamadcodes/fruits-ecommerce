@@ -13,4 +13,28 @@ const pathConstants = {
     CHECKOUT: { path: "/checkout", breadcrumbLabel: "Checkout" },
 };
 
+export const routes = [
+    {
+        path: "/",
+        breadcrumbLabel: "Home",
+    },
+    {
+        path: "/cart",
+        breadcrumbLabel: "Cart",
+    },
+    {
+        path: "/products",
+        breadcrumbLabel: "Products",
+    },
+    {
+        path: "/products/:productId",
+        breadcrumbLabel: "Product details",
+        dynamicBreadcrumbLabelGenerator: (id: string) => `${id}`,
+    },
+    {
+        path: "/checkout",
+        breadcrumbLabel: "Checkout",
+    },
+];
+
 export default pathConstants;
