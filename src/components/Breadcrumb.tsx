@@ -129,7 +129,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     console.log(crumbs);
     return (
         <div>
-            <div className="fixed w-full z-[300] backdrop-blur-sm h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex">
+            <div className="fixed w-full z-[300] top-navHeight backdrop-blur-sm h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex">
                 <Container className="flex gap-1 overflow-x-auto">
                     {crumbs.map((crumb, index) => {
                         const last = index === crumbs.length - 1;

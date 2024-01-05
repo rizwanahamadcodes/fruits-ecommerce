@@ -10,7 +10,6 @@ const Products = () => {
         <div>
             <div className="h-navHeight"></div>
             <Breadcrumb routes={routes} pathname={location.pathname} />
-            <div className="h-breadcrumbHeight"></div>
             <ProductsSection />
         </div>
     );
