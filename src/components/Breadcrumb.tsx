@@ -156,7 +156,7 @@ const Breadcrumb = (props: BreadcrumbProps) => {
         <div>
             <div
                 className={clsx(
-                    "fixed w-full z-[500] backdrop-blur-sm transition-all duration-[500] h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex",
+                    "fixed w-full z-[500] bg-white/50 backdrop-blur-sm transition-all duration-[500] h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex",
                     showBreadCrumb
                         ? "top-navHeight opacity-1"
                         : "-top-breadcrumbHeight opacity-0"
