@@ -16,7 +16,7 @@ const Drawer = (props: DrawerProps) => {
 
     const staticClose = useCallback(() => {
         close();
-    }, [close]);
+    }, []);
 
     useEffect(() => {
         staticClose();
