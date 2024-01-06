@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, matchPath } from "react-router-dom";
 import Container from "./Container";
 
@@ -130,27 +130,27 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     const crumbs = getBreadCrumbs();
 
     const [showBreadCrumb, setShowBreadCrumb] = useState(true);
-    const [prevWindowScrollY, setPrevWindowScrollY] = useState<number>(0);
+    const prevWindowScrollY = useRef<number>(0);
+
+    const handleWindowScroll = useCallback(() => {
+        const windowScrollY = window.scrollY;
+
+        if (windowScrollY >= prevWindowScrollY.current) {
+            setShowBreadCrumb(false);
+        } else {
+            setShowBreadCrumb(true);
+        }
+
+        prevWindowScrollY.current = windowScrollY;
+    }, [prevWindowScrollY]);
 
     useEffect(() => {
-        const handleWindowScroll = () => {
-            const windowScrollY = window.scrollY;
-
-            if (windowScrollY >= prevWindowScrollY) {
-                setShowBreadCrumb(false);
-            } else {
-                setShowBreadCrumb(true);
-            }
-
-            setPrevWindowScrollY(windowScrollY);
-        };
-
         window.addEventListener("scroll", handleWindowScroll);
 
         return () => {
-            removeEventListener("scroll", handleWindowScroll);
+            window.removeEventListener("scroll", handleWindowScroll);
         };
-    });
+    }, [handleWindowScroll]);
 
     return (
         <div>
