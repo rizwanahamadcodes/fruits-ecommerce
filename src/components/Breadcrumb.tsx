@@ -1,3 +1,5 @@
+import clsx from "clsx";
+import { useEffect, useState } from "react";
 import { Link, matchPath } from "react-router-dom";
 import Container from "./Container";
 
@@ -126,10 +128,39 @@ const Breadcrumb = (props: BreadcrumbProps) => {
     };
 
     const crumbs = getBreadCrumbs();
-    console.log(crumbs);
+
+    const [showBreadCrumb, setShowBreadCrumb] = useState(true);
+    const [prevWindowScrollY, setPrevWindowScrollY] = useState<number>(0);
+
+    useEffect(() => {
+        const handleWindowScroll = () => {
+            const windowScrollY = window.scrollY;
+
+            if (windowScrollY >= prevWindowScrollY) {
+                setShowBreadCrumb(false);
+            } else {
+                setShowBreadCrumb(true);
+            }
+
+            setPrevWindowScrollY(windowScrollY);
+        };
+
+        window.addEventListener("scroll", handleWindowScroll);
+
+        return () => {
+            removeEventListener("scroll", handleWindowScroll);
+        };
+    });
+
     return (
         <div>
-            <div className="fixed w-full z-[300] top-navHeight backdrop-blur-sm h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex">
+            <div
+                className={clsx(
+                    "fixed w-full z-[500] backdrop-blur-sm transition-all duration-[500] h-breadcrumbHeight border-y-[1px] border-gray-900/10 flex",
+                    showBreadCrumb
+                        ? "top-navHeight opacity-1"
+                        : "-top-breadcrumbHeight opacity-0"
+                )}>
                 <Container className="flex gap-1 overflow-x-auto">
                     {crumbs.map((crumb, index) => {
                         const last = index === crumbs.length - 1;

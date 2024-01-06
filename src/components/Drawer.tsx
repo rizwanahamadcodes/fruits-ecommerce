@@ -16,7 +16,7 @@ const Drawer = (props: DrawerProps) => {
 
     const staticClose = useCallback(() => {
         close();
-    }, []);
+    }, [close]);
 
     useEffect(() => {
         staticClose();
@@ -51,7 +51,7 @@ const DrawerBackground = (props: DrawerBackgroundProps) => {
     return (
         <div
             className={clsx(
-                "transition-all fixed top-0 left-0 overflow-hidden z-[100] min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
+                "transition-all fixed top-0 left-0 overflow-hidden z-[2000] min-h-full h-svh-screen w-full bg-gray-500/20 backdrop-blur-sm",
                 isOpen ? "visible opacity-100" : " invisible opacity-0"
             )}
             onClick={(e) => handleBackgroundClick(e)}>
