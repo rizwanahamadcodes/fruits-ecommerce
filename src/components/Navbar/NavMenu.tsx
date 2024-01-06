@@ -55,14 +55,12 @@ const NavItem = (props: NavItemProps) => {
             <Link
                 to={navLink.path}
                 className={clsx(
-                    "flex items-center hover:bg-gray-900/10 transition-all ",
+                    "flex items-center hover:bg-gray-900/[0.05] transition-all ",
                     match ? "text-gray-800 font-medium" : "text-gray-700",
                     direction === "horizontal"
                         ? "h-navHeight px-1"
                         : "px-[7vw] py-1.25  border-b-[1px]",
-                    direction === "vertical" && match
-                        ? "bg-gray-900/[0.15]"
-                        : ""
+                    direction === "vertical" && match ? "bg-gray-900/10" : ""
                 )}>
                 {navLink.label}
             </Link>
