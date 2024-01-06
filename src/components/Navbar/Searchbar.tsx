@@ -36,7 +36,7 @@ const Searchbar = () => {
             onSubmit={(e) => {
                 handleSearchSubmit(e);
             }}>
-            <div className="relative w-full max-w-lg flex items-center">
+            <div className="relative w-full max-w-sm flex items-center">
                 <button
                     type="submit"
                     className="w-2 h-2 rounded-full flex items-center justify-center absolute ml-0.5 hover:bg-gray-100">

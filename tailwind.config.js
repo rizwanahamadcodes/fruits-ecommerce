@@ -11,6 +11,7 @@ module.exports = {
             }
 
             spacing["navHeight"] = "5rem";
+            spacing["svh-screen"] = "100svh";
             spacing["breadcrumbHeight"] = "3rem";
             spacing["btn-height-medium"] = "3rem";
             spacing["btn-height-medium/2"] = "1.5rem";

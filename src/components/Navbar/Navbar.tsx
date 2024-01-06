@@ -6,11 +6,25 @@ import Container from "../Container";
 import CartDrawer from "../Drawers/CartDrawer";
 import CartIcon from "./CartIcon";
 import Searchbar from "./Searchbar";
+import NavMenu from "./NavMenu";
+import Drawer, { DrawerHead } from "../Drawer";
+import CloseButton from "../CloseButton";
+import Hamburger from "../Hamburger";
 
 const Navbar = () => {
     const [scrolledPast80, setScrolledPast80] = useState(false);
     const navSubstituteRef = useRef(null);
-    const { isOpen, close, open } = useToggle(false);
+    const {
+        isOpen: isCartDrawerOpen,
+        close: closeCartDrawer,
+        open: openCartDrawer,
+    } = useToggle(false);
+
+    const {
+        isOpen: isNavMenuDrawerOpen,
+        close: closeNavMenuDrawer,
+        open: openNavMenuDrawer,
+    } = useToggle(false);
 
     useEffect(() => {
         const navSubstitute = navSubstituteRef.current;
@@ -21,7 +35,7 @@ const Navbar = () => {
 
         const options: IntersectionObserverInit = {
             threshold: 1,
-            rootMargin: "100px 0px 0px 0px",
+            rootMargin: "0px 0px 0px 0px",
         };
 
         const observer = new IntersectionObserver(callback, options);
@@ -39,21 +53,46 @@ const Navbar = () => {
 
     return (
         <div>
-            <nav
+            <div
                 className={clsx(
-                    "h-navHeight backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
+                    "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft"
                 )}>
-                <Container className="flex gap-1 justify-between">
+                <Container className="flex items-center gap-1 justify-between">
                     <BrandLogo />
                     <Searchbar />
-                    <CartIcon open={open} />
+                    <span className="hidden md:block">
+                        <NavMenu direction="horizontal" />
+                    </span>
+                    <CartIcon open={openCartDrawer} />
+                    <span className="md:hidden" onClick={openNavMenuDrawer}>
+                        <Hamburger />
+                    </span>
                 </Container>
-            </nav>
+            </div>
+
             <div
                 className={clsx("h-navHeight w-full absolute")}
                 ref={navSubstituteRef}></div>
-            <CartDrawer isOpen={isOpen} close={close} open={open} />
+
+            <span className="md:hidden">
+                <Drawer
+                    close={closeNavMenuDrawer}
+                    isOpen={isNavMenuDrawerOpen}
+                    open={openNavMenuDrawer}>
+                    <DrawerHead className="pl-[7vw] py-1 pr-[7vw] flex justify-between items-center border-b-[1px]">
+                        <BrandLogo />
+                        <CloseButton onClick={closeNavMenuDrawer} />
+                    </DrawerHead>
+                    <NavMenu direction="vertical" />
+                </Drawer>
+            </span>
+
+            <CartDrawer
+                isOpen={isCartDrawerOpen}
+                close={closeCartDrawer}
+                open={openCartDrawer}
+            />
         </div>
     );
 };

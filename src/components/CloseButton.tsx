@@ -29,6 +29,7 @@ const CloseButton = (props: CloseButtonProps) => {
             )}
             onClick={onClick}>
             <span className={clsx(barClasses, "rotate-[45deg]")}></span>
+            <span className={clsx(barClasses, "rotate-[405deg]")}></span>
             <span className={clsx(barClasses, "rotate-[-45deg]")}></span>
         </div>
     );

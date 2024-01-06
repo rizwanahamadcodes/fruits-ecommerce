@@ -21,10 +21,10 @@ const CartIcon = (props: CartDrawerProps) => {
             <Button
                 colorScheme="white"
                 onClick={open}
-                className="relative hidden sm:flex !border-gray-100 hover:!border-primary border">
+                className="relative hidden lg:flex !border-gray-100 hover:!border-primary border">
                 <ButtonIcon icon={BsCart3} className="text-primary" />
 
-                <span className="hidden sm:inline-block">Cart</span>
+                <span className="hidden lg:inline-block">Cart</span>
 
                 {noOfItemsInCart != 0 && (
                     <NoOfItemsInCartBubble noOfItemsInCart={noOfItemsInCart} />
@@ -34,7 +34,7 @@ const CartIcon = (props: CartDrawerProps) => {
                 nature="circular"
                 colorScheme="white"
                 onClick={open}
-                className="relative flex sm:hidden !border-gray-100 hover:!border-primary border">
+                className="relative flex lg:hidden !border-gray-100 hover:!border-primary border">
                 <ButtonIcon icon={BsCart3} className="text-primary" />
 
                 {noOfItemsInCart != 0 && (
