@@ -13,7 +13,7 @@ import Checkout from "./pages/Checkout";
 const store = configureStore({
     reducer: rootReducer,
 });
-
+console.log("i was rerendered");
 const router = createBrowserRouter([
     {
         path: pathConstants.HOME.path,

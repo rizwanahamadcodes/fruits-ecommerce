@@ -30,9 +30,7 @@ const ProductViewSection = (props: ProductViewSectionType) => {
                                     moreImages={product.moreImages}
                                 />
                             </div>
-                            <div className="md:w-3/5 flex flex-col items-start gap-1">
-                                <ProductDetails product={product} />
-                            </div>
+                            <ProductDetails product={product} />
                         </>
                     ) : (
                         "Sorry the product was not found"

@@ -89,7 +89,7 @@ export const ProductName = (props: ProductNameProps) => {
     return (
         <h3
             className={clsx(
-                "text-gray-900 font-medium relative z-[1]",
+                "text-gray-900 font-medium relative z-[10]",
                 sizeMap[size],
                 className
             )}
@@ -121,7 +121,7 @@ export const ProductPrice = (props: ProductPriceProps) => {
     return (
         <p
             className={clsx(
-                "leading-1 font-medium text-gray-700",
+                "leading-1 relative z-[10] font-medium text-gray-700",
                 prizeSizeMap[size],
                 className
             )}>
@@ -152,7 +152,7 @@ export const ProductCTA = (props: ProductCTAProps) => {
     );
 
     return (
-        <div className={className}>
+        <div className={clsx("z-[10] relative", className)}>
             {productInCart ? (
                 <Counter
                     className="w-full"
@@ -190,7 +190,9 @@ type ProductDescriptionProps = Omit<
 export const ProductDescription = (props: ProductDescriptionProps) => {
     const { children, ...otherProps } = props;
     return (
-        <p className="overflow-ellipsis font-medium" {...otherProps}>
+        <p
+            className="overflow-ellipsis font-medium relative z-[10]"
+            {...otherProps}>
             {children}
         </p>
     );

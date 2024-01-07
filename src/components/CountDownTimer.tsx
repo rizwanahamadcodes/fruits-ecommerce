@@ -1,10 +1,13 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 type CountDownTimerProps = {
     countDownTime: Date;
+    direction?: "horizontal" | "vertical";
 };
 
 const CountDownTimer = (props: CountDownTimerProps) => {
+    const { countDownTime, direction = "vertical" } = props;
     const [time, setTime] = useState({
         days: 0,
         hours: 0,
@@ -14,7 +17,6 @@ const CountDownTimer = (props: CountDownTimerProps) => {
 
     useEffect(() => {
         setInterval(() => {
-            const { countDownTime } = props;
             const now = new Date();
 
             const dateDiff = countDownTime.getTime() - now.getTime();
@@ -44,7 +46,11 @@ const CountDownTimer = (props: CountDownTimerProps) => {
         }, 1000);
     }, [props]);
     return (
-        <div className="flex flex-col justify-start items-start gap-1 p-1 bg-white rounded-1">
+        <div
+            className={clsx(
+                "flex justify-start items-start gap-1",
+                direction === "horizontal" ? "flex-row" : "flex-col"
+            )}>
             <TimeBox count={time.days} title="Days" />
             <TimeBox count={time.hours} title="Hours" />
             <TimeBox count={time.minutes} title="Mins" />

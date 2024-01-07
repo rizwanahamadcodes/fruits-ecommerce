@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {
     ProductCTA,
     ProductDescription,
@@ -9,13 +10,18 @@ import { Product } from "../../../data/products";
 
 type ProductDetailsProps = {
     product: Product;
+    className?: string;
 };
 
 const ProductDetails = (props: ProductDetailsProps) => {
-    const { product } = props;
+    const { product, className } = props;
 
     return (
-        <>
+        <div
+            className={clsx(
+                "flex flex-col text-left items-start gap-1",
+                className
+            )}>
             <div className="flex flex-col gap-0.5 w-full">
                 <ProductName size="lg">{product.name}</ProductName>
                 <StarRating productId={product.id} />
@@ -32,7 +38,7 @@ const ProductDetails = (props: ProductDetailsProps) => {
             <div className="self-stretch">
                 <ProductCTA className="sm:w-16 w-auto" productId={product.id} />
             </div>
-        </>
+        </div>
     );
 };
 
