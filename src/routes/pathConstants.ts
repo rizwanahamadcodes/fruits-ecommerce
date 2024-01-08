@@ -25,6 +25,14 @@ export const routes = [
         breadcrumbLabel: "Cart",
     },
     {
+        path: "/faq",
+        breadcrumbLabel: "Faq",
+    },
+    {
+        path: "/contact",
+        breadcrumbLabel: "Contact",
+    },
+    {
         path: "/products",
         breadcrumbLabel: "Products",
     },

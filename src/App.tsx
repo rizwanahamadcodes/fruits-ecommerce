@@ -9,6 +9,8 @@ import Products from "./pages/Products/Products";
 import pathConstants from "./routes/pathConstants";
 import rootReducer from "./store/rootReducer";
 import Checkout from "./pages/Checkout";
+import Faq from "./pages/Faq";
+import Contact from "./pages/Contact";
 
 const store = configureStore({
     reducer: rootReducer,
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
             {
                 path: pathConstants.CHECKOUT.path,
                 element: <Checkout />,
+            },
+            {
+                path: pathConstants.FAQ.path,
+                element: <Faq />,
+            },
+            {
+                path: pathConstants.CONTACT.path,
+                element: <Contact />,
             },
         ],
     },
