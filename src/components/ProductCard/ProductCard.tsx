@@ -49,7 +49,7 @@ export const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
     return (
         <Link
             className={clsx(
-                "p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group",
+                "p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group inline-block",
                 className
             )}
             {...otherProps}>

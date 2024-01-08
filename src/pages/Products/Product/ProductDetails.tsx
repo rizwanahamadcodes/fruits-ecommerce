@@ -9,12 +9,13 @@ import StarRating from "../../../components/Rating/StarRating";
 import { Product } from "../../../data/products";
 
 type ProductDetailsProps = {
+    withDescription?: boolean;
     product: Product;
     className?: string;
 };
 
 const ProductDetails = (props: ProductDetailsProps) => {
-    const { product, className } = props;
+    const { withDescription = true, product, className } = props;
 
     return (
         <div
@@ -31,10 +32,13 @@ const ProductDetails = (props: ProductDetailsProps) => {
                     unitOfSale={product.unitOfSale}
                 />
             </div>
-
-            <ProductDescription>
-                {product.productDescription}
-            </ProductDescription>
+            {withDescription ? (
+                <ProductDescription>
+                    {product.productDescription}
+                </ProductDescription>
+            ) : (
+                ""
+            )}
             <div className="self-stretch">
                 <ProductCTA className="sm:w-16 w-auto" productId={product.id} />
             </div>

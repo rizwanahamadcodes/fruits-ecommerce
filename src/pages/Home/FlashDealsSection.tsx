@@ -10,6 +10,8 @@ import { RootState } from "../../store/rootReducer";
 import { selectProductById } from "../../store/slices/productsSlice";
 import ProductDetails from "../Products/Product/ProductDetails";
 import { ProductImage } from "../../components/ProductCard/ProductCard";
+import { Link } from "react-router-dom";
+import pathConstants from "../../routes/pathConstants";
 
 const FlashDealsSection = () => {
     const flashDealProductId = 1;
@@ -68,11 +70,13 @@ const FlashDeal = (props: FlashDealsProps) => {
                 />
             </div>
             <div className="flex items-start gap-3 flex-col md:flex-row">
-                <ProductImage
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="w-auto md:w-2/5"
-                />
+                <Link to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
+                    <ProductImage
+                        src={product.imageUrl}
+                        alt={product.name}
+                        className="w-auto md:w-2/5"
+                    />
+                </Link>
                 <ProductDetails className="grow" product={product} />
             </div>
         </div>
