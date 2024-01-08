@@ -17,7 +17,8 @@ const SignUpForNewsLetter = () => {
                 <Input
                     type="text"
                     rounded="rounded-full"
-                    placeholder="Subscribe to our newsletter"
+                    placeholder="Your email"
+                    className="min-w-0"
                 />
                 <Button type="submit">Subscribe</Button>
             </form>
