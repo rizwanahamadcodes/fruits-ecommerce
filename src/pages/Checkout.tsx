@@ -91,15 +91,22 @@ const Checkout = () => {
 };
 export default Checkout;
 
-type InputProps = ComponentPropsWithoutRef<"input">;
+type InputProps = ComponentPropsWithoutRef<"input"> & {
+    className?: string;
+    rounded?: string;
+};
 
-const Input = (props: InputProps) => {
-    const { ...otherProps } = props;
+export const Input = (props: InputProps) => {
+    const { className, rounded = "rounded-1", ...otherProps } = props;
 
     return (
         <input
             {...otherProps}
-            className="border-gray-200 grow border hover:border-primary text-1 max-w-lg h-3 px-1 rounded-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
+            className={clsx(
+                "border-gray-200 grow border hover:border-primary text-1 max-w-lg h-3 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition",
+                rounded,
+                className
+            )}
         />
     );
 };

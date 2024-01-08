@@ -17,7 +17,7 @@ const BestSellerSection = () => {
     );
 
     return (
-        <Section>
+        <Section className="bg-gray-200">
             <Container>
                 <SectionTitle defaultBottomMargin>Best Sellers</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>

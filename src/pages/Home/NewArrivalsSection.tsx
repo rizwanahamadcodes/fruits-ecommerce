@@ -15,9 +15,9 @@ const NewArrivalsSection = () => {
     const allProducts = useSelector((state: RootState) =>
         selectAllProducts(state)
     );
-
+    // bg-[url('/images/backgrounds/grundge_bg.svg')]  bg-no-repeat bg-cover
     return (
-        <Section className="bg-[url('/images/backgrounds/grundge_bg.svg')] bg-no-repeat bg-cover py-4">
+        <Section className="py-4">
             <Container>
                 <SectionTitle defaultBottomMargin>New Arrivals</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>
