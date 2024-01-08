@@ -70,11 +70,13 @@ const FlashDeal = (props: FlashDealsProps) => {
                 />
             </div>
             <div className="flex items-start gap-3 flex-col md:flex-row">
-                <Link to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
+                <Link
+                    to={`${pathConstants.PRODUCTS.path}/${product.id}`}
+                    className="md:w-5/5 w-full">
                     <ProductImage
                         src={product.imageUrl}
                         alt={product.name}
-                        className="w-auto md:w-2/5"
+                        className="w-full"
                     />
                 </Link>
                 <ProductDetails className="grow" product={product} />

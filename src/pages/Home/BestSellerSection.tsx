@@ -42,15 +42,12 @@ const BestSellingProduct = (props: BestSellingProductProps) => {
         <>
             {product ? (
                 <div className="bg-white p-1 rounded-1 border-[1px] hover:border-primary ">
-                    <div className="flex items-center flex-col xl:flex-row">
+                    <div className="flex sm:items-start xl:items-center items-start flex-col xl:flex-row">
                         <Link
                             to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
-                            <ProductImage
-                                src={product?.imageUrl}
-                                className="w-1/2"
-                            />
+                            <ProductImage src={product?.imageUrl} />
                         </Link>
-                        <div>
+                        <div className="grow">
                             <ProductDetails
                                 withDescription={false}
                                 product={product}
