@@ -1,3 +1,4 @@
+import SignUpForNewsLetter from "../../components/SignUpForNewsLetter";
 import BestSellerSection from "./BestSellerSection";
 import FlashDealsSection from "./FlashDealsSection";
 import HeroSection from "./HeroSection";
@@ -10,6 +11,7 @@ const Home = () => {
             <FlashDealsSection />
             <BestSellerSection />
             <NewArrivalsSection />
+            <SignUpForNewsLetter />
         </>
     );
 };
