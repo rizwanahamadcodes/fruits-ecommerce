@@ -151,7 +151,7 @@ const FooterColumnLinks = (props: FooterColumnLinksProps) => {
                 return (
                     <li key={link.href} className="flex gap-0.5 items-center">
                         {typeof Icon === "string" ? null : (
-                            <Icon className="text-xl" />
+                            <Icon className="text-1.25" />
                         )}
                         <Link className="!font-medium" to={link.href}>
                             {link.label}
