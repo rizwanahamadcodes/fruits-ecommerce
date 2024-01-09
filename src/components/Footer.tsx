@@ -2,11 +2,10 @@ import { IconType } from "react-icons";
 import { BsFacebook, BsInstagram, BsLinkedin } from "react-icons/bs";
 import { SiGmail } from "react-icons/si";
 import { Link } from "react-router-dom";
+import pathConstants from "../routes/pathConstants";
 import BrandLogo from "./BrandLogo";
 import Container from "./Container";
 import Section from "./Section";
-import SignUpForNewsLetter from "./SignUpForNewsLetter";
-import pathConstants from "../routes/pathConstants";
 
 const footerLinks = [
     {
@@ -58,14 +57,9 @@ const FooterContactLinks = [
 ];
 const Footer = () => {
     return (
-        <footer className="bg-gray-50 mt-5 lg:mt-4">
-            <Container className="relative">
-                <div className="absolute w-full -translate-y-1/2">
-                    <SignUpForNewsLetter />
-                </div>
-            </Container>
-            <Section className="">
-                <Container className="mt-4 gap-2 lg:mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <footer className="bg-gray-50">
+            <Section>
+                <Container className=" gap-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <FooterColumn>
                         <FooterColumnTitle className="flex items-center gap-0.75">
                             <BrandLogo />
