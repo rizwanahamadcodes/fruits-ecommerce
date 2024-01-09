@@ -27,16 +27,19 @@ const CartItemCard = (props: CartItemCardProps) => {
     return (
         <>
             {product && (
-                <ProductWrapperWithLink
-                    to={`${pathConstants.PRODUCTS.path}/${product.id}`}
-                    className="flex relative flex-wrap items-center gap-1">
+                <ProductWrapperWithLink className="flex relative flex-wrap items-center gap-1">
                     <ProductImage
+                        to={`${pathConstants.PRODUCTS.path}/${product.id}`}
                         src={product.imageUrl}
                         className="w-6 h-6 object-contain"
                     />
                     <div className="z-[1] flex flex-col gap-0.75 grow">
                         <div className="flex flex-col gap-0.5">
-                            <ProductName size="sm">{product.name}</ProductName>
+                            <ProductName
+                                size="sm"
+                                to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
+                                {product.name}
+                            </ProductName>
                             <ProductPrice
                                 size="sm"
                                 unitOfSale={product.unitOfSale}
