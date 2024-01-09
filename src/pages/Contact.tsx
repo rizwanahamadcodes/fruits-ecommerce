@@ -1,3 +1,4 @@
+import Button from "../components/Button";
 import Container from "../components/Container";
 import Section, { SectionSubtitle, SectionTitle } from "../components/Section";
 import { Input } from "./Checkout";
@@ -19,18 +20,21 @@ const Contact = () => {
                         className="flex flex-col gap-1">
                         <Input
                             rounded="rounded-full"
-                            placeholder="Name"
+                            placeholder="Your name"
                             type="text"
                         />
                         <Input
                             rounded="rounded-full"
-                            placeholder="Name"
+                            placeholder="Your email"
                             type="email"
                         />
                         <textarea
                             className="border-gray-200 grow border hover:border-primary text-1 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition rounded-1.5 h-6 pt-1 resize-none"
                             placeholder="Leave a message"
                         />
+                        <Button type="submit" variant={"outline"}>
+                            Submit
+                        </Button>
                     </form>
                 </div>
                 <img
