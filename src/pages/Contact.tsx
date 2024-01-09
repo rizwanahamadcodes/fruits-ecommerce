@@ -6,7 +6,7 @@ const Contact = () => {
     return (
         <Section className="bg-white">
             <div className="h-navHeight"></div>
-            <Container className="flex flex-col justify-between md:flex-row gap-2">
+            <Container className="flex flex-col justify-between lg:flex-row gap-2">
                 <div className="grow max-w-xl">
                     <SectionTitle>Contact Us</SectionTitle>
                     <SectionSubtitle>

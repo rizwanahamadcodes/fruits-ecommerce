@@ -7,9 +7,7 @@ import clsx from "clsx";
 
 const SignUpForNewsLetter = () => {
     return (
-        <Section
-            className="overflow-hidden relative pb-3"
-            defaultPadding={false}>
+        <Section className="overflow-hidden relative">
             <Container
                 className={clsx(
                     "flex flex-col gap-1 justify-between border-[2px] border-primary rounded-2 lg:rounded-full p-1 lg:flex-row relative",

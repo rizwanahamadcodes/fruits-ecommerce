@@ -1,4 +1,5 @@
 import SignUpForNewsLetter from "../../components/SignUpForNewsLetter";
+import FaqSection from "../FaqSection";
 import BestSellerSection from "./BestSellerSection";
 import FlashDealsSection from "./FlashDealsSection";
 import HeroSection from "./HeroSection";
@@ -11,6 +12,7 @@ const Home = () => {
             <FlashDealsSection />
             <BestSellerSection />
             <NewArrivalsSection />
+            <FaqSection />
             <SignUpForNewsLetter />
         </>
     );

@@ -1,5 +1,11 @@
-const Faq = () => {
-    return <div>Faq</div>;
-};
+import FaqSection from "./FaqSection";
 
+const Faq = () => {
+    return (
+        <>
+            <div className="h-navHeight"></div>
+            <FaqSection />
+        </>
+    );
+};
 export default Faq;
