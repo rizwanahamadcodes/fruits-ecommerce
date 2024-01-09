@@ -34,7 +34,7 @@ const CartIcon = (props: CartDrawerProps) => {
                 nature="circular"
                 colorScheme="white"
                 onClick={open}
-                className="relative flex lg:hidden !border-gray-100 hover:!border-primary border">
+                className="relative flex lg:hidden !shadow-none !border-gray-200 hover:!border-primary border">
                 <ButtonIcon icon={BsCart3} className="text-primary" />
 
                 {noOfItemsInCart != 0 && (

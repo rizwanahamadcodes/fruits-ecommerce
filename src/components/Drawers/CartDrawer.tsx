@@ -45,7 +45,7 @@ const CartDrawer = (props: CartDrawerProps) => {
             open={open}
             className="bg-gray-50"
             close={close}>
-            <DrawerHead className="pl-1 py-1 pr-[7vw] flex justify-between items-center">
+            <DrawerHead className="pl-1 py-1 pr-[7vw] flex justify-between items-center border-b border-b-gray-200">
                 <BrandLogo />
                 <CloseButton onClick={close} />
             </DrawerHead>

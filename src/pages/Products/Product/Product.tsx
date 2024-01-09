@@ -7,6 +7,7 @@ import { RootState } from "../../../store/rootReducer";
 import { selectAllProducts } from "../../../store/slices/productsSlice";
 import ProductViewSection from "./ProductViewSection";
 import ReviewsSection from "./ReviewsSection";
+import MoreLikeTheseSection from "./MoreLikeTheseSection";
 
 const Product = () => {
     const location = useLocation();
@@ -48,6 +49,7 @@ const Product = () => {
 
                     <ProductViewSection productId={productId} />
                     <ReviewsSection productId={productId} />
+                    <MoreLikeTheseSection />
                 </>
             )}
         </>
