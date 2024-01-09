@@ -21,7 +21,7 @@ const CartIcon = (props: CartDrawerProps) => {
             <Button
                 colorScheme="white"
                 onClick={open}
-                className="relative hidden lg:flex !border-gray-100 hover:!border-primary border">
+                className="relative hidden lg:flex hover:!border-primary !shadow-none !border-gray-200 border">
                 <ButtonIcon icon={BsCart3} className="text-primary" />
 
                 <span className="hidden lg:inline-block">Cart</span>

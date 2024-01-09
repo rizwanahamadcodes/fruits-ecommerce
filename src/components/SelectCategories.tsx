@@ -35,9 +35,7 @@ const SelectCategories = () => {
                 container: () => "w-full cursor-pointer",
                 control: ({ isFocused }) =>
                     clsx(
-                        "!rounded-full px-0.5 h-3 bg-white shadow-soft !cursor-pointer",
-                        !isFocused &&
-                            "!border-transparent border-gray-200 hover:border-primary",
+                        "!rounded-full px-0.5 h-3 !bg-white !border-[1px] !border-gray-200 !cursor-pointer",
                         isFocused &&
                             "!border-primary !shadow-primary-border !border-1 outline-none"
                     ),
@@ -45,7 +43,7 @@ const SelectCategories = () => {
                 menuList: () => "!py-0",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !border border-transparent mb-0.25 last:mb-0 last:rounded-b-1.5 first:rounded-t-1.5",
+                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !border border-transparent mb-0.25 last:mb-0",
                         isSelected &&
                             "!text-primary !bg-white !border-y-primary",
                         isFocused && "!border-y-primary",

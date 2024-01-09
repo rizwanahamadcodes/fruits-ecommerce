@@ -56,7 +56,7 @@ const Searchbar = () => {
                         );
                     }}
                     type="search"
-                    className="border-gray-100 grow border hover:border-primary w-0 h-3 pl-3 pr-0.5 shadow-soft rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
+                    className="grow border hover:border-primary w-0 h-3 pl-3 pr-0.5 border-gray-200 rounded-full focus:outline-none  focus:shadow-primary-border focus:border-primary transition"
                     placeholder="Search"
                 />
             </div>
