@@ -19,23 +19,21 @@ const ProductViewSection = (props: ProductViewSectionType) => {
     });
 
     return (
-        <Section>
-            <Container className="">
-                <div className="bg-white rounded-1 p-1 shadow-soft flex gap-2 flex-col md:flex-row">
-                    {product ? (
-                        <>
-                            <div className="md:w-2/5">
-                                <ProductImageGallery
-                                    imageUrl={product.imageUrl}
-                                    moreImages={product.moreImages}
-                                />
-                            </div>
-                            <ProductDetails product={product} />
-                        </>
-                    ) : (
-                        "Sorry the product was not found"
-                    )}
-                </div>
+        <Section className="bg-white">
+            <Container className="flex gap-2 flex-col md:flex-row">
+                {product ? (
+                    <>
+                        <div className="md:w-2/5">
+                            <ProductImageGallery
+                                imageUrl={product.imageUrl}
+                                moreImages={product.moreImages}
+                            />
+                        </div>
+                        <ProductDetails product={product} />
+                    </>
+                ) : (
+                    "Sorry the product was not found"
+                )}
             </Container>
         </Section>
     );

@@ -57,9 +57,9 @@ const FooterContactLinks = [
 ];
 const Footer = () => {
     return (
-        <footer className="bg-gray-50">
+        <footer className="bg-gray-50 border border-t-gray-200">
             <Section>
-                <Container className=" gap-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <Container className="gap-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <FooterColumn>
                         <FooterColumnTitle className="flex items-center gap-0.75">
                             <BrandLogo />

@@ -3,16 +3,26 @@ import { forwardRef } from "react";
 
 type SectionProps = React.ComponentPropsWithoutRef<"section"> & {
     children?: React.ReactNode;
+    defaultPadding?: boolean;
 };
 
 export const Section = forwardRef<HTMLDivElement, SectionProps>(
     (props, ref) => {
-        const { children, className, ...otherProps } = props;
+        const {
+            children,
+            defaultPadding = true,
+            className,
+            ...otherProps
+        } = props;
 
         return (
             <section
                 ref={ref}
-                className={clsx("py-2 scroll-mt-navHeight", className)}
+                className={clsx(
+                    "scroll-mt-navHeight",
+                    defaultPadding ? "py-3" : "",
+                    className
+                )}
                 {...otherProps}>
                 {children}
             </section>

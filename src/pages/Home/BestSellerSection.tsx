@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const BestSellerSection = () => {
     return (
-        <Section className="border-gray-200 border-b-[1px] py-4">
+        <Section className="border-gray-200 border-b-[1px]">
             <Container>
                 <SectionTitle defaultBottomMargin>Best Sellers</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>

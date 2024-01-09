@@ -17,7 +17,7 @@ const NewArrivalsSection = () => {
     );
     // bg-[url('/images/backgrounds/grundge_bg.svg')]  bg-no-repeat bg-cover
     return (
-        <Section className="py-4">
+        <Section>
             <Container>
                 <SectionTitle defaultBottomMargin>New Arrivals</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>
