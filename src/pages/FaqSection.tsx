@@ -7,7 +7,7 @@ import { BiChevronDown } from "react-icons/bi";
 const faq = [
     {
         question: "How fresh are your fruits and vegetables?",
-        answer: "Our fruits and vegetables are sourced daily from local farms to ensure maximum freshness and quality.",
+        answer: "Our fruits and vegetables are sourced daily from local farms to ensure maximum freshness and quality. lorem ",
     },
     {
         question: "Are your products organic?",
@@ -58,7 +58,7 @@ const FaqSection = () => {
                 <SectionTitle>Frequently Asked Questions</SectionTitle>
                 <SectionSubtitle>
                     Some of the most frequently asked questions about our
-                    products
+                    products.
                 </SectionSubtitle>
                 <Accordion items={faqItems} />
             </Container>
@@ -138,23 +138,23 @@ const AccordionItem = (props: AccordionItemProps) => {
     return (
         <div
             className={clsx(
-                "overflow-hidden transition-all mb-0.25",
+                "overflow-hidden transition-all mb-0.25 shadow-soft",
                 first ? "rounded-t-1.5" : "rounded-t-0.25",
                 last ? "rounded-b-1.5" : "rounded-b-0.25"
             )}
-            style={{ height: height || "auto" }}
-            onClick={() => {
-                onClick(item.itemId);
-            }}>
+            style={{ height: height || "auto" }}>
             <p
-                className="p-1.25 group/label bg-gray-200 cursor-pointer flex justify-between  hover:text-gray-900"
-                ref={labelRef}>
+                className="p-1.25 group/label bg-white cursor-pointer flex justify-between  hover:text-gray-900"
+                ref={labelRef}
+                onClick={() => {
+                    onClick(item.itemId);
+                }}>
                 <p>{item.label}</p>
                 <span>
                     <BiChevronDown className="text-1.5 group-hover/label:text-gray-700 text-gray-500 transition" />
                 </span>
             </p>
-            <p className="p-1.25 bg-gray-300" ref={descriptionRef}>
+            <p className="p-1.25 bg-gray-50" ref={descriptionRef}>
                 {item.description}
             </p>
         </div>
