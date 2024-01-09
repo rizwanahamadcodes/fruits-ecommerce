@@ -103,7 +103,7 @@ export const Input = (props: InputProps) => {
         <input
             {...otherProps}
             className={clsx(
-                "border-gray-200 grow border hover:border-primary text-1 max-w-lg h-3 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition",
+                "border-gray-200 grow border hover:border-primary text-1 h-3 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition",
                 rounded,
                 className
             )}
