@@ -1,17 +1,19 @@
 import { useSelector } from "react-redux";
 import Container from "../../components/Container";
 import CountDownTimer from "../../components/CountDownTimer";
+import {
+    ProductImage,
+    ProductWrapperWithLink,
+} from "../../components/ProductCard/ProductCard";
 import Section, {
     SectionSubtitle,
     SectionTitle,
 } from "../../components/Section";
 import { Product } from "../../data/products";
+import pathConstants from "../../routes/pathConstants";
 import { RootState } from "../../store/rootReducer";
 import { selectProductById } from "../../store/slices/productsSlice";
 import ProductDetails from "../Products/Product/ProductDetails";
-import { ProductImage } from "../../components/ProductCard/ProductCard";
-import { Link } from "react-router-dom";
-import pathConstants from "../../routes/pathConstants";
 
 const FlashDealsSection = () => {
     const flashDealProductId = 1;
@@ -56,32 +58,31 @@ const FlashDeal = (props: FlashDealsProps) => {
     const { product, countDownTime } = props;
 
     return (
-        <div className="flex flex-col md:flex-row gap-2 bg-white rounded-0.5 p-2 shadow-soft">
-            <div className="hidden md:flex">
-                <CountDownTimer
-                    direction="vertical"
-                    countDownTime={countDownTime}
-                />
-            </div>
-            <div className="md:hidden flex w-full justify-center">
-                <CountDownTimer
-                    direction="horizontal"
-                    countDownTime={countDownTime}
-                />
-            </div>
-            <div className="flex items-start gap-3 flex-col md:flex-row">
-                <Link
+        <ProductWrapperWithLink>
+            <div className="flex items-center gap-3 flex-col md:flex-row p-1">
+                <ProductImage
+                    scaleOnHover={false}
+                    src={product.imageUrl}
                     to={`${pathConstants.PRODUCTS.path}/${product.id}`}
-                    className="md:w-5/5 w-full">
-                    <ProductImage
-                        src={product.imageUrl}
-                        alt={product.name}
-                        className="w-full"
+                    alt={product.name}
+                    className="w-full"
+                />
+                <div className="hidden md:flex">
+                    <CountDownTimer
+                        direction="vertical"
+                        countDownTime={countDownTime}
                     />
-                </Link>
+                </div>
+                <div className="md:hidden flex w-full justify-center">
+                    <CountDownTimer
+                        direction="horizontal"
+                        countDownTime={countDownTime}
+                    />
+                </div>
+
                 <ProductDetails className="grow" product={product} />
             </div>
-        </div>
+        </ProductWrapperWithLink>
     );
 };
 

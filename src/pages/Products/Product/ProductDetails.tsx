@@ -7,6 +7,7 @@ import {
 } from "../../../components/ProductCard/ProductCard";
 import StarRating from "../../../components/Rating/StarRating";
 import { Product } from "../../../data/products";
+import pathConstants from "../../../routes/pathConstants";
 
 type ProductDetailsProps = {
     withDescription?: boolean;
@@ -24,7 +25,11 @@ const ProductDetails = (props: ProductDetailsProps) => {
                 className
             )}>
             <div className="flex flex-col gap-0.5 w-full">
-                <ProductName size="lg">{product.name}</ProductName>
+                <ProductName
+                    to={`${pathConstants.PRODUCTS.path}/${product.id}`}
+                    size="lg">
+                    {product.name}
+                </ProductName>
                 <StarRating productId={product.id} />
                 <ProductPrice
                     size="md"

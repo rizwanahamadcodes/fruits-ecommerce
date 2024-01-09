@@ -1,14 +1,14 @@
 import clsx from "clsx";
 import { BsCart3 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, LinkProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Product } from "../../data/products";
 import pathConstants from "../../routes/pathConstants";
 import { RootState } from "../../store/rootReducer";
 import { addItem, selectCartItemById } from "../../store/slices/cartSlice";
+import { formatCurrency } from "../../utils/currency";
 import Button, { ButtonIcon } from "../Button";
 import Counter from "../Counter";
-import { formatCurrency } from "../../utils/currency";
 
 type ProductCardProps = {
     product: Product;
@@ -20,13 +20,19 @@ const ProductCard = (props: ProductCardProps) => {
     return (
         <ProductWrapperWithLink
             className="overflow-hidden block"
-            key={product.id}
-            to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
+            key={product.id}>
             <div className="flex flex-col gap-1">
-                <ProductImage src={product.imageUrl} alt={product.name} />
+                <ProductImage
+                    to={`${pathConstants.PRODUCTS.path}/${product.id}`}
+                    src={product.imageUrl}
+                    alt={product.name}
+                />
 
                 <div className="flex flex-col gap-0.5">
-                    <ProductName>{product.name}</ProductName>
+                    <ProductName
+                        to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
+                        {product.name}
+                    </ProductName>
                     <ProductPrice
                         unitOfSale={product.unitOfSale}
                         price={product.price}
@@ -41,45 +47,52 @@ const ProductCard = (props: ProductCardProps) => {
 
 export default ProductCard;
 
-type ProductWrapperWithLinkProps = LinkProps;
+type ProductWrapperProps = React.ComponentPropsWithoutRef<"div">;
 
-export const ProductWrapperWithLink = (props: ProductWrapperWithLinkProps) => {
+export const ProductWrapperWithLink = (props: ProductWrapperProps) => {
     const { children, className, ...otherProps } = props;
 
     return (
-        <Link
+        <div
             className={clsx(
                 "p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group inline-block",
                 className
             )}
             {...otherProps}>
             {children}
-        </Link>
+        </div>
     );
 };
 
-type ProductImageProps = React.ComponentPropsWithoutRef<"img">;
+type ProductImageProps = React.ComponentPropsWithoutRef<"img"> & {
+    to: string;
+    scaleOnHover?: boolean;
+};
 
 export const ProductImage = (props: ProductImageProps) => {
-    const { className, ...otherProps } = props;
+    const { to, className, scaleOnHover = true, ...otherProps } = props;
 
     return (
-        <img
-            {...otherProps}
-            className={clsx(
-                "group-hover:scale-110 rounded-1 transition-all",
-                className
-            )}
-        />
+        <Link to={to}>
+            <img
+                {...otherProps}
+                className={clsx(
+                    "rounded-1",
+                    scaleOnHover ? "group-hover:scale-110 transition-all" : "",
+                    className
+                )}
+            />
+        </Link>
     );
 };
 
 type ProductNameProps = React.ComponentPropsWithoutRef<"h3"> & {
     size?: "sm" | "md" | "lg";
+    to: string;
 };
 
 export const ProductName = (props: ProductNameProps) => {
-    const { className, size = "md", ...otherProps } = props;
+    const { to, className, size = "md", ...otherProps } = props;
     const sizeMap = {
         sm: "text-1",
         md: "text-1.5",
@@ -87,14 +100,16 @@ export const ProductName = (props: ProductNameProps) => {
     };
 
     return (
-        <h3
-            className={clsx(
-                "text-gray-900 font-medium relative z-[10]",
-                sizeMap[size],
-                className
-            )}
-            {...otherProps}
-        />
+        <Link to={to}>
+            <h3
+                className={clsx(
+                    "text-gray-900 font-medium relative z-[10]",
+                    sizeMap[size],
+                    className
+                )}
+                {...otherProps}
+            />
+        </Link>
     );
 };
 
@@ -158,18 +173,11 @@ export const ProductCTA = (props: ProductCTAProps) => {
                     className="w-full"
                     formattedInfo
                     productId={productId}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                    }}
                 />
             ) : (
                 <Button
                     className="w-full"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-
+                    onClick={() => {
                         dispatch(addItem(productId));
                     }}>
                     <ButtonIcon icon={BsCart3} />

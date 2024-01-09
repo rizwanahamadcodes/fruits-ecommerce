@@ -1,15 +1,13 @@
 import { useSelector } from "react-redux";
 import Container from "../../components/Container";
-import { ProductImage } from "../../components/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import Section, {
     SectionSubtitle,
     SectionTitle,
 } from "../../components/Section";
 import { RootState } from "../../store/rootReducer";
 import { selectProductById } from "../../store/slices/productsSlice";
-import ProductDetails from "../Products/Product/ProductDetails";
-import pathConstants from "../../routes/pathConstants";
-import { Link } from "react-router-dom";
+import { ProductListLayout } from "../Products/ProductsSection";
 
 const BestSellerSection = () => {
     return (
@@ -20,9 +18,11 @@ const BestSellerSection = () => {
                     Our best selling products in the lineup
                 </SectionSubtitle>
             </Container>
-            <Container className="flex gap-1 flex-col sm:flex-row">
-                <BestSellingProduct productId={8} />
-                <BestSellingProduct productId={2} />
+            <Container>
+                <ProductListLayout>
+                    <BestSellingProduct productId={8} />
+                    <BestSellingProduct productId={2} />
+                </ProductListLayout>
             </Container>
         </Section>
     );
@@ -38,28 +38,7 @@ const BestSellingProduct = (props: BestSellingProductProps) => {
         selectProductById(state, productId)
     );
 
-    return (
-        <>
-            {product ? (
-                <div className="bg-white p-1 rounded-1 border-[1px] hover:border-primary ">
-                    <div className="flex sm:items-start xl:items-center items-start flex-col xl:flex-row">
-                        <Link
-                            to={`${pathConstants.PRODUCTS.path}/${product.id}`}>
-                            <ProductImage src={product?.imageUrl} />
-                        </Link>
-                        <div className="grow">
-                            <ProductDetails
-                                withDescription={false}
-                                product={product}
-                            />
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                ""
-            )}
-        </>
-    );
+    return <>{product ? <ProductCard product={product} /> : ""}</>;
 };
 
 export default BestSellerSection;
