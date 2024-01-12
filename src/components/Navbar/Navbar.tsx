@@ -79,7 +79,8 @@ const Navbar = () => {
                 <Drawer
                     close={closeNavMenuDrawer}
                     isOpen={isNavMenuDrawerOpen}
-                    open={openNavMenuDrawer}>
+                    open={openNavMenuDrawer}
+                    className="!bg-white">
                     <DrawerHead className="pl-[7vw] py-1 pr-[7vw] flex justify-between items-center border-b">
                         <BrandLogo />
                         <CloseButton onClick={closeNavMenuDrawer} />
