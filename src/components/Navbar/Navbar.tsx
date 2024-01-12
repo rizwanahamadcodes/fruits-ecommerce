@@ -7,7 +7,7 @@ import CartDrawer from "../Drawers/CartDrawer";
 import CartIcon from "./CartIcon";
 import Searchbar from "./Searchbar";
 import NavMenu from "./NavMenu";
-import Drawer, { DrawerHead } from "../Drawer";
+import Drawer, { DrawerBody, DrawerHead } from "../Drawer";
 import CloseButton from "../CloseButton";
 import Hamburger from "../Hamburger";
 
@@ -55,7 +55,7 @@ const Navbar = () => {
         <div>
             <div
                 className={clsx(
-                    "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
+                    "h-navHeight bg-gray-100/50 backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft"
                 )}>
                 <Container className="flex items-center gap-1 justify-between">
@@ -80,11 +80,13 @@ const Navbar = () => {
                     close={closeNavMenuDrawer}
                     isOpen={isNavMenuDrawerOpen}
                     open={openNavMenuDrawer}>
-                    <DrawerHead className="pl-[7vw] py-1 pr-[7vw] flex justify-between items-center border-b-[1px]">
+                    <DrawerHead className="pl-[7vw] py-1 pr-[7vw] flex justify-between items-center">
                         <BrandLogo />
                         <CloseButton onClick={closeNavMenuDrawer} />
                     </DrawerHead>
-                    <NavMenu direction="vertical" />
+                    <DrawerBody className="">
+                        <NavMenu direction="vertical" />
+                    </DrawerBody>
                 </Drawer>
             </span>
 

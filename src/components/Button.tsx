@@ -14,7 +14,7 @@ export const button = cva(
             },
             variant: {
                 solid: "shadow",
-                outline: " shadow border-2 ",
+                outline: "shadow border-2 ",
                 ghost: "",
             },
             colorScheme: {

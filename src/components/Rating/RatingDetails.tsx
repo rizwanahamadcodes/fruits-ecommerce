@@ -146,7 +146,7 @@ const RatingBar = (props: RatingBarProps) => {
                         height: "100%",
                         width: percentageRating + "%",
                     }}
-                    className="bg-gradient-to-r from-primary to-primary-400 rounded-r-full"></div>
+                    className="bg-gradient-to-r from-primary to-primary-500 rounded-r-full"></div>
             </div>
             <p className="min-w-[2rem]">{`${Math.round(percentageRating)}%`}</p>
         </div>
