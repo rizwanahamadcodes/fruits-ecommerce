@@ -55,7 +55,7 @@ const Navbar = () => {
         <div>
             <div
                 className={clsx(
-                    "h-navHeight bg-gray-100/50 backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
+                    "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
                     scrolledPast80 && "shadow-soft"
                 )}>
                 <Container className="flex items-center gap-1 justify-between">
@@ -80,7 +80,7 @@ const Navbar = () => {
                     close={closeNavMenuDrawer}
                     isOpen={isNavMenuDrawerOpen}
                     open={openNavMenuDrawer}>
-                    <DrawerHead className="pl-[7vw] py-1 pr-[7vw] flex justify-between items-center">
+                    <DrawerHead className="pl-[7vw] py-1 pr-[7vw] flex justify-between items-center border-b">
                         <BrandLogo />
                         <CloseButton onClick={closeNavMenuDrawer} />
                     </DrawerHead>
