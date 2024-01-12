@@ -43,7 +43,7 @@ const SelectCategories = () => {
                 menuList: () => "!py-0",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !pl-1 leading-[2rem] !cursor-pointer !border-gray-100 border-transparent mb-0.25 last:mb-0",
+                        "h-3 !font-medium !pl-1 leading-[2rem] !cursor-pointer !border-gray-100 border-transparent mb-0.25 last:mb-0",
                         isSelected &&
                             "!text-gray-900 !font-medium  !bg-gray-100 !border-b-[1px] !border-b-primary",
                         isFocused && "!border-y-primary",

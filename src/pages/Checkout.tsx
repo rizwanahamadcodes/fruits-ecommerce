@@ -42,7 +42,7 @@ const Checkout = () => {
     return (
         <>
             <Breadcrumb routes={routes} pathname={location.pathname} />
-            <Section>
+            <Section className="bg-gray-100">
                 <div className="h-navHeight"></div>
                 <Container className="flex flex-col sm:flex-row gap-2">
                     <div className="grow">
@@ -103,7 +103,7 @@ export const Input = (props: InputProps) => {
         <input
             {...otherProps}
             className={clsx(
-                "grow shadow-inner bg-gray-100 placeholder:text-gray-600 hover:border-primary text-1 h-3 px-1 focus:outline-none  focus:shadow-primary-border focus:bg-white focus:border-primary focus:border transition",
+                "grow shadow-inner bg-gray-200 placeholder:text-gray-700 hover:border-primary text-1 h-3 px-1.5 focus:outline-none  focus:shadow-primary-border focus:bg-gray-100 font-medium focus:border-primary focus:border transition",
                 rounded,
                 className
             )}
@@ -174,7 +174,7 @@ const SelectCountry = (props: SelectCountryProps) => {
                     container: () => "max-w-lg cursor-pointer mt-0.25",
                     control: ({ isFocused }) =>
                         clsx(
-                            "!rounded-full !border px-0.5 h-3 bg-white !bg-gray-100 !cursor-pointer",
+                            "!rounded-full !shadow-inner !border px-0.5 h-3 bg-white !bg-gray-200 !cursor-pointer",
                             !isFocused &&
                                 "!border-transparent border-gray-200 hover:border-primary",
                             isFocused &&

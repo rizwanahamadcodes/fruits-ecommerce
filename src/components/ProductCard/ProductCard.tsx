@@ -103,7 +103,7 @@ export const ProductName = (props: ProductNameProps) => {
         <Link to={to}>
             <h3
                 className={clsx(
-                    "text-gray-900 font-medium relative z-[10]",
+                    "text-gray-800 font-medium relative z-[10]",
                     sizeMap[size],
                     className
                 )}
