@@ -192,7 +192,7 @@ const Crumb = (props: CrumbProps) => {
         return (
             <span
                 className={
-                    crumbClasses + " " + "text-primary whitespace-nowrap"
+                    crumbClasses + " " + "text-primary-900 whitespace-nowrap"
                 }>
                 {crumb.label}
             </span>
