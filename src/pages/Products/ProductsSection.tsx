@@ -18,7 +18,7 @@ const ProductsSection = () => {
     );
 
     return (
-        <Section id="products-section" className="pt-2">
+        <Section id="products-section" className="pt-2 bg-gray-100">
             <Container>
                 <SectionTitle className="mb-1">Our Products</SectionTitle>
                 <div className="flex w-full max-w-xl mb-2 gap-1 items-center">
@@ -26,7 +26,7 @@ const ProductsSection = () => {
                     <SelectCategories />
                 </div>
                 {filteredProducts.length === 0 ? (
-                    <p className="bg-white rounded-1 p-1 shadow-soft">
+                    <p className="bg-white rounded-1 p-1 shadow">
                         Sorry no products match your search criteria
                     </p>
                 ) : (

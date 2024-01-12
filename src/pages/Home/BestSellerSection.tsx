@@ -11,7 +11,7 @@ import { ProductListLayout } from "../Products/ProductsSection";
 
 const BestSellerSection = () => {
     return (
-        <Section className="border-gray-200 border-b-[1px]">
+        <Section className="border-b-gray-200 bg-gray-100 border-b-[1px]">
             <Container>
                 <SectionTitle defaultBottomMargin>Best Sellers</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>

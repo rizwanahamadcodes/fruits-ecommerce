@@ -13,7 +13,7 @@ const Hamburger = (props: HamburgerProps) => {
         lg: "w-1.75",
     };
     const colorSchemeMap = {
-        primary: "bg-primary group-hover/hamburger:bg-primary-600",
+        primary: "bg-primary group-hover/hamburger:bg-primary-800",
         "gray-300": "bg-gray-300 group-hover/hamburger:bg-gray-500",
     };
 

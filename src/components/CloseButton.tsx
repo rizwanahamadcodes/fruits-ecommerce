@@ -13,7 +13,7 @@ const CloseButton = (props: CloseButtonProps) => {
         lg: "h-1.75 w-1.75",
     };
     const colorSchemeMap = {
-        primary: "bg-primary group-hover/closeButton:bg-primary-600",
+        primary: "bg-primary group-hover/closeButton:bg-primary-800",
         "gray-300": "bg-gray-300 group-hover/closeButton:bg-gray-500",
     };
 

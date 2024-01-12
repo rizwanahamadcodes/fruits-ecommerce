@@ -17,7 +17,7 @@ const NewArrivalsSection = () => {
     );
     // bg-[url('/images/backgrounds/grundge_bg.svg')]  bg-no-repeat bg-cover
     return (
-        <Section className="border-b-[1px] border-b-gray-200">
+        <Section className="border-b bg-gray-200 border-b-gray-200">
             <Container>
                 <SectionTitle defaultBottomMargin>New Arrivals</SectionTitle>
                 <SectionSubtitle defaultBottomMargin>

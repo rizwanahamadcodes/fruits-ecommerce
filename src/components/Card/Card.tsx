@@ -11,7 +11,7 @@ const Card = (props: CardProps) => {
     return (
         <div
             className={clsx(
-                "bg-white overflow-hidden shadow-soft rounded-0.5 border border-gray-100 p-1 flex flex-col gap-1 min-h-content",
+                "bg-white overflow-hidden shadow rounded-0.5 border border-gray-100 p-1 flex flex-col gap-1 min-h-content",
                 className
             )}>
             {children}

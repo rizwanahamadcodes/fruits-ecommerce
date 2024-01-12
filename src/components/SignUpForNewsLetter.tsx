@@ -7,12 +7,12 @@ import clsx from "clsx";
 
 const SignUpForNewsLetter = () => {
     return (
-        <Section className="overflow-hidden relative">
+        <Section className="overflow-hidden relative bg-gray-200">
             <Container
                 className={clsx(
                     "flex flex-col gap-1 justify-between border-[2px] border-primary rounded-2 lg:rounded-full p-1 lg:flex-row relative",
                     "before:content-[''] before:block before:h-[2px] before:w-screen before:bg-primary before:absolute before:top-1/2 before:right-full",
-                    "after:content-[''] after:block after:h-[2px] after:w-screen after:bg-primary after:absolute after:top-1/2 after:left-full"
+                    "after:content-[''] after:block after:h-[2px] after:w-screen after:bg-primary after:absolute after:top-1/2 after:left-full bg-white"
                 )}>
                 <div className="flex items-center gap-1">
                     <IoMailUnreadOutline className="text-2" />
@@ -29,7 +29,7 @@ const SignUpForNewsLetter = () => {
                         type="text"
                         rounded="rounded-full"
                         placeholder="Your email"
-                        className="min-w-0"
+                        className="min-w-0 placeholder:text-gray-600 !border-none shadow-inner bg-gray-100"
                     />
                     <Button type="submit">Subscribe</Button>
                 </form>

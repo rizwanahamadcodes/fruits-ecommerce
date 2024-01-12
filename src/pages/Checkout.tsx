@@ -97,13 +97,13 @@ type InputProps = ComponentPropsWithoutRef<"input"> & {
 };
 
 export const Input = (props: InputProps) => {
-    const { className, rounded = "rounded-1", ...otherProps } = props;
+    const { className, rounded = "rounded-full", ...otherProps } = props;
 
     return (
         <input
             {...otherProps}
             className={clsx(
-                "border-gray-200 grow border hover:border-primary text-1 h-3 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition",
+                "grow shadow-inner bg-gray-100 placeholder:text-gray-600 hover:border-primary text-1 h-3 px-1 focus:outline-none  focus:shadow-primary-border focus:bg-white focus:border-primary focus:border transition",
                 rounded,
                 className
             )}
@@ -125,7 +125,7 @@ const BillingForm = () => {
                 <input
                     id="agreedToTerms"
                     type="checkbox"
-                    className="peer cursor-pointer relative appearance-none shrink-0 w-1.25 h-1.25 border border-gray-200 bg-white
+                    className="peer shadow-inner cursor-pointer relative appearance-none shrink-0 w-1.25 h-1.25 border border-gray-200 bg-white
                     focus:outline-none focus:shadow-primary-border focus:border-primary checked:border-primary
                     disabled:border-gray-400 disabled:bg-gray-400"
                 />
@@ -174,7 +174,7 @@ const SelectCountry = (props: SelectCountryProps) => {
                     container: () => "max-w-lg cursor-pointer mt-0.25",
                     control: ({ isFocused }) =>
                         clsx(
-                            "!rounded-1 !border-gray-200 !border px-0.5 h-3 bg-white !cursor-pointer",
+                            "!rounded-full !border px-0.5 h-3 bg-white !bg-gray-100 !cursor-pointer",
                             !isFocused &&
                                 "!border-transparent border-gray-200 hover:border-primary",
                             isFocused &&

@@ -72,7 +72,7 @@ const TimeBox = (props: TimeBoxProps) => {
     };
 
     return (
-        <div className="bg-white rounded-0.5 p-0.5 min-w-[3.25rem] min-h-[3rem] shadow-[3px_3px_0px_1px_red] shadow-primary-400 border-[1px] border-gray-100">
+        <div className="bg-white rounded-0.5 p-0.5 min-w-[3.25rem] min-h-[3rem] shadow-[3px_3px_0px_1px_red] shadow-primary border-[1px] border-gray-100">
             <p className="text-900 font-semibold">{processCount(count)}</p>
             <div className="h-[2px] w-full bg-gray-100"></div>
             <p className="text-0.75 text-gray-500">{title}</p>

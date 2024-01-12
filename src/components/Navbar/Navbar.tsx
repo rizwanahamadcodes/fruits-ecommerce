@@ -56,7 +56,7 @@ const Navbar = () => {
             <div
                 className={clsx(
                     "h-navHeight bg-white/50 backdrop-blur-sm fixed top-0 flex w-full z-[1000] items-center transition-[box-shadow] duration-500",
-                    scrolledPast80 && "shadow-soft"
+                    scrolledPast80 && "shadow"
                 )}>
                 <Container className="flex items-center gap-1 justify-between">
                     <BrandLogo />

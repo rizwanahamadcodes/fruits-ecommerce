@@ -55,7 +55,7 @@ export const ProductWrapperWithLink = (props: ProductWrapperProps) => {
     return (
         <div
             className={clsx(
-                "p-1 shadow-soft border border-transparent hover:border-primary bg-white rounded-1 group inline-block",
+                "p-1 shadow border border-transparent hover:border-primary bg-white rounded-1 group inline-block",
                 className
             )}
             {...otherProps}>

@@ -53,7 +53,7 @@ const FaqSection = () => {
     });
 
     return (
-        <Section className="border-b-[1px] border-b-gray-200">
+        <Section className="bg-gray-100 border-b-[1px] border-b-gray-200">
             <Container>
                 <SectionTitle>Frequently Asked Questions</SectionTitle>
                 <SectionSubtitle>
@@ -138,7 +138,7 @@ const AccordionItem = (props: AccordionItemProps) => {
     return (
         <div
             className={clsx(
-                "overflow-hidden transition-all mb-0.25 shadow-soft",
+                "overflow-hidden transition-all mb-0.25 shadow",
                 first ? "rounded-t-1.5" : "rounded-t-0.25",
                 last ? "rounded-b-1.5" : "rounded-b-0.25"
             )}
@@ -151,7 +151,12 @@ const AccordionItem = (props: AccordionItemProps) => {
                 }}>
                 <p>{item.label}</p>
                 <span>
-                    <BiChevronDown className="text-1.5 group-hover/label:text-gray-700 text-gray-500 transition" />
+                    <BiChevronDown
+                        className={clsx(
+                            "text-1.5 group-hover/label:text-gray-500 text-gray-300 transition-all",
+                            item.open ? "rotate-180" : ""
+                        )}
+                    />
                 </span>
             </p>
             <p className="p-1.25 bg-gray-50" ref={descriptionRef}>
