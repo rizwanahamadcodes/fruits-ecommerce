@@ -55,11 +55,11 @@ const NavItem = (props: NavItemProps) => {
             <Link
                 to={navLink.path}
                 className={clsx(
-                    "flex items-center transition-all font-medium",
+                    "flex font-semibold uppercase text-[14px] tracking-[2px] items-center transition-all font-medium",
 
                     direction === "horizontal"
                         ? "h-navHeight px-1"
-                        : "px-2 py-1.25 border-b",
+                        : "px-2 py-1.25 border-b-gray-100 border-b",
 
                     match ? "text-primary-900 font-medium" : "text-gray-500",
 
