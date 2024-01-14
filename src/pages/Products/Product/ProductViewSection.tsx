@@ -19,7 +19,7 @@ const ProductViewSection = (props: ProductViewSectionType) => {
     });
 
     return (
-        <Section className="bg-white">
+        <Section className="bg-white border-b border-b-gray-200">
             <Container className="flex gap-2 flex-col md:flex-row">
                 {product ? (
                     <>

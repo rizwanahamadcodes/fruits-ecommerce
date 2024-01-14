@@ -38,7 +38,7 @@ export const button = cva(
                 variant: "solid",
                 colorScheme: "primary",
                 className:
-                    "bg-gradient-to-t from-primary to-primary-500 hover:to-primary text-white hover:text-white focus:shadow-primary-border",
+                    "bg-gradient-to-r from-primary to-primary-500 hover:to-primary text-white hover:text-white focus:shadow-primary-border",
             },
             {
                 variant: "solid",

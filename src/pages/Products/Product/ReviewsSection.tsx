@@ -38,7 +38,9 @@ const ReviewsSection = (props: ReviewsSectionType) => {
     return (
         <>
             {productReviews.length === 0 ? null : (
-                <Section className="bg-gray-50" id="reviews">
+                <Section
+                    className="bg-gray-50 border-b-gray-200 border-b"
+                    id="reviews">
                     <Container className="flex flex-col gap-2">
                         <div className="flex flex-col gap-1">
                             <SectionCategoryTitle>Ratings</SectionCategoryTitle>

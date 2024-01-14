@@ -23,7 +23,7 @@ const MoreLikeTheseSection = () => {
         xl: 1280,
     };
     return (
-        <Section>
+        <Section className="bg-gray-100">
             <Container>
                 <SectionTitle>More like these</SectionTitle>
                 <SectionSubtitle>Explore similar products</SectionSubtitle>
