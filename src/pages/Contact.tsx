@@ -29,7 +29,7 @@ const Contact = () => {
                             type="email"
                         />
                         <textarea
-                            className="border-gray-200 grow border hover:border-primary text-1 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition rounded-1.5 h-6 pt-1 resize-none"
+                            className="grow bg-gray-200 placeholder:text-gray-800 shadow-inner hover:border-primary text-1 px-1 focus:outline-none  focus:shadow-primary-border focus:border-primary transition rounded-1.5 h-6 pt-1 resize-none"
                             placeholder="Leave a message"
                         />
                         <Button type="submit" variant={"outline"}>
