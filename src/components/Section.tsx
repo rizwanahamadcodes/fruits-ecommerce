@@ -41,7 +41,7 @@ export const SectionTitle = (props: SectionTitleProps) => {
     return (
         <h2
             className={clsx(
-                "text-1.75 font-medium text-primary-900",
+                "sm:text-1.5 text-1.75 font-medium text-primary-900",
                 defaultBottomMargin ? "mb-0.5" : "",
                 className
             )}>
