@@ -64,7 +64,7 @@ const NavItem = (props: NavItemProps) => {
                     match ? "text-primary-900 font-medium" : "text-gray-400",
 
                     direction === "vertical" && match
-                        ? "bg-gray-100 border-l-[4px] border-l-primary"
+                        ? "bg-gray-100/70 border-l-[4px] border-l-primary"
                         : "",
                     direction === "horizontal" && match
                         ? "border-b-[4px] bg-white/90 text-primary-900 border-primary"
