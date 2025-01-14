@@ -10,7 +10,7 @@ import RatingDetails, {
 import { FiveStars } from "../../../components/Rating/StarRating";
 import Section, { SectionCategoryTitle } from "../../../components/Section";
 import { Product } from "../../../data/products";
-import { Review } from "../../../data/reviews";
+import { ReviewObject } from "../../../data/reviews";
 import { users } from "../../../data/user";
 import { RootState } from "../../../store/rootReducer";
 import {
@@ -91,7 +91,7 @@ const ReviewsSection = (props: ReviewsSectionType) => {
 export default ReviewsSection;
 
 type ReviewProps = {
-    review: Review;
+    review: ReviewObject;
 };
 
 const Review = (props: ReviewProps) => {

@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import { Product } from "../../data/products";
-import { Review, reviews } from "../../data/reviews";
+import { ReviewObject, reviews } from "../../data/reviews";
 import { FiveStars } from "./StarRating";
 import { createContext, useContext } from "react";
 
 type RatingDetailsContextType = {
     averageRating: number;
     noOfRatings: number;
-    productReviews: Review[];
+    productReviews: ReviewObject[];
 };
 
 const RatingDetailsContext = createContext<RatingDetailsContextType>({

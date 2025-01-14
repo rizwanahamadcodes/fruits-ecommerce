@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Review, reviews } from "../../data/reviews";
+import { ReviewObject, reviews } from "../../data/reviews";
 import { RootState } from "../rootReducer";
 import { Product } from "../../data/products";
 
 type ReviewsState = {
-    reviews: Review[];
+    reviews: ReviewObject[];
 };
 
 const reviewsSlice = createSlice({
@@ -13,7 +13,7 @@ const reviewsSlice = createSlice({
         reviews: reviews,
     } as ReviewsState,
     reducers: {
-        likeReview: (state, action: PayloadAction<Review["id"]>) => {
+        likeReview: (state, action: PayloadAction<ReviewObject["id"]>) => {
             state.reviews = state.reviews.map((review) => {
                 if (review.id != action.payload) return review;
 
@@ -36,7 +36,7 @@ const reviewsSlice = createSlice({
                 }
             });
         },
-        dislikeReview: (state, action: PayloadAction<Review["id"]>) => {
+        dislikeReview: (state, action: PayloadAction<ReviewObject["id"]>) => {
             state.reviews = state.reviews.map((review) => {
                 if (review.id != action.payload) return review;
 
