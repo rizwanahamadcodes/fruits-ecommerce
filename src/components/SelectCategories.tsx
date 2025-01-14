@@ -1,12 +1,6 @@
-import { GiDrinkMe } from "react-icons/gi";
 import clsx from "clsx";
 import { useSearchParams } from "react-router-dom";
-import Select, {
-    ControlProps,
-    OptionProps,
-    SingleValue,
-    components,
-} from "react-select";
+import Select, { components, OptionProps, SingleValue } from "react-select";
 import { categories, Category } from "../data/categories";
 
 type OptionType = Category;
