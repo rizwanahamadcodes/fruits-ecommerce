@@ -1,14 +1,15 @@
+import { GiDrinkMe } from "react-icons/gi";
 import clsx from "clsx";
 import { useSearchParams } from "react-router-dom";
-import Select, { OptionProps, SingleValue, components } from "react-select";
-import { categories } from "../data/categories";
+import Select, {
+    ControlProps,
+    OptionProps,
+    SingleValue,
+    components,
+} from "react-select";
+import { categories, Category } from "../data/categories";
 
-type OptionType = {
-    id: number;
-    value: string;
-    label: string;
-    imageUrl: string;
-};
+type OptionType = Category;
 
 const SelectCategories = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -35,17 +36,18 @@ const SelectCategories = () => {
                 container: () => "w-full cursor-pointer",
                 control: ({ isFocused }) =>
                     clsx(
-                        "!rounded-full px-0.5 h-3 !bg-white !border-[1px] !border-gray-200  hover:!border-primary !cursor-pointer",
+                        "!rounded-full px-0.5 pl-1 h-3 !bg-white !border-[1px] !border-gray-200  hover:!border-primary !cursor-pointer",
                         isFocused &&
                             "!border-primary !shadow-primary-border !border-1 outline-none"
                     ),
                 menu: () => "!rounded-1.5 overflow-hidden !border-[0]",
-                menuList: () => "!py-0",
+                menuList: () => "!p-0.25",
                 option: ({ isSelected, isFocused }) =>
                     clsx(
-                        "h-3 !font-medium !pl-1 leading-[2rem] !cursor-pointer !border-gray-100 border-transparent mb-0.25 last:mb-0",
+                        "h-3 !font-medium !pl-1.5 leading-[2rem] !cursor-pointer !border-gray-100 border-transparent mb-0.25 last:mb-0  ",
+                        !isSelected && "!text-gray-600",
                         isSelected &&
-                            "!text-gray-900 !font-medium  !bg-gray-100 !border-b-[1px] !border-b-primary",
+                            "!text-primary !bg-primary/20 rounded-full",
                         isFocused && "!border-y-primary",
                         isFocused && !isSelected && "!bg-transparent"
                     ),
@@ -59,13 +61,18 @@ const SelectCategories = () => {
 
 const OptionWithIcon = (props: OptionProps<OptionType>) => {
     const { data, isSelected } = props;
-    const { label } = data;
+    const { label, icon: Icon } = data;
     const { Option } = components;
 
     return (
-        <Option {...props} className={clsx("h-3", isSelected && "font-white")}>
+        <Option
+            {...props}
+            className={clsx(
+                "h-3 !flex !items-center !gap-0.75",
+                isSelected && "font-white !text-primary"
+            )}>
+            <Icon />
             <span>{label}</span>
-            <span className=""></span>
         </Option>
     );
 };
