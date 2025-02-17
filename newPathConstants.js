@@ -1,35 +1,72 @@
-export const PATH_CONSTANTS = {
-  NEW: "new",
-};
+export const PATHCONSTANTS = {
+    PRODUCTS: {
+        pathSegment: "products",
+        path: `/${PATHCONSTANTS.pathSegment}`,
+        name: "Products",
+        param: "productId",
+        buildHref: () => `/${PATHCONSTANTS.PRODUCTS}`,
 
-export const ROUTES = {
-  PRODUCTS: {
-    path: "products",  // Parent route path without leading slash
-    name: "Products",
-    param: ":id",
-    LIST: {
-      path: "/",  // Relative to parent
-      name: "Product List",
+        ADD: {
+            pathSegment: "new",
+            path: `/${PATHCONSTANTS.PRODUCTS}/${PATHCONSTANTS.PRODUCTS.ADD.pathSegment}`,
+            name: "Add Product",
+            buildHref: () =>
+                `/${PATHCONSTANTS.PRODUCTS.path}/${PATHCONSTANTS.PRODUCTS.ADD.pathSegment}`,
+        },
+        EDIT: {
+            pathSegment: "edit",
+            path: `:${PATHCONSTANTS.PRODUCTS.param}/${PATHCONSTANTS.PRODUCTS.EDIT.pathSegment}`,
+            name: "Edit Product",
+            buildHref: (param) =>
+                `/${param}/${PATHCONSTANTS.PRODUCTS.EDIT.pathSegment}`,
+        },
+        DELETE: {
+            pathSegment: "delete",
+            path: `:${PATHCONSTANTS.PRODUCTS.param}/${PATHCONSTANTS.PRODUCTS.DELETE.pathSegment}`,
+            name: "Delete Product",
+            buildHref: (param) =>
+                `/${param}/${PATHCONSTANTS.PRODUCTS.DELETE.pathSegment}`,
+        },
+        DETAIL: {
+            pathSegment: "detail",
+            path: `:${PATHCONSTANTS.PRODUCTS.param}/${PATHCONSTANTS.PRODUCTS.DETAIL.pathSegment}`,
+            name: "Detail Product",
+            buildHref: (param) =>
+                `/${param}/${PATHCONSTANTS.PRODUCTS.DETAIL.pathSegment}`,
+        },
     },
-    ADD: {
-      path: PATH_CONSTANTS.NEW,  // Reference the constant here
-      name: "Add Product",
-      buildHref: () => `${ROUTES.PRODUCTS.path}/${PATH_CONSTANTS.NEW}`,  // Use constant for buildHref
+    USERS: {
+        pathSegment: "users",
+        path: `/${PATHCONSTANTS.pathSegment}`,
+        name: "Users",
+        param: "userId",
+        ADD: {
+            pathSegment: "new",
+            path: `/${PATHCONSTANTS.USERS}/${PATHCONSTANTS.USERS.ADD.pathSegment}`,
+            name: "Add Product",
+            buildHref: () =>
+                `/${PATHCONSTANTS.USERS.path}/${PATHCONSTANTS.USERS.ADD.pathSegment}`,
+        },
+        EDIT: {
+            pathSegment: "edit",
+            path: `:${PATHCONSTANTS.USERS.param}/${PATHCONSTANTS.USERS.EDIT.pathSegment}`,
+            name: "Edit Product",
+            buildHref: (param) =>
+                `/${param}/${PATHCONSTANTS.USERS.EDIT.pathSegment}`,
+        },
+        DELETE: {
+            pathSegment: "delete",
+            path: `:${PATHCONSTANTS.USERS.param}/${PATHCONSTANTS.USERS.DELETE.pathSegment}`,
+            name: "Delete Product",
+            buildHref: (param) =>
+                `/${param}/${PATHCONSTANTS.USERS.DELETE.pathSegment}`,
+        },
+        DETAIL: {
+            pathSegment: "detail",
+            path: `:${PATHCONSTANTS.USERS.param}/${PATHCONSTANTS.USERS.DETAIL.pathSegment}`,
+            name: "Detail Product",
+            buildHref: (param) =>
+                `/${param}/${PATHCONSTANTS.USERS.DETAIL.pathSegment}`,
+        },
     },
-    EDIT: {
-      path: ":id/edit",  // Dynamic path
-      name: "Edit Product",
-      buildHref: (param) => `${ROUTES.PRODUCTS.path}/${param}/edit`,
-    },
-    DELETE: {
-      path: ":id/delete",  // Dynamic path
-      name: "Delete Product",
-      buildHref: (param) => `${ROUTES.PRODUCTS.path}/${param}/delete`,
-    },
-    DETAIL: {
-      path: ":id",  // Dynamic path
-      name: "Product Detail",
-      buildHref: (param) => `${ROUTES.PRODUCTS.path}/${param}`,
-    },
-  },
 };
